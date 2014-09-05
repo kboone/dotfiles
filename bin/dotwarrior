@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# Basics: install & keep track of what was installed
+# TODO: uninstall, reinstall, add file
+
+BASE = $HOME/.dotfiles
+
+function install {
+    echo "Installing"
+    for DIR in `ls $BASE/packages`; do
+        
+    done
+}
+
+install
