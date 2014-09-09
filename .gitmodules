@@ -7,3 +7,6 @@
 [submodule "packages/home/.vim/bundle/nerdcommenter"]
 	path = packages/home/.vim/bundle/nerdcommenter
 	url = git@github.com:scrooloose/nerdcommenter.git
+[submodule "packages/home/.vim/bundle/nerdtree"]
+	path = packages/home/.vim/bundle/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git
