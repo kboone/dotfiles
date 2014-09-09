@@ -98,6 +98,10 @@ set nojoinspaces
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable solarized
+" Note: If I am getting the weird wrong background bug, this is due to TERM
+" being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
+" still breaks inside of tmux. The correct solution is to set
+" 'TERM=xterm-256color' in .bashrc or .zshrc. Do that, it works.
 syntax enable
 set background=dark
 "let g:solarized_italic=0
@@ -114,11 +118,6 @@ if has("gui_running")
 
     " No sound, use visual bell instead
     set visualbell
-
-    " Black background, much nicer
-    " highlight Normal guibg=black
-else
-    " Terminal options
 endif
 
 
