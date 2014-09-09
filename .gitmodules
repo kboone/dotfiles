@@ -22,6 +22,3 @@
 [submodule "packages/home/.vim/bundle/vim-colors-solarized"]
 	path = packages/home/.vim/bundle/vim-colors-solarized
 	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "packages/home/.oh-my-zsh"]
-	path = packages/home/.oh-my-zsh
-	url = git://github.com/robbyrussell/oh-my-zsh.git
