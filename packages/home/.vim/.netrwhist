@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/data/dropbox/config'
-let g:netrw_dirhist_2='/data/projects/atlas/noslep-opt-2012/kylecut-plot/macros'
-let g:netrw_dirhist_3='/home/kyle/.vim'
-let g:netrw_dirhist_4='/data/courses/apsc/150'
-let g:netrw_dirhist_5='/data/life/important-documents'

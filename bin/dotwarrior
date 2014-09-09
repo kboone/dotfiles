@@ -2,13 +2,72 @@
 
 # Basics: install & keep track of what was installed
 # TODO: uninstall, reinstall, add file
+# TODO: basically everything
 
-BASE = $HOME/.dotfiles
+BASE=$HOME/.dotfiles
+
+
+
 
 function install {
     echo "Installing"
-    for DIR in `ls $BASE/packages`; do
-        
+    cd $BASE/packages
+    cd home
+    ls
+    for FILE in `ls -a | grep "^\.[^.]"`; do
+        printf '%-20s' $FILE
+        TARGET=$BASE/packages/home/$FILE
+        if [[ ! -e ~/$FILE ]]; then
+            # File doesn't exist, our job is easy!
+            echo "Creating symlink."
+            ln -s $TARGET ~/$FILE
+        else
+            # File exists, deal with it
+            if [[ "$(readlink ~/$FILE)" = "$TARGET" ]]; then
+                echo "Symlink already exists, ok."
+            else
+                while true; do
+                    echo "File exists!"
+                    echo "Options are:"
+                    echo "r - Replace"
+                    echo "s - Skip"
+                    echo "n - New filename"
+                    echo "b - Backup and replace"
+                    read -p ">" OPTION
+                    case $OPTION in
+                        [Rr] )
+                            echo "Replacing file ~/$FILE"
+                            rm -r ~/$FILE
+                            ln -s $TARGET ~/$FILE
+                            break;;
+                        [Bb] )
+                            echo "Backing up ~/$FILE to ~/${FILE}.bak and replacing"
+                            mv ~/$FILE ~/${FILE}.bak
+                            ln -s $TARGET ~/$FILE
+                            break;;
+                        [Nn] )
+                            while true; do
+                                read -p "Enter new filename (full path): " NEW_FILENAME
+                                # expand out tildes and the like
+                                eval NEW_FILENAME=$NEW_FILENAME
+                                if [[ ! -e $NEW_FILENAME ]]; then
+                                    ln -s $TARGET $NEW_FILENAME
+                                    break;
+                                else
+                                    echo "File exists, try again"
+                                fi
+                            done
+                            break;;
+                        [Ss] )
+                            echo "Skipping file ~/$FILE"
+                            break;;
+                        * )
+                            echo "Unknown option, try again"
+                            ;;
+                    esac
+                done
+            fi
+        fi
     done
 }
 
