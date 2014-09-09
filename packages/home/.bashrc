@@ -116,7 +116,3 @@ fi
 # Load my bashrc
 . /data/.config/.bashrc
 
-
-
-source "$HOME/.homesick/repos/homeshick/homeshick.sh"
-source "$HOME/.homesick/repos/homeshick/completions/homeshick-completion.bash"
