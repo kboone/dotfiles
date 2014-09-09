@@ -2,15 +2,7 @@
 " Kyle Boone's vim config
 "
 " Required extensions:
-" Pathogen: http://www.vim.org/scripts/script.php?script_id=2332
-" MiniBufExplorer: https://github.com/fholgado/minibufexpl.vim
-" The NERD tree: http://www.vim.org/scripts/script.php?script_id=1658
-" Taglist: http://www.vim.org/scripts/script.php?script_id=273
-" VIM-LaTeX: http://vim-latex.sourceforge.net/
-" snipMate: http://www.vim.org/scripts/script.php?script_id=2540
-" The NERD commenter: http://www.vim.org/scripts/script.php?script_id=1218
-" ctrlp: http://www.vim.org/scripts/script.php?script_id=3736
-" vim-colors-solarized: https://github.com/altercation/vim-colors-solarized
+" See https://github.com/kboone/dotfiles
 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -247,9 +239,7 @@ let g:miniBufExplCheckDupeBufs = 0
 
 " TagList
 " ,t to open/close. F1 for more info when open
-nnoremap <silent> <leader>t :TlistToggle<CR>
-let Tlist_Exist_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
+nnoremap <silent> <leader>t :TagbarToggle<CR>
 
 " CtrlP
 " hit ,f to find and open files very quickly
