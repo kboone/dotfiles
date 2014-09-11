@@ -100,15 +100,18 @@ set nojoinspaces
 " Enable solarized
 " Note: If I am getting the weird wrong background bug, this is due to TERM
 " being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
-" still breaks inside of tmux. The correct solution is to set
-" 'TERM=xterm-256color' in .bashrc or .zshrc. Do that, it works.
+" still breaks inside of tmux. Right now I am setting
+" 'TERM=xterm-256color' in .bashrc or .zshrc. It works, but is still wrong.
 syntax enable
 set background=dark
 "let g:solarized_italic=0
 colorscheme solarized
 
-" highlight 81st column so that we keep everything within 80
-set colorcolumn=81
+" highlight 81st column so that we keep everything within 80. Note, only in 7.3
+" or higher
+if version > 703
+    set colorcolumn=81
+endif
 
 if has("gui_running")
     " GUI options
