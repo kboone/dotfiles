@@ -114,5 +114,68 @@ if ! shopt -oq posix; then
 fi
 
 # Load my bashrc
-. /data/.config/.bashrc
 
+# Kyle Boone's .bashrc
+# This just does the things that I like specifically. Source this from the
+# distro's main .bashrc using "source /data/.config/.bashrc".
+
+# ssh aliases
+alias sshphas='ssh -X kyle056@ssh.phas.ubc.ca'
+alias ssheece='ssh -X w0e7@ssh.ece.ubc.ca'
+alias sshat1='ssh -X kboone@atlasserv1.phas.ubc.ca'
+alias sshat2='ssh -X kboone@atlasserv2.phas.ubc.ca'
+alias sshat3='ssh -X kboone@atlasserv3.phas.ubc.ca'
+alias sshat4='ssh -X kboone@atlasserv4.phas.ubc.ca'
+alias sshat5='ssh -X kboone@atlasserv5.phas.ubc.ca'
+alias sshat6='ssh -X kboone@atlasserv6.phas.ubc.ca'
+alias sshat7='ssh -X kboone@atlasserv7.phas.ubc.ca'
+alias sshat8='ssh -X kboone@atlasserv8.phas.ubc.ca'
+alias sshat9='ssh -X kboone@atlasserv9.phas.ubc.ca'
+alias sshat10='ssh -X kboone@atlasserv10.phas.ubc.ca'
+alias sshat11='ssh -X kboone@atlasserv11.phas.ubc.ca'
+alias sshpl='ssh -X plekaker@plekaker'
+alias sshkb='ssh -X plekaker@kyleboone.ca'
+alias sshlx='ssh -X kboone@lxplus.cern.ch'
+alias sshhop='ssh -Y kboone@hopper.nersc.gov'
+alias sshtop='ssh -Y kboone@topdog.lbl.gov'
+
+# Device specific setup.
+if [ "$HOSTNAME" == "julebrus" ] || [ "$HOSTNAME" == "troika" ]
+then
+    # ROOT setup
+    alias root='root -l'
+    export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
+    export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/root5.34:$LD_LIBRARY_PATH
+    # ROOTSYS is wrong but we need to specify something or we get a ton of
+    # errors.
+    export ROOTSYS=/usr/lib/x86_64-linux-gnu/root5.34
+
+    # Anaconda - use python 3 by default
+    export PATH="/data/apps/anaconda/bin:$PATH"
+    #conda config --set changeps1 no
+    #source activate py3k >/dev/null 2>&1
+
+    alias block='sudo /data/apps/bin/block.sh'
+    alias unblock='sudo /data/apps/bin/unblock.sh'
+
+    # Add additional binaries in the data folder to the path
+    export PATH=$PATH:/data/apps/bin
+fi
+
+# fix terminal colors
+export TERM='xterm-256color'        # BAD! Figure this out properly
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+#shopt -s checkwinsize
+
+# Have the open command work in linux like in OSX
+alias open='gnome-open'
