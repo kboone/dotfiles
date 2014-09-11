@@ -162,6 +162,11 @@ then
     export PATH=$PATH:/data/apps/bin
 fi
 
+# Add my custom install binaries.
+# Note: do this last, so that we use the default if it is there (does this make
+# sense?)
+export PATH=$PATH:~/.kyle_install/bin
+
 # fix terminal colors
 export TERM='xterm-256color'        # BAD! Figure this out properly
 if [ -x /usr/bin/dircolors ]; then
