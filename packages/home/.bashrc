@@ -162,11 +162,14 @@ fi
 # Have the open command work in linux like in OSX
 alias open='gnome-open'
 
+echo $DISPLAY > ~/.display.txt
+alias fix_display='export DISPLAY=`cat ~/.display.txt`'
+
 ################################################################################
 # Device specific setup.
 ################################################################################
 
-if [ "$HOSTNAME" == "julebrus" ] || [ "$HOSTNAME" == "troika" ]; then
+if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
     # ROOT setup
     alias root='root -l'
     export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
@@ -185,7 +188,7 @@ if [ "$HOSTNAME" == "julebrus" ] || [ "$HOSTNAME" == "troika" ]; then
 
     # Add additional binaries in the data folder to the path
     export PATH=$PATH:/data/apps/bin
-elif [ "$HOSTNAME" == "topdog.lbl.gov" ]; then
+elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
 
@@ -203,6 +206,6 @@ elif [ "$HOSTNAME" == "topdog.lbl.gov" ]; then
     export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
     export iref="/home/scpdata05/clustersn/data/references/"
 
-    echo $DISPLAY > ~/.display.txt
-    alias fix_display='export DISPLAY=`cat ~/.display.txt`'
+elif [[ "$HOSTNAME" == hopper* ]]; then
+    export PATH="~/software/anaconda/bin:$PATH"
 fi
