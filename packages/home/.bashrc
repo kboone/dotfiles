@@ -207,5 +207,37 @@ elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     export iref="/home/scpdata05/clustersn/data/references/"
 
 elif [[ "$HOSTNAME" == hopper* ]]; then
-    export PATH="~/software/anaconda/bin:$PATH"
+    # Aliases for different servers
+    alias sshhop1='ssh hopper01'
+    alias sshhop2='ssh hopper02'
+    alias sshhop3='ssh hopper03'
+    alias sshhop4='ssh hopper04'
+    alias sshhop5='ssh hopper05'
+    alias sshhop6='ssh hopper06'
+    alias sshhop7='ssh hopper07'
+    alias sshhop8='ssh hopper08'
+    alias sshhop9='ssh hopper09'
+    alias sshhop10='ssh hopper10'
+    alias sshhop11='ssh hopper11'
+    alias sshhop12='ssh hopper12'
+
+    # Default to gnu compiler
+    module swap PrgEnv-pgi PrgEnv-gnu 2>/dev/null
+    module load gsl
+
+    # Path
+    export PATH=$PATH:~/local/bin
+    export PATH=$PATH:~/scripts
+
+    # Use Anaconda's python distribution
+    export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
+    unset PYTHONPATH
+
+    # SNFactory settings
+    export PATH=/project/projectdirs/snfactry/rthomas/local/$NERSC_HOST/bin:$PATH
+
+    # PyROOT settings
+    module load root
+    export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
+    export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
 fi
