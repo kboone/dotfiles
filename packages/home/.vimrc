@@ -92,6 +92,9 @@ set mouse=a
 " Don't double space. I only like one space after my periods
 set nojoinspaces
 
+" Make backspace work properly
+set backspace=2
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance

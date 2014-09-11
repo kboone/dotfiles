@@ -139,29 +139,6 @@ alias sshlx='ssh -X kboone@lxplus.cern.ch'
 alias sshhop='ssh -Y kboone@hopper.nersc.gov'
 alias sshtop='ssh -Y kboone@topdog.lbl.gov'
 
-# Device specific setup.
-if [ "$HOSTNAME" == "julebrus" ] || [ "$HOSTNAME" == "troika" ]
-then
-    # ROOT setup
-    alias root='root -l'
-    export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
-    export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/root5.34:$LD_LIBRARY_PATH
-    # ROOTSYS is wrong but we need to specify something or we get a ton of
-    # errors.
-    export ROOTSYS=/usr/lib/x86_64-linux-gnu/root5.34
-
-    # Anaconda - use python 3 by default
-    export PATH="/data/apps/anaconda/bin:$PATH"
-    #conda config --set changeps1 no
-    #source activate py3k >/dev/null 2>&1
-
-    alias block='sudo /data/apps/bin/block.sh'
-    alias unblock='sudo /data/apps/bin/unblock.sh'
-
-    # Add additional binaries in the data folder to the path
-    export PATH=$PATH:/data/apps/bin
-fi
-
 # Add my custom install binaries.
 # Note: do this last, so that we use the default if it is there (does this make
 # sense?)
@@ -184,3 +161,48 @@ fi
 
 # Have the open command work in linux like in OSX
 alias open='gnome-open'
+
+################################################################################
+# Device specific setup.
+################################################################################
+
+if [ "$HOSTNAME" == "julebrus" ] || [ "$HOSTNAME" == "troika" ]; then
+    # ROOT setup
+    alias root='root -l'
+    export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
+    export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/root5.34:$LD_LIBRARY_PATH
+    # ROOTSYS is wrong but we need to specify something or we get a ton of
+    # errors.
+    export ROOTSYS=/usr/lib/x86_64-linux-gnu/root5.34
+
+    # Anaconda - use python 3 by default
+    export PATH="/data/apps/anaconda/bin:$PATH"
+    #conda config --set changeps1 no
+    #source activate py3k >/dev/null 2>&1
+
+    alias block='sudo /data/apps/bin/block.sh'
+    alias unblock='sudo /data/apps/bin/unblock.sh'
+
+    # Add additional binaries in the data folder to the path
+    export PATH=$PATH:/data/apps/bin
+elif [ "$HOSTNAME" == "topdog.lbl.gov" ]; then
+    # tmux, vim, etc.
+    export PATH="/home/users/kboone/local/bin:$PATH"
+
+
+    # hstsearcher
+    export PATH="/home/users/kboone/anaconda/bin:$PATH"
+    #export PATH="/home/users/kboone/hst/hstsearch/trunk/build/scripts-2.7:$PATH"
+
+    export CLUSTERS="/home/scpdata05/clustersn"
+
+    export HSTSEARCHDB="/home/users/kboone/hst/test_data/databases/test.db"
+    export HSTSEARCHPATH="/home/users/kboone/hst/test_data/data/test/"
+
+    export HSTFIELDPATH="/home/scpdata05/clustersn/fieldlists"
+    export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
+    export iref="/home/scpdata05/clustersn/data/references/"
+
+    echo $DISPLAY > ~/.display.txt
+    alias fix_display='export DISPLAY=`cat ~/.display.txt`'
+fi
