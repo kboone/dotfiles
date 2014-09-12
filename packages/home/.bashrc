@@ -165,6 +165,9 @@ alias open='gnome-open'
 echo $DISPLAY > ~/.display.txt
 alias fix_display='export DISPLAY=`cat ~/.display.txt`'
 
+# Check for dotfile upgrades
+. ~/.dotfiles/tools/check_for_upgrade.sh
+
 ################################################################################
 # Device specific setup.
 ################################################################################
