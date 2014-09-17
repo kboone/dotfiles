@@ -241,6 +241,9 @@ elif [[ -n "$NERSC_HOST" ]]; then
     # SNFactory settings
     export PATH=/project/projectdirs/snfactry/rthomas/local/$NERSC_HOST/bin:$PATH
 
+    # Get a newer vim running
+    module load vim
+
     # PyROOT settings
     module load root
     export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
