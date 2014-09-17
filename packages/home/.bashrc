@@ -209,7 +209,9 @@ elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
     export iref="/home/scpdata05/clustersn/data/references/"
 
-elif [[ "$HOSTNAME" == hopper* ]]; then
+elif [[ -n "$NERSC_HOST" ]]; then
+    # We are on a NERSC machine (hopper, edison, etc.)
+
     # Aliases for different servers
     alias sshhop1='ssh hopper01'
     alias sshhop2='ssh hopper02'
