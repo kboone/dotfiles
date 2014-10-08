@@ -195,18 +195,23 @@ elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
 
-
     # hstsearcher
     export PATH="/home/users/kboone/anaconda/bin:$PATH"
     #export PATH="/home/users/kboone/hst/hstsearch/trunk/build/scripts-2.7:$PATH"
 
     export CLUSTERS="/home/scpdata05/clustersn"
+    export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
 
+    # Kyle test
     export HSTSEARCHDB="/home/users/kboone/hst/test_data/databases/test.db"
     export HSTSEARCHPATH="/home/users/kboone/hst/test_data/data/test/"
+    export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/kyle_test.txt"
 
-    export HSTFIELDPATH="/home/scpdata05/clustersn/fieldlists"
-    export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
+    # Brian's test
+    #export HSTSEARCHDB="/home/scpdata05/clustersn/databases/uvis_105_160.db"
+    #export HSTSEARCHPATH="/home/scpdata05/clustersn/data/uvis_105_160/"
+    #export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/uvis_105_160.txt"
+
     export iref="/home/scpdata05/clustersn/data/references/"
 
 elif [[ -n "$NERSC_HOST" ]]; then

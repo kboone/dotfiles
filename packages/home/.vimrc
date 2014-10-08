@@ -95,6 +95,12 @@ set nojoinspaces
 " Make backspace work properly
 set backspace=2
 
+" Log format from cluster search
+au BufNewFile,BufRead hst*.log syn match Error "ERROR.*"
+au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
+au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
+au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
