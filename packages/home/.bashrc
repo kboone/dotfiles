@@ -205,7 +205,7 @@ elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Kyle test
     export HSTSEARCHDB="/home/users/kboone/hst/test_data/databases/test.db"
     export HSTSEARCHPATH="/home/users/kboone/hst/test_data/data/test/"
-    export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/kyle_test.txt"
+    export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/candels_test.txt"
 
     # Brian's test
     #export HSTSEARCHDB="/home/scpdata05/clustersn/databases/uvis_105_160.db"
