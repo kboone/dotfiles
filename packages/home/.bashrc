@@ -191,6 +191,14 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
 
     # Add additional binaries in the data folder to the path
     export PATH=$PATH:/data/apps/bin
+    
+    # iraf
+    ur_setup() {
+        eval `/home/kyle/.ureka/ur_setup -sh $*`
+    }
+    ur_forget() {
+        eval `/home/kyle/.ureka/ur_forget -sh $*`
+    }
 elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
@@ -254,3 +262,4 @@ elif [[ -n "$NERSC_HOST" ]]; then
     export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
     export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
 fi
+
