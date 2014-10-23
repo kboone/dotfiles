@@ -201,6 +201,14 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
 
     # Add additional binaries in the data folder to the path
     export PATH=$PATH:/data/apps/bin
+    
+    # iraf
+    ur_setup() {
+        eval `/home/kyle/.ureka/ur_setup -sh $*`
+    }
+    ur_forget() {
+        eval `/home/kyle/.ureka/ur_forget -sh $*`
+    }
 elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
