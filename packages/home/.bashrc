@@ -162,8 +162,18 @@ fi
 # Have the open command work in linux like in OSX
 alias open='gnome-open'
 
+# Display fix when I am running on remote servers. If you reconnect to a tmux
+# session or something then it can break everything. Run fix_display to bring it
+# back up. This probably should be in .bash_profile so that it only runs on
+# login.
 echo $DISPLAY > ~/.display.txt
 alias fix_display='export DISPLAY=`cat ~/.display.txt`'
+
+# Grep in a versioned directory
+vgrep() {
+    grep -rn "$1" . | grep -v tags | grep -v \.svn | grep -v \.git | grep -v \
+        pyc
+}
 
 # Check for dotfile upgrades
 . ~/.dotfiles/tools/check_for_upgrade.sh
@@ -195,25 +205,8 @@ elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
 
-    # hstsearcher
+    # my anaconda
     export PATH="/home/users/kboone/anaconda/bin:$PATH"
-    #export PATH="/home/users/kboone/hst/hstsearch/trunk/build/scripts-2.7:$PATH"
-
-    export CLUSTERS="/home/scpdata05/clustersn"
-    export SEXPATH="/home/users/kboone/hst/hstsearch/trunk/hstsearch/sexfiles/"
-
-    # Kyle test
-    export HSTSEARCHDB="/home/users/kboone/hst/test_data/databases/test.db"
-    export HSTSEARCHPATH="/home/users/kboone/hst/test_data/data/test/"
-    export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/candels_test.txt"
-
-    # Brian's test
-    #export HSTSEARCHDB="/home/scpdata05/clustersn/databases/uvis_105_160.db"
-    #export HSTSEARCHPATH="/home/scpdata05/clustersn/data/uvis_105_160/"
-    #export HSTFIELDFILE="/home/scpdata05/clustersn/fieldlists/uvis_105_160.txt"
-
-    export iref="/home/scpdata05/clustersn/data/references/"
-
 elif [[ -n "$NERSC_HOST" ]]; then
     # We are on a NERSC machine (hopper, edison, etc.)
 
@@ -253,4 +246,9 @@ elif [[ -n "$NERSC_HOST" ]]; then
     module load root
     export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
     export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
+fi
+
+# Optional external bashrc file for local unversioned things
+if [[ -f "$HOME/.bashrc_local" ]]; then
+    . ~/.bashrc_local
 fi
