@@ -171,8 +171,8 @@ alias fix_display='export DISPLAY=`cat ~/.display.txt`'
 
 # Grep in a versioned directory
 vgrep() {
-    grep -rn "$1" . | grep -v tags | grep -v \.svn | grep -v \.git | grep -v \
-        pyc
+    grep --color=always -rn $1 . | grep -v tags | grep -v \.svn \
+        | grep -v \.git | grep -v pyc
 }
 
 # Check for dotfile upgrades
