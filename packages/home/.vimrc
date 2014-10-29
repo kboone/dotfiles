@@ -81,11 +81,6 @@ set hidden
 " Text width
 set textwidth=80
 
-" Only insert longest common text, show for one line only
-" Show preview for completion in python since docstrings are amazing. In most
-" other languages it is more of a hindrance.
-set completeopt=menu,menuone,longest
-
 " Enable mouse in console version of vim
 set mouse=a
 
@@ -139,7 +134,7 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Python
-au FileType python set completeopt+=preview
+" au FileType python set completeopt+=preview
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General control remaps
@@ -248,9 +243,10 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 let g:miniBufExplCheckDupeBufs = 0
 
-" TagList
+" Tagbar
 " ,t to open/close. F1 for more info when open
 nnoremap <silent> <leader>t :TagbarToggle<CR>
+let g:tagbar_sort = 0
 
 " CtrlP
 " hit ,f to find and open files very quickly
