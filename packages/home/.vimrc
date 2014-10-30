@@ -90,6 +90,9 @@ set nojoinspaces
 " Make backspace work properly
 set backspace=2
 
+" Line numbers
+set number
+
 " Log format from cluster search
 au BufNewFile,BufRead hst*.log syn match Error "ERROR.*"
 au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
