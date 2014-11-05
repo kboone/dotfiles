@@ -20,22 +20,6 @@ call pathogen#infect()
 " Host dependent stuff
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Tab size (default that I use is softtab 4 with hardtabs at 8 spaces)
-if !empty(matchstr(hostname(), ".*\.triumf\.ca"))
-    " TRIUMF/common physicist config, softtab with 2 spaces per tab, hard tabs
-    " are 8
-    set expandtab
-    set tabstop=8
-    set shiftwidth=2
-    set softtabstop=2
-else
-    " Personal config, softtab with 4 spaces per tab, hard tabs are 8
-    set expandtab
-    set tabstop=8
-    set softtabstop=4
-    set shiftwidth=4
-endif
-
 " troika settings -> make it look reasonable on a 1366x768 screen
 if hostname() == "troika"
     if has("gui_running")
@@ -47,6 +31,13 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" The one true way of doing tabs. PEP8 style.
+" Expand tabs as 4 space softtabs. Hard tabs are 8.
+set expandtab
+set tabstop=8
+set softtabstop=4
+set shiftwidth=4
 
 " Enable filetype and syntax stuff
 syntax on
@@ -93,12 +84,12 @@ set backspace=2
 " Line numbers
 set number
 
-" Log format from cluster search
-au BufNewFile,BufRead hst*.log syn match Error "ERROR.*"
-au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
-au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
-au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
-
+" Show line breaks
+set showbreak=↪\ \ \ 
+if v:version > 704 || v:version == 704 && has("patch338")
+    " Make the breaks indent properly. Available in builds after ~June 2014.
+    set breakindent
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
@@ -130,6 +121,12 @@ if has("gui_running")
     set visualbell
 endif
 
+" Log format from cluster search
+au BufNewFile,BufRead hst*.log syn match Error "ERROR.*"
+au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
+au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
+au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
+
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,7 +150,7 @@ set winaltkeys=no
 nnoremap <silent> <leader>w :w<CR>
 
 " ,s: Show whitespace toggle
-set listchars=tab:>-,trail:�,eol:$
+set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
 " ,O and ,o: Insert blank line above/below
