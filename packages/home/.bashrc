@@ -175,6 +175,10 @@ vgrep() {
         | grep -v \.git | grep -v pyc
 }
 
+# Use vim as my default editor for svn and things
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 # Check for dotfile upgrades
 . ~/.dotfiles/tools/check_for_upgrade.sh
 
