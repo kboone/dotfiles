@@ -137,7 +137,7 @@ alias sshpl='ssh -X plekaker@plekaker'
 alias sshkb='ssh -X plekaker@kyleboone.ca'
 alias sshlx='ssh -X kboone@lxplus.cern.ch'
 alias sshhop='ssh -Y kboone@hopper.nersc.gov'
-alias sshtop='ssh -Y kboone@topdog.lbl.gov'
+alias sshtop='ssh -Y kboone@zacharys.lbl.gov'
 
 # Add my custom install binaries.
 # Note: do this last, so that we use the default if it is there (does this make
