@@ -213,7 +213,7 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
     ur_forget() {
         eval `/home/kyle/.ureka/ur_forget -sh $*`
     }
-elif [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
+elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # tmux, vim, etc.
     export PATH="/home/users/kboone/local/bin:$PATH"
 
