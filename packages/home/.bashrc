@@ -162,12 +162,14 @@ fi
 # Have the open command work in linux like in OSX
 alias open='gnome-open'
 
-# Display fix when I am running on remote servers. If you reconnect to a tmux
-# session or something then it can break everything. Run fix_display to bring it
-# back up. This probably should be in .bash_profile so that it only runs on
-# login.
-echo $DISPLAY > ~/.display.txt
-alias fix_display='export DISPLAY=`cat ~/.display.txt`'
+# tmux breaks things like the display and ssh forwarding when you reconnect. Run
+# fix_tmux in a tmux shell to solve all of these problems and get the
+# environment properly set up when reconnecting.
+TMUXVARS="DISPLAY SSH_CLIENT SSH_TTY SSH_AUTH_SOCK SSH_CONNECTION_DISPLAY"
+for i in ${TMUXVARS}; do
+    echo "export $i=\"$(eval echo '$'$i)\""
+done 1>$HOME/.tmux_env_fix
+alias fix_tmux='. $HOME/.tmux_env_fix'
 
 # Grep in a versioned directory
 vgrep() {
