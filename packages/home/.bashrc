@@ -120,24 +120,10 @@ fi
 # distro's main .bashrc using "source /data/.config/.bashrc".
 
 # ssh aliases
-alias sshphas='ssh -X kyle056@ssh.phas.ubc.ca'
-alias ssheece='ssh -X w0e7@ssh.ece.ubc.ca'
-alias sshat1='ssh -X kboone@atlasserv1.phas.ubc.ca'
-alias sshat2='ssh -X kboone@atlasserv2.phas.ubc.ca'
-alias sshat3='ssh -X kboone@atlasserv3.phas.ubc.ca'
-alias sshat4='ssh -X kboone@atlasserv4.phas.ubc.ca'
-alias sshat5='ssh -X kboone@atlasserv5.phas.ubc.ca'
-alias sshat6='ssh -X kboone@atlasserv6.phas.ubc.ca'
-alias sshat7='ssh -X kboone@atlasserv7.phas.ubc.ca'
-alias sshat8='ssh -X kboone@atlasserv8.phas.ubc.ca'
-alias sshat9='ssh -X kboone@atlasserv9.phas.ubc.ca'
-alias sshat10='ssh -X kboone@atlasserv10.phas.ubc.ca'
-alias sshat11='ssh -X kboone@atlasserv11.phas.ubc.ca'
-alias sshpl='ssh -X plekaker@plekaker'
-alias sshkb='ssh -X plekaker@kyleboone.ca'
-alias sshlx='ssh -X kboone@lxplus.cern.ch'
-alias sshhop='ssh -Y kboone@hopper.nersc.gov'
-alias sshtop='ssh -Y kboone@zacharys.lbl.gov'
+alias sshhop='ssh -X kboone@hopper.nersc.gov'
+alias sshtop='ssh -X kboone@zacharys.lbl.gov'
+alias sshed='ssh -X kboone@edison.nersc.gov'
+alias sshcar='ssh -X kboone@carver.nersc.gov'
 
 # fix terminal colors
 export TERM='xterm-256color'        # BAD! Figure this out properly
@@ -216,27 +202,14 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
         eval `/home/kyle/.ureka/ur_forget -sh $*`
     }
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
-    # tmux, vim, etc.
-    export PATH="/home/users/kboone/local/bin:$PATH"
+    # Everything is currently installed here... change this to .kyle_install at
+    # some point
+    KYLE_INSTALL_DIR=$HOME/local
 
     # my anaconda
     export PATH="/home/users/kboone/anaconda/bin:$PATH"
 elif [[ -n "$NERSC_HOST" ]]; then
     # We are on a NERSC machine (hopper, edison, etc.)
-
-    # Aliases for different servers
-    alias sshhop1='ssh hopper01'
-    alias sshhop2='ssh hopper02'
-    alias sshhop3='ssh hopper03'
-    alias sshhop4='ssh hopper04'
-    alias sshhop5='ssh hopper05'
-    alias sshhop6='ssh hopper06'
-    alias sshhop7='ssh hopper07'
-    alias sshhop8='ssh hopper08'
-    alias sshhop9='ssh hopper09'
-    alias sshhop10='ssh hopper10'
-    alias sshhop11='ssh hopper11'
-    alias sshhop12='ssh hopper12'
 
     # Load the gcc compiler. This is done differently on all of the machines.
     if [[ "$NERSC_HOST" == "carver" ]]; then
@@ -278,9 +251,8 @@ elif [[ -n "$NERSC_HOST" ]]; then
     export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
 fi
 
-# Add the custom install directory to my path. Note that I put it last so that
-# we use the system's install if possible.
-export PATH=$PATH:$KYLE_INSTALL_DIR/bin
+# Add the custom install directory to my path.
+export PATH=$KYLE_INSTALL_DIR/bin:$PATH
 
 # Optional external bashrc file for local unversioned things
 if [[ -f "$HOME/.bashrc_local" ]]; then
