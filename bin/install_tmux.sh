@@ -7,12 +7,12 @@
 # exit on error
 set -e
 
-INSTALL_DIR=$HOME/.kyle_install
+INSTALL_DIR=$KYLE_INSTALL_DIR
 
 TMUX_VERSION=1.8
 
 # create our directories
-mkdir -p $INSTALL_DIR/.kyle_install $INSTALL_DIR/tmux_tmp
+mkdir -p $INSTALL_DIR $INSTALL_DIR/tmux_tmp
 cd $INSTALL_DIR/tmux_tmp
 
 # download source files for tmux, libevent, and ncurses

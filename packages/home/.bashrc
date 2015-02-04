@@ -139,11 +139,6 @@ alias sshlx='ssh -X kboone@lxplus.cern.ch'
 alias sshhop='ssh -Y kboone@hopper.nersc.gov'
 alias sshtop='ssh -Y kboone@zacharys.lbl.gov'
 
-# Add my custom install binaries.
-# Note: do this last, so that we use the default if it is there (does this make
-# sense?)
-export PATH=$PATH:~/.kyle_install/bin
-
 # fix terminal colors
 export TERM='xterm-256color'        # BAD! Figure this out properly
 if [ -x /usr/bin/dircolors ]; then
@@ -182,7 +177,12 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 # Check for dotfile upgrades
-. ~/.dotfiles/tools/check_for_upgrade.sh
+. $HOME/.dotfiles/tools/check_for_upgrade.sh
+
+# Default custom binaries install path. This gets added to path below, but I
+# change it for some individual systems (eg: NERSC since all machines share the
+# same home directory)
+export KYLE_INSTALL_DIR=$HOME/.kyle_install
 
 ################################################################################
 # Device specific setup.
@@ -238,13 +238,28 @@ elif [[ -n "$NERSC_HOST" ]]; then
     alias sshhop11='ssh hopper11'
     alias sshhop12='ssh hopper12'
 
-    # Default to gnu compiler
-    module swap PrgEnv-pgi PrgEnv-gnu 2>/dev/null
+    # Load the gcc compiler. This is done differently on all of the machines.
+    if [[ "$NERSC_HOST" == "carver" ]]; then
+        module load gcc
+        module load openmpi-gcc
+    elif [[ "$NERSC_HOST" == "hopper" ]]; then
+        module swap PrgEnv-pgi PrgEnv-gnu 2>/dev/null
+    elif [[ "$NERSC_HOST" == "edison" ]]; then
+        module swap PrgEnv-intel PrgEnv-gnu 2>/dev/null
+    else
+        echo "Unknown NERSC host, gcc not loaded!"
+    fi
+
+    # Custom install directory for the different servers
+    export KYLE_INSTALL_DIR=$HOME/.kyle_install/$NERSC_HOST
+        
+    # Other modules to load that are on all of the NERSC machines. I want newer
+    # versions of most things, but I don't care about the exact version number.
     module load gsl
+    module load autoconf
 
     # Path
-    export PATH=$PATH:~/local/bin
-    export PATH=$PATH:~/scripts
+    export PATH=$PATH:$HOME/scripts
 
     # Use Anaconda's python distribution
     export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
@@ -256,13 +271,18 @@ elif [[ -n "$NERSC_HOST" ]]; then
     # Get a newer vim running
     module load vim
 
-    # PyROOT settings
+    # Load root, and set up things so that PyROOT works properly. This might
+    # need to be updated.
     module load root
     export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
     export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
 fi
 
+# Add the custom install directory to my path. Note that I put it last so that
+# we use the system's install if possible.
+export PATH=$PATH:$KYLE_INSTALL_DIR/bin
+
 # Optional external bashrc file for local unversioned things
 if [[ -f "$HOME/.bashrc_local" ]]; then
-    . ~/.bashrc_local
+    . $HOME/.bashrc_local
 fi
