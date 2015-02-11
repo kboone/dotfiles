@@ -204,7 +204,7 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
-    KYLE_INSTALL_DIR=$HOME/local
+    export KYLE_INSTALL_DIR=$HOME/local
 
     # my anaconda
     export PATH="/home/users/kboone/anaconda/bin:$PATH"
