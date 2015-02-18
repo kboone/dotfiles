@@ -258,3 +258,9 @@ export PATH=$KYLE_INSTALL_DIR/bin:$PATH
 if [[ -f "$HOME/.bashrc_local" ]]; then
     . $HOME/.bashrc_local
 fi
+
+# Remove unexecutable directories from my path. Some servers are dumb, and git
+# breaks when these are in it.
+PATH=$(for d in ${PATH//:/ } ; do [ -x $d ] && printf "$d\n"; done \
+    | uniq | tr '\n' ':')
+export PATH=${PATH%?}
