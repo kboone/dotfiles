@@ -1,3 +1,8 @@
 [user]
-	email = kboone@berkeley.edu
-	name = Kyle Boone
+    email = kboone@berkeley.edu
+    name = Kyle Boone
+
+[alias]
+    co = checkout
+    ci = commit
+    st = status
