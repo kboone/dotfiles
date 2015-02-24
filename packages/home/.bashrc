@@ -154,8 +154,8 @@ alias fix_tmux='. $HOME/.tmux_env_fix'
 
 # Grep in a versioned directory
 vgrep() {
-    grep --color=always -rn $1 . | grep -v tags | grep -v \.svn \
-        | grep -v \.git | grep -v pyc
+    grep --color=always -rn "$1" . | grep -v tags | grep -v \.svn \
+        | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
 # Use vim as my default editor for svn and things
