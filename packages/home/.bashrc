@@ -146,11 +146,10 @@ alias open='gnome-open'
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
 # environment properly set up when reconnecting.
-TMUXVARS="DISPLAY SSH_CLIENT SSH_TTY SSH_AUTH_SOCK SSH_CONNECTION_DISPLAY"
-for i in ${TMUXVARS}; do
-    echo "export $i=\"$(eval echo '$'$i)\""
-done 1>$HOME/.tmux_env_fix
-alias fix_tmux='. $HOME/.tmux_env_fix'
+fix_tmux() {
+    eval $(tmux show-environment | sed "s/\(.*\)=\(.*\)/export \1=\"\2\"/" \
+        | sed "s/^-/unset /")
+}
 
 # Grep in a versioned directory
 vgrep() {
