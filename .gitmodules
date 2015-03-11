@@ -28,3 +28,6 @@
 [submodule "packages/home/.vim/bundle/vim-airline"]
 	path = packages/home/.vim/bundle/vim-airline
 	url = git@github.com:bling/vim-airline.git
+[submodule "packages/home/.vim/bundle/tmuxline.vim"]
+	path = packages/home/.vim/bundle/tmuxline.vim
+	url = git@github.com:edkolev/tmuxline.vim.git

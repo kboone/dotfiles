@@ -283,3 +283,12 @@ let g:vim_markdown_folding_disabled = 1
 
 " vim-airline
 set laststatus=2
+let g:airline_theme = "solarized"
+
+" tmuxline
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = {
+      \'win'  : '#I:#W',
+      \'cwin' : '#I:#W',
+      \'y'    : '#H',
+      \'options' : {'status-justify': 'left'}}
