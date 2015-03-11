@@ -10,8 +10,14 @@
 " First, set the encoding. We have some utf-8 characters in here which some of
 " the old vims break on.
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 scriptencoding utf-8
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Next, specify that the vim shell should be bash in case the login shell is
+" something different... most plugins assume that they are being run in bash and
+" break of the login shell is e.g. fish.
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set shell=/bin/bash
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kill vi compatibility, this isn't 1976
