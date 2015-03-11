@@ -249,7 +249,6 @@ endfunction
 " MiniBufExplorer
 " how to use: ,b to open/goto, enter to pick buffer. pops up when more
 " than 2 buffers are open by default
-map <silent> <leader>b :MiniBufExplorer<CR>
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -266,6 +265,7 @@ let g:tagbar_sort = 0
 nnoremap <silent> <leader>f :CtrlPCurWD<CR>
 nnoremap <silent> <leader>F :CtrlPMRUFiles<CR>
 nnoremap <silent> <leader>g :CtrlPTag<CR>
+nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Vim-LaTeX
 set grepprg=grep\ -nH\ $*
@@ -279,4 +279,7 @@ let g:Tex_MultipleCompileFormats = "pdf"
 " ,c<Space> -> toggle comment
 
 " Markdown.vim
-let g:vim_markdown_folding_disabled=1
+let g:vim_markdown_folding_disabled = 1
+
+" vim-airline
+set laststatus=2
