@@ -31,3 +31,6 @@
 [submodule "packages/home/.vim/bundle/tmuxline.vim"]
 	path = packages/home/.vim/bundle/tmuxline.vim
 	url = git@github.com:edkolev/tmuxline.vim.git
+[submodule "packages/home/.vim/bundle/vim-python-pep8-indent"]
+	path = packages/home/.vim/bundle/vim-python-pep8-indent
+	url = git@github.com:hynek/vim-python-pep8-indent.git
