@@ -83,7 +83,7 @@ set ruler
 set hidden
 
 " Text width
-set textwidth=80
+set textwidth=79
 
 " Enable mouse in console version of vim
 set mouse=a
@@ -118,10 +118,10 @@ set background=dark
 "let g:solarized_italic=0
 colorscheme solarized
 
-" highlight 81st column so that we keep everything within 80. Note, only in 7.3
+" highlight 80th column so that we keep everything within 79. Note, only in 7.3
 " or higher
 if version > 703
-    set colorcolumn=81
+    set colorcolumn=80
 endif
 
 if has("gui_running")
@@ -208,9 +208,9 @@ map <A-l> :bn!<CR>
 " ,3 -> 1 buffer + taglist
 " ,4 -> 2 buffers + taglist
 nnoremap <silent> <leader>1 :set columns=80<CR>
-nnoremap <silent> <leader>2 :set columns=161<CR>
-nnoremap <silent> <leader>3 :set columns=111<CR>
-nnoremap <silent> <leader>4 :set columns=192<CR>
+nnoremap <silent> <leader>2 :set columns=160<CR>
+nnoremap <silent> <leader>3 :set columns=110<CR>
+nnoremap <silent> <leader>4 :set columns=190<CR>
 
 " ,ct: Build ctags
 nnoremap <silent> <leader>ct :!ctags -R<CR><CR>
@@ -292,3 +292,6 @@ let g:tmuxline_preset = {
       \'cwin' : '#I:#W',
       \'y'    : '#H',
       \'options' : {'status-justify': 'left'}}
+
+" Syntastic
+let g:syntastic_python_checkers = ['python', 'pep8']
