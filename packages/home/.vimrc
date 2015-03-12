@@ -4,6 +4,10 @@
 " Required extensions:
 " See https://github.com/kboone/dotfiles
 "
+" Required separate installs:
+" pep8 support in syntastic:
+" pip install flake8
+"
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -292,6 +296,3 @@ let g:tmuxline_preset = {
       \'cwin' : '#I:#W',
       \'y'    : '#H',
       \'options' : {'status-justify': 'left'}}
-
-" Syntastic
-let g:syntastic_python_checkers = ['python', 'pep8']
