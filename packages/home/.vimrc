@@ -256,9 +256,25 @@ set laststatus=2
 let g:airline_theme = "solarized"
 
 " tmuxline
+" These settings are saved in ~/.tmuxline.conf. If it gets messed up, it can be
+" regenerated using the tmuxline commands.
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_preset = {
       \'win'  : '#I:#W',
       \'cwin' : '#I:#W',
       \'y'    : '#H',
       \'options' : {'status-justify': 'left'}}
+
+" tabular
+" :Tab /= -> align on equal sign
+
+" surround
+" ysiw) -> add ) around the current word (iw)
+" cs'" -> change surrounding ' to "
+" ds' -> delete surrounding '
+
+" fugitive
+" ,ga -> git add [current file]
+nnoremap <leader>ga :Git add %:p<CR><CR>
+" ,gc -> git commit
+nnoremap <leader>gc :Gcommit<CR>
