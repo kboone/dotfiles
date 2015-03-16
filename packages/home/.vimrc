@@ -230,11 +230,11 @@ let g:tagbar_sort = 0
 " CtrlP
 " ,f to find and open files very quickly
 " ,F to search recent files
-" ,g to search tags
+" ,h to search tags
 " ,b to search buffers
 nnoremap <silent> <leader>f :CtrlPCurWD<CR>
 nnoremap <silent> <leader>F :CtrlPMRUFiles<CR>
-nnoremap <silent> <leader>g :CtrlPTag<CR>
+nnoremap <silent> <leader>h :CtrlPTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Vim-LaTeX
@@ -277,4 +277,10 @@ let g:tmuxline_preset = {
 " ,ga -> git add [current file]
 nnoremap <leader>ga :Git add %:p<CR><CR>
 " ,gc -> git commit
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit -q<CR>
+" ,gt -> git commit current file
+nnoremap <leader>gt :Gcommit -q %:p<CR>
+" ,gp -> git push
+nnoremap <leader>gp :Gpush<CR>
+" ,gu -> git pull
+nnoremap <leader>gu :Gpull<CR>
