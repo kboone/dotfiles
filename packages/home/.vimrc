@@ -40,6 +40,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
 
 " General syntax and completion
 Plugin 'majutsushi/tagbar'
@@ -53,6 +54,7 @@ Plugin 'edkolev/tmuxline.vim'
 
 " Text editing
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
 
 " Filetype specific plugins
 
