@@ -1,4 +1,4 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kyle Boone's vim config
 "
 " Required extensions:
@@ -7,47 +7,54 @@
 " Required separate installs:
 " pep8 support in syntastic:
 " pip install flake8
-"
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" First, set the encoding. We have some utf-8 characters in here which some of
-" the old vims break on.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" General settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" First, set the encoding. We have some utf-8 characters in this file.
 scriptencoding utf-8
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Next, specify that the vim shell should be bash in case the login shell is
-" something different... most plugins assume that they are being run in bash and
-" break of the login shell is e.g. fish.
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" something different... most plugins assume that they are being run in bash
+" and break of the login shell is e.g. fish.
 set shell=/bin/bash
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Kill vi compatibility, this isn't 1976
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Kill vi compatibility, this isn't 1976 and we want nice plugins.
 set nocompatible
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Load plugins (managed using pathogen)
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call pathogen#infect()
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugins (managed using Vundle)
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Host dependent stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Load Vundle which manages our plugins
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
-" troika settings -> make it look reasonable on a 1366x768 screen
-if hostname() == "troika"
-    if has("gui_running")
-        set guifont=Ubuntu\ Mono\ 9
-    endif
-endif
+" Filesystem/
+Plugin 'kien/ctrlp.vim'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'majutsushi/tagbar'
 
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'ervandew/supertab'
+Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'hynek/vim-python-pep8-indent'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" End of plugins
+call vundle#end()
+filetype plugin indent on
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" TODO BLA
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " The one true way of doing tabs. PEP8 style.
 " Expand tabs as 4 space softtabs. Hard tabs are 8.
@@ -55,6 +62,7 @@ set expandtab
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
+set textwidth=79
 
 " Enable filetype and syntax stuff
 syntax on
@@ -86,9 +94,6 @@ set ruler
 " Enable hidden buffers
 set hidden
 
-" Text width
-set textwidth=79
-
 " Enable mouse in console version of vim
 set mouse=a
 
@@ -108,15 +113,16 @@ if v:version > 704 || v:version == 704 && has("patch338")
     set breakindent
 endif
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable solarized
 " Note: If I am getting the weird wrong background bug, this is due to TERM
 " being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
-" still breaks inside of tmux. Right now I am setting
-" 'TERM=xterm-256color' in .bashrc or .zshrc. It works, but is still wrong.
+" still breaks inside of tmux. The fix is to set 'TERM=xterm-256color' in
+" .bashrc or .zshrc. This should only be done if the terminal is known to
+" support colors!
 syntax enable
 set background=dark
 "let g:solarized_italic=0
@@ -127,6 +133,15 @@ colorscheme solarized
 if version > 703
     set colorcolumn=80
 endif
+
+" Host dependent stuff
+if hostname() == "troika"
+    " troika settings -> make it look reasonable on a 1366x768 screen
+    if has("gui_running")
+        set guifont=Ubuntu\ Mono\ 9
+    endif
+endif
+
 
 if has("gui_running")
     " GUI options
@@ -144,11 +159,9 @@ au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
 au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
 au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
 
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Specific language/filetype options
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Specific language/filetypes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Python
 " au FileType python set completeopt+=preview
@@ -233,17 +246,6 @@ imap <C-Space> <C-x><C-o>
 
 " ,p: Spell check
 nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Add a c-style name comment for every instance of a string
-function Cs(string, comment)
-    let regex = "%s/\\(" . a:string . ".*\\)/\\1 \\/\\/ " . a:comment . "/g"
-    execute(regex)
-endfunction
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

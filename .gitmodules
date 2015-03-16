@@ -1,36 +1,3 @@
-[submodule "packages/home/.vim/bundle/ctrlp.vim"]
-	path = packages/home/.vim/bundle/ctrlp.vim
-	url = git@github.com:kien/ctrlp.vim.git
-[submodule "packages/home/.vim/bundle/minibufexpl.vim"]
-	path = packages/home/.vim/bundle/minibufexpl.vim
-	url = git@github.com:fholgado/minibufexpl.vim.git
-[submodule "packages/home/.vim/bundle/nerdcommenter"]
-	path = packages/home/.vim/bundle/nerdcommenter
-	url = git@github.com:scrooloose/nerdcommenter.git
-[submodule "packages/home/.vim/bundle/nerdtree"]
-	path = packages/home/.vim/bundle/nerdtree
-	url = git@github.com:scrooloose/nerdtree.git
-[submodule "packages/home/.vim/bundle/syntastic"]
-	path = packages/home/.vim/bundle/syntastic
-	url = git@github.com:scrooloose/syntastic.git
-[submodule "packages/home/.vim/bundle/tagbar"]
-	path = packages/home/.vim/bundle/tagbar
-	url = git@github.com:majutsushi/tagbar.git
-[submodule "packages/home/.vim/bundle/vim-latex"]
-	path = packages/home/.vim/bundle/vim-latex
-	url = git://git.code.sf.net/p/vim-latex/vim-latex
-[submodule "packages/home/.vim/bundle/vim-colors-solarized"]
-	path = packages/home/.vim/bundle/vim-colors-solarized
-	url = git@github.com:altercation/vim-colors-solarized.git
-[submodule "packages/home/.vim/bundle/supertab"]
-	path = packages/home/.vim/bundle/supertab
-	url = git@github.com:ervandew/supertab.git
-[submodule "packages/home/.vim/bundle/vim-airline"]
-	path = packages/home/.vim/bundle/vim-airline
-	url = git@github.com:bling/vim-airline.git
-[submodule "packages/home/.vim/bundle/tmuxline.vim"]
-	path = packages/home/.vim/bundle/tmuxline.vim
-	url = git@github.com:edkolev/tmuxline.vim.git
-[submodule "packages/home/.vim/bundle/vim-python-pep8-indent"]
-	path = packages/home/.vim/bundle/vim-python-pep8-indent
-	url = git@github.com:hynek/vim-python-pep8-indent.git
+[submodule "packages/home/.vim/bundle/Vundle.vim"]
+	path = packages/home/.vim/bundle/Vundle.vim
+	url = git@github.com:gmarik/Vundle.vim.git
