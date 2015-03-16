@@ -1,16 +1,18 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kyle Boone's vim config
 "
-" Required extensions:
-" See https://github.com/kboone/dotfiles
+" Do the following things to get this up and running:
 "
-" Required separate installs:
-" pep8 support in syntastic:
+" Download/update installed modules:
+" :PluginInstall
+"
+" Add pep8 support in syntastic:
 " pip install flake8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" General settings
+" Necessary settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " First, set the encoding. We have some utf-8 characters in this file.
@@ -24,6 +26,7 @@ set shell=/bin/bash
 " Kill vi compatibility, this isn't 1976 and we want nice plugins.
 set nocompatible
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins (managed using Vundle)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -33,31 +36,42 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" Filesystem/
+" Files/buffers
 Plugin 'kien/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'majutsushi/tagbar'
 
-Plugin 'scrooloose/nerdcommenter'
+" General syntax and completion
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
-Plugin 'altercation/vim-colors-solarized'
 Plugin 'ervandew/supertab'
+
+" Appearance
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'edkolev/tmuxline.vim'
+
+" Text editing
+Plugin 'scrooloose/nerdcommenter'
+
+" Filetype specific plugins
+
+" Python
 Plugin 'hynek/vim-python-pep8-indent'
+
+" LaTeX
+Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
 
 " End of plugins
 call vundle#end()
-filetype plugin indent on
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" TODO BLA
+" General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" The one true way of doing tabs. PEP8 style.
-" Expand tabs as 4 space softtabs. Hard tabs are 8.
+" PEP8 style tabs and line wrapping.
+" 4 spaces per tab, expand tabs as spaces.
 set expandtab
 set tabstop=8
 set softtabstop=4
@@ -65,10 +79,7 @@ set shiftwidth=4
 set textwidth=79
 
 " Enable filetype and syntax stuff
-syntax on
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " Update when file is changed externally
 set autoread
@@ -81,15 +92,9 @@ set wildmode=list:longest,full
 set incsearch
 set hlsearch
 
-" Updated title for vim when run in a terminal
-set title
-
-" Don't write backup or swap files (I save often enough... right?)
+" Don't write backup or swap files
 set nobackup
 set noswapfile
-
-" Show where we are in the file
-set ruler
 
 " Enable hidden buffers
 set hidden
@@ -100,11 +105,32 @@ set mouse=a
 " Don't double space. I only like one space after my periods
 set nojoinspaces
 
-" Make backspace work properly
+" Make backspace work properly (some older vims only have backspace for new
+" text by default)
 set backspace=2
 
-" Line numbers
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Appearance
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Use the solarized colorscheme
+" Note: If I am getting the weird wrong background bug, this is due to TERM
+" being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
+" still breaks inside of tmux. The fix is to set 'TERM=xterm-256color' in
+" .bashrc or .zshrc. This should only be done if the terminal is known to
+" support colors!
+syntax on
+set background=dark
+colorscheme solarized
+
+" Show line numbers, and where we are in the file
 set number
+set ruler
+
+" Update the title when running in a terminal
+set title
 
 " Show line breaks
 set showbreak=↪\ \ \ 
@@ -113,22 +139,7 @@ if v:version > 704 || v:version == 704 && has("patch338")
     set breakindent
 endif
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Appearance
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Enable solarized
-" Note: If I am getting the weird wrong background bug, this is due to TERM
-" being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
-" still breaks inside of tmux. The fix is to set 'TERM=xterm-256color' in
-" .bashrc or .zshrc. This should only be done if the terminal is known to
-" support colors!
-syntax enable
-set background=dark
-"let g:solarized_italic=0
-colorscheme solarized
-
-" highlight 80th column so that we keep everything within 79. Note, only in 7.3
+" Highlight 80th column so that we keep everything within 79. Note, only in 7.3
 " or higher
 if version > 703
     set colorcolumn=80
@@ -141,7 +152,6 @@ if hostname() == "troika"
         set guifont=Ubuntu\ Mono\ 9
     endif
 endif
-
 
 if has("gui_running")
     " GUI options
@@ -159,16 +169,10 @@ au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
 au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
 au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Specific language/filetypes
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Python
-" au FileType python set completeopt+=preview
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General control remaps
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap the leader to , since it is much easier than the default \
 let mapleader = ","
@@ -176,48 +180,16 @@ let mapleader = ","
 " Disable alt + key shortcuts in gvim since we can do better
 set winaltkeys=no
 
-" ,w: Write in 2 keystrokes instead of 5!
-nnoremap <silent> <leader>w :w<CR>
-
 " ,s: Show whitespace toggle
 set listchars=tab:>-,trail:·,eol:$
 nmap <silent> <leader>s :set nolist!<CR>
 
-" ,O and ,o: Insert blank line above/below
-nnoremap <silent> <leader>o :set paste<CR>m`o<Esc>``:set nopaste<CR>
-nnoremap <silent> <leader>O :set paste<CR>m`O<Esc>``:set nopaste<CR>
-
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
 
-" Alt + j/k: Move line up/down
-nnoremap <A-k> ddkP
-nnoremap <A-j> ddp
-
-" Alt + H/L: move tab right/left
-function TabLeft()
-    let tab_number = tabpagenr() - 1
-    if tab_number == 0
-        execute "tabm" tabpagenr('$') - 1
-    else
-        execute "tabm" tab_number - 1
-    endif
-endfunction
-function TabRight()
-    let tab_number = tabpagenr() - 1
-    let last_tab_number = tabpagenr('$') - 1
-    if tab_number == last_tab_number
-        execute "tabm" 0
-    else
-        execute "tabm" tab_number + 1
-    endif
-endfunction
-map <silent> <A-H> :execute TabLeft()<CR>
-map <silent> <A-L> :execute TabRight()<CR>
-
-" Alt + h/l: move to next/previous buffer
-map <A-h> :bN!<CR>
-map <A-l> :bn!<CR>
+" Ctrl + h/l: move to next/previous buffer
+map <C-h> :bN!<CR>
+map <C-l> :bn!<CR>
 
 " resizing of the full gvim window
 " ,1 -> 1 buffer
@@ -232,29 +204,15 @@ nnoremap <silent> <leader>4 :set columns=190<CR>
 " ,ct: Build ctags
 nnoremap <silent> <leader>ct :!ctags -R<CR><CR>
 
-" Fix the cursor if it breaks
-function FixCursor()
-    highlight Cursor NONE
-    if has("gui_running")
-        highlight Cursor guibg=Green guifg=Black gui=bold
-    else
-        highlight Cursor cterm=bold ctermfg=0 ctermbg=2
-    endif
-endfunction
-
-imap <C-Space> <C-x><C-o>
-
 " ,p: Spell check
 nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
 
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin settings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " MiniBufExplorer
-" how to use: ,b to open/goto, enter to pick buffer. pops up when more
-" than 2 buffers are open by default
 let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1
 let g:miniBufExplMapCTabSwitchBufs = 1
@@ -267,7 +225,10 @@ nnoremap <silent> <leader>t :TagbarToggle<CR>
 let g:tagbar_sort = 0
 
 " CtrlP
-" hit ,f to find and open files very quickly
+" ,f to find and open files very quickly
+" ,F to search recent files
+" ,g to search tags
+" ,b to search buffers
 nnoremap <silent> <leader>f :CtrlPCurWD<CR>
 nnoremap <silent> <leader>F :CtrlPMRUFiles<CR>
 nnoremap <silent> <leader>g :CtrlPTag<CR>
