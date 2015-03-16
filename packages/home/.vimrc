@@ -55,6 +55,7 @@ Plugin 'edkolev/tmuxline.vim'
 " Text editing
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
+Plugin 'godlygeek/tabular'
 
 " Filetype specific plugins
 
