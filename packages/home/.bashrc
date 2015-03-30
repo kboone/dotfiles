@@ -88,6 +88,7 @@ alias sshhop='ssh -X kboone@hopper.nersc.gov'
 alias sshtop='ssh -X kboone@zacharys.lbl.gov'
 alias sshed='ssh -X kboone@edison.nersc.gov'
 alias sshcar='ssh -X kboone@carver.nersc.gov'
+alias sshriv='ssh -X kboone@lilys.lbl.gov'
 
 # Have the open command work in linux like in OSX
 alias open='gnome-open'
