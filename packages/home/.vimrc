@@ -167,10 +167,10 @@ if has("gui_running")
 endif
 
 " Log format from cluster search
-au BufNewFile,BufRead hst*.log syn match Error "ERROR.*"
-au BufNewFile,BufRead hst*.log syn match Type "WARNING.*"
-au BufNewFile,BufRead hst*.log syn match Statement "INFO.*"
-au BufNewFile,BufRead hst*.log syn match Constant "DEBUG.*"
+au BufNewFile,BufRead seechange*.log syn match Error "ERROR.*"
+au BufNewFile,BufRead seechange*.log syn match Type "WARNING.*"
+au BufNewFile,BufRead seechange*.log syn match Statement "INFO.*"
+au BufNewFile,BufRead seechange*.log syn match Constant "DEBUG.*"
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
