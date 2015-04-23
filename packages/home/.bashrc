@@ -33,6 +33,11 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# Disable ctrl-s and ctrl-q remapping to some weird disabling output feature.
+# This allows us to do ctrl-s for incremental i-search (like ctrl-r, but
+# forwards)
+stty -ixon
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
