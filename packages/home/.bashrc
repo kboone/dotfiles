@@ -129,7 +129,7 @@ export KYLE_INSTALL_DIR=$HOME/.kyle_install
 # Device specific setup.
 ################################################################################
 
-if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
+if [[ "$HOSTNAME" == "troika" ]]; then
     # ROOT setup
     alias root='root -l'
     export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
@@ -156,6 +156,8 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
     ur_forget() {
         eval `/home/kyle/.ureka/ur_forget -sh $*`
     }
+elif [[ "$HOSTNAME" == "julebrus" ]]; then
+    export PATH="$HOME/apps/anaconda/bin:$PATH"
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
