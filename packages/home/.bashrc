@@ -97,7 +97,7 @@ alias sshriv='ssh -X kboone@rivoli.lbl.gov'
 alias sshrivtop='ssh -X topbot@rivoli.lbl.gov'
 
 # Have the open command work in linux like in OSX
-alias open='gnome-open'
+alias open='xdg-open'
 
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
