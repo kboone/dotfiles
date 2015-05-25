@@ -267,6 +267,12 @@ let g:tmuxline_preset = {
       \'cwin' : '#I:#W',
       \'y'    : ['#H'],
       \'options' : {'status-justify': 'left'}}
+let g:tmuxline_separators = {
+    \ 'left' : '',
+    \ 'left_alt': '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
+    \ 'space' : ' '}
 
 " tabular
 " :Tab /= -> align on equal sign
