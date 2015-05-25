@@ -10,7 +10,7 @@ esac
 
 # Fix terminal colors for gnome-terminal. It sets TERM=xterm, but we need to
 # set TERM=xterm-256color if we want colors in vim, tmux, etc.
-if [ "$COLORTERM" == "gnome-terminal" ] && [ "$TERM" == "xterm" ]; then
+if [ "$TERM" == "xterm" ]; then
     export TERM="xterm-256color"
 fi
 # Fix terminal colors in tmux/screen.

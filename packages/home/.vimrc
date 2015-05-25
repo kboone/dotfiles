@@ -254,15 +254,18 @@ let g:vim_markdown_folding_disabled = 1
 " vim-airline
 set laststatus=2
 let g:airline_theme = "solarized"
+let g:airline_powerline_fonts = 1
 
 " tmuxline
 " These settings are saved in ~/.tmuxline.conf. If it gets messed up, it can be
-" regenerated using the tmuxline commands.
-let g:tmuxline_powerline_separators = 0
+" regenerated using the tmuxline commands:
+" :Tmuxline airline
+" :TmuxlineSnapshot ~/.tmuxline.conf
+let g:tmuxline_powerline_separators = 1
 let g:tmuxline_preset = {
       \'win'  : '#I:#W',
       \'cwin' : '#I:#W',
-      \'y'    : '#H',
+      \'y'    : ['#H'],
       \'options' : {'status-justify': 'left'}}
 
 " tabular
