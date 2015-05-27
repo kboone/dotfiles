@@ -158,6 +158,8 @@ if [[ "$HOSTNAME" == "troika" ]]; then
     }
 elif [[ "$HOSTNAME" == "julebrus" ]]; then
     export PATH="$HOME/apps/anaconda/bin:$PATH"
+    export PATH="$HOME/apps/mathematica/bin:$PATH"
+    export PATH="$HOME/apps/scripts:$PATH"
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
