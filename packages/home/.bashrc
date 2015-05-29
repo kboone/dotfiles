@@ -10,7 +10,7 @@ esac
 
 # Fix terminal colors for gnome-terminal. It sets TERM=xterm, but we need to
 # set TERM=xterm-256color if we want colors in vim, tmux, etc.
-if [ "$COLORTERM" == "gnome-terminal" ] && [ "$TERM" == "xterm" ]; then
+if [ "$TERM" == "xterm" ]; then
     export TERM="xterm-256color"
 fi
 # Fix terminal colors in tmux/screen.
@@ -94,9 +94,10 @@ alias sshtop='ssh -X kboone@zacharys.lbl.gov'
 alias sshed='ssh -X kboone@edison.nersc.gov'
 alias sshcar='ssh -X kboone@carver.nersc.gov'
 alias sshriv='ssh -X kboone@rivoli.lbl.gov'
+alias sshrivtop='ssh -X topbot@rivoli.lbl.gov'
 
 # Have the open command work in linux like in OSX
-alias open='gnome-open'
+alias open='xdg-open'
 
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
@@ -128,7 +129,7 @@ export KYLE_INSTALL_DIR=$HOME/.kyle_install
 # Device specific setup.
 ################################################################################
 
-if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
+if [[ "$HOSTNAME" == "troika" ]]; then
     # ROOT setup
     alias root='root -l'
     export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
@@ -155,6 +156,10 @@ if [[ "$HOSTNAME" == "julebrus" ]] || [[ "$HOSTNAME" == "troika" ]]; then
     ur_forget() {
         eval `/home/kyle/.ureka/ur_forget -sh $*`
     }
+elif [[ "$HOSTNAME" == "julebrus" ]]; then
+    export PATH="$HOME/apps/anaconda/bin:$PATH"
+    export PATH="$HOME/apps/mathematica/bin:$PATH"
+    export PATH="$HOME/apps/scripts:$PATH"
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
