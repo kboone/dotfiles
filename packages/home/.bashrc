@@ -162,6 +162,12 @@ elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.go
 
     # my anaconda
     export PATH="/home/users/kboone/anaconda/bin:$PATH"
+
+    # seechange
+    source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
+elif [[ "$HOSTNAME" == "rivoli.lbl.gov" ]]; then
+    # seechange
+    source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
 elif [[ -n "$NERSC_HOST" ]]; then
     # We are on a NERSC machine (hopper, edison, etc.)
 
