@@ -230,3 +230,7 @@ PATH=$(for d in ${PATH//:/ } ; do [ -x $d ] && printf "$d\n"; done \
     | uniq | tr '\n' ':')
 export PATH=${PATH%?}
 
+# Set colorscheme
+if [[ -f "$HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh" ]]; then
+    . $HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh
+fi
