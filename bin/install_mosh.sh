@@ -10,13 +10,13 @@ mkdir -p $INSTALL_DIR $INSTALL_DIR/mosh_tmp
 cd $INSTALL_DIR/mosh_tmp
 
 # Install Protocol Buffers
-#wget http://protobuf.googlecode.com/files/protobuf-2.4.1.tar.bz2
-#tar -xf protobuf-2.4.1.tar.bz2 
-#cd protobuf-2.4.1
-#./configure --prefix=$INSTALL_DIR
-#make
-#make install
-#cd ..
+wget http://protobuf.googlecode.com/files/protobuf-2.4.1.tar.bz2
+tar -xf protobuf-2.4.1.tar.bz2 
+cd protobuf-2.4.1
+./configure --prefix=$INSTALL_DIR
+make
+make install
+cd ..
 
 ## You'll need this setting to have mosh find the Protocol Buffer lib
 export PKG_CONFIG_PATH=$INSTALL_DIR/lib/pkgconfig
