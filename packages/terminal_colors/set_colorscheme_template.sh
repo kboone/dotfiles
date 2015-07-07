@@ -1,6 +1,7 @@
 #!/bin/sh
-# Base16 3024 - Shell color setup script
-# Jan T. Sott (http://github.com/idleberg)
+# Kyle Boone's colorscheme (http://github.com/kboone)
+# Based off of the base16 scripts at https://github.com/chriskempson/base16
+# Intended for use with the Solarized vim colorscheme in 16 color mode.
 
 if [ "${TERM%%-*}" = 'linux' ]; then
     # This script doesn't support linux console (use 'vconsole' template instead)
