@@ -1,6 +1,7 @@
 #!/bin/sh
 # Kyle Boone's colorscheme (http://github.com/kboone)
-# Based off of the base16 scripts at https://github.com/chriskempson/base16
+# Based off of the base16 scripts at
+# https://github.com/chriskempson/base16-shell.
 # Intended for use with the Solarized vim colorscheme in 16 color mode.
 
 if [ "${TERM%%-*}" = 'linux' ]; then
