@@ -38,6 +38,7 @@ Host top topbot
     ForwardX11 yes
     User topbot
 
-Host github
+Host git github
     HostName github.com
     ForwardX11 no
+    User git
