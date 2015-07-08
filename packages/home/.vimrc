@@ -36,12 +36,6 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
-" Files/buffers
-Plugin 'kien/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-
 " General syntax and completion
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
@@ -58,12 +52,15 @@ Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
 
 " Filetype specific plugins
-
-" Python
 Plugin 'hynek/vim-python-pep8-indent'
-
-" LaTeX
 Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+
+" Files/buffers
+Plugin 'kien/ctrlp.vim'
+Plugin 'fholgado/minibufexpl.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " End of plugins
 call vundle#end()
@@ -191,8 +188,8 @@ nmap <silent> <leader>s :set nolist!<CR>
 nnoremap <silent> <leader>n :nohl<CR>
 
 " Ctrl + h/l: move to next/previous buffer
-map <C-h> :bN!<CR>
-map <C-l> :bn!<CR>
+" map <C-h> :bN!<CR>
+" map <C-l> :bn!<CR>
 
 " resizing of the full gvim window
 " ,1 -> 1 buffer
