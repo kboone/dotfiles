@@ -1,0 +1,43 @@
+Host *.lbl.gov *.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+
+Host hop hopper
+    HostName hopper.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host ed edison
+    HostName edison.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host car carver
+    HostName carver.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host riv rivoli
+    HostName rivoli.lbl.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host zac zacharys
+    HostName zacharys.lbl.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host top topbot
+    HostName rivoli.lbl.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User topbot
+
+Host github
+    HostName github.com
+    ForwardX11 no
