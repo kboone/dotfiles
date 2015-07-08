@@ -9,14 +9,15 @@ set -e
 
 INSTALL_DIR=$KYLE_INSTALL_DIR
 
-TMUX_VERSION=1.8
+TMUX_VERSION=2.0
 
 # create our directories
 mkdir -p $INSTALL_DIR $INSTALL_DIR/tmux_tmp
 cd $INSTALL_DIR/tmux_tmp
 
 # download source files for tmux, libevent, and ncurses
-wget -O tmux-${TMUX_VERSION}.tar.gz http://sourceforge.net/projects/tmux/files/tmux/tmux-${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz/download
+
+wget -O tmux-${TMUX_VERSION}.tar.gz https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
 wget -O libevent-2.0.19-stable.tar.gz https://github.com/libevent/libevent/archive/release-2.0.19-stable.tar.gz
 wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
 
