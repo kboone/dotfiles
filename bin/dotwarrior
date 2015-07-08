@@ -13,7 +13,6 @@ function install {
     echo "Installing"
     cd $BASE/packages
     cd home
-    ls
     for FILE in `ls -a | grep "^\.[^.]"`; do
         printf '%-20s' $FILE
         TARGET=$BASE/packages/home/$FILE
@@ -69,6 +68,31 @@ function install {
             fi
         fi
     done
+
+    printf '%-20s' '.ssh'
+    if [[ ! -d ~/.ssh ]]; then
+        echo "Creating .ssh directory and setting 700 permissions"
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+    else
+        echo "Already exists, ok"
+    fi
+
+    printf '%-20s' '.ssh/config'
+    FILE=~/.ssh/config
+    TARGET=$BASE/packages/ssh/config
+    if [[ ! -e $FILE ]]; then
+        # File doesn't exist, our job is easy!
+        echo "Creating symlink."
+        ln -s $TARGET $FILE
+    else
+        # File exists, deal with it
+        if [[ "$(readlink $FILE)" = "$TARGET" ]]; then
+            echo "Symlink already exists, ok."
+        else
+            echo "Different .ssh/config in use. Ignoring"
+        fi
+    fi
 }
 
 install
