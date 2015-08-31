@@ -101,6 +101,7 @@ set hidden
 
 " Enable mouse in console version of vim
 set mouse=a
+set ttymouse=xterm2
 
 " Don't double space. I only like one space after my periods
 set nojoinspaces
