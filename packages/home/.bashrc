@@ -48,7 +48,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color | xterm-256color) color_prompt=yes;;
+    xterm-color | xterm-256color | rxvt-unicode ) color_prompt=yes;;
 esac
 
 if [ "$color_prompt" = yes ]; then
@@ -89,7 +89,11 @@ if ! shopt -oq posix; then
 fi
 
 # Have the open command work in linux like in OSX
-alias open='xdg-open'
+if [[ -n $(which xdg-open) ]]; then
+    alias open='xdg-open'
+elif [[ -n $(which gnome-open) ]]; then
+    alias open='gnome-open'
+fi
 
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
@@ -108,6 +112,11 @@ vgrep() {
 # Use vim as my default editor for svn and things
 export VISUAL=vim
 export EDITOR=$VISUAL
+
+# Set colorscheme
+if [[ -f "$HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh" ]]; then
+    . $HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh
+fi
 
 # Check for dotfile upgrades
 . $HOME/.dotfiles/tools/check_for_upgrade.sh
@@ -221,8 +230,3 @@ fi
 PATH=$(for d in ${PATH//:/ } ; do [ -x $d ] && printf "$d\n"; done \
     | uniq | tr '\n' ':')
 export PATH=${PATH%?}
-
-# Set colorscheme
-if [[ -f "$HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh" ]]; then
-    . $HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh
-fi
