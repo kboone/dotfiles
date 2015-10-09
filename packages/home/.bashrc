@@ -89,9 +89,9 @@ if ! shopt -oq posix; then
 fi
 
 # Have the open command work in linux like in OSX
-if [[ -n $(which xdg-open) ]]; then
+if [[ -n $(which xdg-open 2>/dev/null) ]]; then
     alias open='xdg-open'
-elif [[ -n $(which gnome-open) ]]; then
+elif [[ -n $(which gnome-open 2>/dev/null) ]]; then
     alias open='gnome-open'
 fi
 
