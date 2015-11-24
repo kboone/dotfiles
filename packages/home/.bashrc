@@ -109,6 +109,32 @@ vgrep() {
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
+# Repeat a command every second until you hit Ctrl-C.
+repeat() {
+    date1=$(date -u +"%s")
+
+    while [ 1 ]; do
+        clear
+        echo "Repeating '$@'"
+        echo ""
+
+        set +f;
+        eval "$@"
+
+        date2=$(date -u +"%s")
+        diff=$(($date2-$date1))
+        echo ""
+        echo "Elapsed time: $(printf %0.2d:%0.2d $(($diff / 60)) \
+                $(($diff % 60)))"
+
+        sleep 1
+    done
+}
+
+# Disable glob expansion for repeat. We disable it here, and then reenable
+# before evaluating in the function itself.
+alias repeat='set -f; repeat';
+
 # Use vim as my default editor for svn and things
 export VISUAL=vim
 export EDITOR=$VISUAL
