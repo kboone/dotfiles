@@ -57,7 +57,7 @@ Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " Files/buffers
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
