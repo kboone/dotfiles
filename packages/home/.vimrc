@@ -43,7 +43,8 @@ Plugin 'ervandew/supertab'
 
 " Appearance
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 
 " Text editing
@@ -53,7 +54,7 @@ Plugin 'godlygeek/tabular'
 
 " Filetype specific plugins
 Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'git://git.code.sf.net/p/vim-latex/vim-latex'
+Plugin 'LaTeX-Box-Team/LaTeX-Box'
 
 " Files/buffers
 Plugin 'kien/ctrlp.vim'
@@ -101,7 +102,9 @@ set hidden
 
 " Enable mouse in console version of vim
 set mouse=a
-set ttymouse=xterm2
+if !has('nvim')
+    set ttymouse=xterm2
+endif
 
 " Don't double space. I only like one space after my periods
 set nojoinspaces
@@ -110,6 +113,8 @@ set nojoinspaces
 " text by default)
 set backspace=2
 
+" Don't redraw in the middle of macros
+set lazyredraw
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -177,6 +182,7 @@ au BufNewFile,BufRead seechange*.log syn match Constant "DEBUG.*"
 
 " Remap the leader to , since it is much easier than the default \
 let mapleader = ","
+let maplocalleader = ","
 
 " Disable alt + key shortcuts in gvim since we can do better
 set winaltkeys=no
@@ -187,10 +193,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
-
-" Ctrl + h/l: move to next/previous buffer
-" map <C-h> :bN!<CR>
-" map <C-l> :bn!<CR>
 
 " resizing of the full gvim window
 " ,1 -> 1 buffer
@@ -205,8 +207,16 @@ nnoremap <silent> <leader>4 :set columns=190<CR>
 " ,ct: Build ctags
 nnoremap <silent> <leader>ct :!ctags -R<CR><CR>
 
-" ,p: Spell check
-nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
+" disabled, was ,p: Spell check
+" nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
+
+" move vertically by visual line instead of physical line
+nnoremap j gj
+nnoremap k gk
+
+" ,y and ,p: yank and paste from x clipboard
+nnoremap <silent> <leader>y "+y
+nnoremap <silent> <leader>p "+p
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,8 +232,11 @@ let g:miniBufExplCheckDupeBufs = 0
 
 " Tagbar
 " ,t to open/close. F1 for more info when open
+" For vim, use the latex-box viewer instead which is better.
 nnoremap <silent> <leader>t :TagbarToggle<CR>
 let g:tagbar_sort = 0
+autocmd FileType tex nnoremap <silent> <leader>t :LatexTOCToggle<CR>
+
 
 " CtrlP
 " ,f to find and open files very quickly
@@ -236,10 +249,10 @@ nnoremap <silent> <leader>h :CtrlPTag<CR>
 nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " Vim-LaTeX
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor = "latex"
-let g:Tex_DefaultTargetFormat = "pdf"
-let g:Tex_MultipleCompileFormats = "pdf"
+" set grepprg=grep\ -nH\ $*
+" let g:tex_flavor = "latex"
+" let g:Tex_DefaultTargetFormat = "pdf"
+" let g:Tex_MultipleCompileFormats = "pdf"
 
 " The NERD commenter
 " Implicit functions:
@@ -247,7 +260,7 @@ let g:Tex_MultipleCompileFormats = "pdf"
 " ,c<Space> -> toggle comment
 
 " Markdown.vim
-let g:vim_markdown_folding_disabled = 1
+" let g:vim_markdown_folding_disabled = 1
 
 " vim-airline
 set laststatus=2

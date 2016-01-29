@@ -2,6 +2,12 @@ Host *.lbl.gov *.nersc.gov
     ForwardAgent yes
     ForwardX11 yes
 
+Host cor cori
+    HostName cori.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
 Host hop hopper
     HostName hopper.nersc.gov
     ForwardAgent yes
