@@ -1,7 +1,7 @@
-#!/bin/bash
+!/bin/bash
 
 # Script for installing tmux on systems where you don't have root access.
-# tmux will be installed in $HOME/local/bin.
+# tmux will be installed in $KYLE_INSTALL_DIR/bin.
 # It's assumed that wget and a C/C++ compiler are installed.
 
 # exit on error
