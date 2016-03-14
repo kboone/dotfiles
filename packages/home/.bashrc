@@ -99,6 +99,10 @@ vgrep() {
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
+# Use vim as my default editor for svn and things.
+export VISUAL=vim
+export EDITOR=$VISUAL
+
 # Set colorscheme
 if [[ -f "$HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh" ]]; then
     . $HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh
@@ -111,9 +115,6 @@ fi
 # change it for some individual systems (eg: NERSC since all machines share the
 # same home directory)
 export KYLE_INSTALL_DIR=$HOME/.kyle_install
-
-# Default vim installation
-VIM=vim
 
 ################################################################################
 # Device specific setup.
@@ -201,8 +202,6 @@ elif [[ -n "$NERSC_HOST" ]]; then
     if [[ "$NERSC_HOST" == "cori" ]]; then
         export ANACONDA=$KYLE_INSTALL_DIR/anaconda
         export PATH=$ANACONDA/bin:$PATH
-        VIM="LD_LIBRARY_PATH=$ANACONDA/lib:$LD_LIBRARY_PATH vim"
-        alias vim=$VIM
     else
         export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
     fi
@@ -228,10 +227,6 @@ export PATH=$KYLE_INSTALL_DIR/bin:$PATH
 if [[ -f "$HOME/.bashrc_local" ]]; then
     . $HOME/.bashrc_local
 fi
-
-# Use vim as my default editor for svn and things.
-export VISUAL=$VIM
-export EDITOR=$VISUAL
 
 # Remove unexecutable directories from my path. Some servers are dumb, and git
 # breaks when these are in it.
