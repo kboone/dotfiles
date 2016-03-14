@@ -39,7 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 " General syntax and completion
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/supertab'
+Plugin 'Valloric/YouCompleteMe'
 
 " Appearance
 Plugin 'kboone/vim-colors-solarized'
@@ -62,6 +62,7 @@ Plugin 'fholgado/minibufexpl.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'airblade/vim-gitgutter'
 
 " End of plugins
 call vundle#end()
@@ -115,6 +116,9 @@ set backspace=2
 
 " Don't redraw in the middle of macros
 set lazyredraw
+
+" Don't show the preview window. It is too jarring for my liking.
+set completeopt-=preview
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
