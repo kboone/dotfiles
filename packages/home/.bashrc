@@ -188,6 +188,9 @@ elif [[ -n "$NERSC_HOST" ]]; then
         echo "Unknown NERSC host, gcc not loaded!"
     fi
 
+    # Set the locale correctly
+    export LANG="en_US.utf8"
+
     # Custom install directory for the different servers
     export KYLE_INSTALL_DIR=$HOME/.kyle_install/$NERSC_HOST
         
