@@ -47,10 +47,16 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'kboone/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 
+" Dependencies
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
 " Text editing
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'godlygeek/tabular'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " Filetype specific plugins
 Plugin 'hynek/vim-python-pep8-indent'
@@ -305,3 +311,6 @@ nnoremap <leader>gt :Gcommit -q %:p<CR>
 nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
+
+" supertab compatibility with snipmate
+let g:SuperTabDefaultCompletionType = "context"
