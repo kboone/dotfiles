@@ -9,7 +9,9 @@ set -e
 
 INSTALL_DIR=$KYLE_INSTALL_DIR
 
-PYTHON_DIR=$HOME/anaconda/lib/python2.7/config
+PYTHON_DIR=$KYLE_INSTALL_DIR/anaconda/lib/python2.7/config
+
+export LDFLAGS="-L$KYLE_INSTALL_DIR/anaconda/lib"
 
 # create our directories
 mkdir -p $INSTALL_DIR $INSTALL_DIR/vim_tmp
