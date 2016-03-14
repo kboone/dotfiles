@@ -168,10 +168,6 @@ elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.go
     export ANACONDA=/home/users/kboone/anaconda
     export PATH=$ANACONDA/bin:$PATH
 
-    # my vim
-    VIM="LD_LIBRARY_PATH=$ANACONDA/lib:$LD_LIBRARY_PATH vim"
-    alias vim=$VIM
-
     # seechange
     source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
 elif [[ "$HOSTNAME" == "rivoli.lbl.gov" ]]; then
