@@ -10,8 +10,7 @@ set -e
 INSTALL_DIR=$KYLE_INSTALL_DIR
 
 # PYTHON_DIR=$KYLE_INSTALL_DIR/anaconda/lib/python2.7/config
-
-export LDFLAGS="-L$KYLE_INSTALL_DIR/anaconda/lib"
+# export LDFLAGS="-L$KYLE_INSTALL_DIR/anaconda/lib"
 
 # create our directories
 mkdir -p $INSTALL_DIR $INSTALL_DIR/vim_tmp
@@ -22,14 +21,17 @@ cd vim
 
 ./configure --with-features=huge \
             --enable-multibyte \
-            # --enable-rubyinterp \
-            # --enable-pythoninterp \
-            # --with-python-config-dir=$PYTHON_DIR \
-            --enable-perlinterp \
-            --enable-luainterp \
             --enable-gui=gtk2 \
+            --enable-luainterp \
+            --enable-perlinterp \
+            --enable-rubyinterp \
             --enable-cscope \
             --prefix=$INSTALL_DIR
+
+# Try to get the various interpreters for free, but don't worry about it if
+# they don't work. To really get python working properly, you need the
+# following line set up:
+# --with-python-config-dir=$PYTHON_DIR \
 
 make
 make install
