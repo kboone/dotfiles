@@ -61,6 +61,7 @@ Plugin 'honza/vim-snippets'
 " Filetype specific plugins
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plugin 'davidhalter/jedi-vim'
 
 " Files/buffers
 Plugin 'ctrlpvim/ctrlp.vim'
