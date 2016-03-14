@@ -39,7 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 " General syntax and completion
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ervandew/supertab'
 
 " Appearance
 Plugin 'kboone/vim-colors-solarized'
