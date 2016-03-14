@@ -9,7 +9,7 @@ set -e
 
 INSTALL_DIR=$KYLE_INSTALL_DIR
 
-PYTHON_DIR=$KYLE_INSTALL_DIR/anaconda/lib/python2.7/config
+# PYTHON_DIR=$KYLE_INSTALL_DIR/anaconda/lib/python2.7/config
 
 export LDFLAGS="-L$KYLE_INSTALL_DIR/anaconda/lib"
 
@@ -22,9 +22,9 @@ cd vim
 
 ./configure --with-features=huge \
             --enable-multibyte \
-            --enable-rubyinterp \
-            --enable-pythoninterp \
-            --with-python-config-dir=$PYTHON_DIR \
+            # --enable-rubyinterp \
+            # --enable-pythoninterp \
+            # --with-python-config-dir=$PYTHON_DIR \
             --enable-perlinterp \
             --enable-luainterp \
             --enable-gui=gtk2 \
