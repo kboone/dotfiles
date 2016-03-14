@@ -44,7 +44,7 @@ Plugin 'ervandew/supertab'
 " Appearance
 Plugin 'kboone/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plugin 'kboone/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
 
 " Text editing
@@ -258,9 +258,6 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 " Implicit functions:
 " ,cc -> comment out line
 " ,c<Space> -> toggle comment
-
-" Markdown.vim
-" let g:vim_markdown_folding_disabled = 1
 
 " vim-airline
 set laststatus=2
