@@ -8,16 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Fix terminal colors for gnome-terminal. It sets TERM=xterm, but we need to
-# set TERM=xterm-256color if we want colors in vim, tmux, etc.
-if [ "$TERM" == "xterm" ]; then
-    export TERM="xterm-256color"
-fi
-# Fix terminal colors in tmux/screen.
-if [ "$TERM" == "screen-256color" ]; then
-    export TERM="xterm-256color"
-fi
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -48,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color | xterm-256color | rxvt-unicode ) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 if [ "$color_prompt" = yes ]; then
@@ -161,6 +151,14 @@ elif [[ "$HOSTNAME" == "julebrus" ]]; then
     export PATH="$HOME/apps/anaconda/bin:$PATH"
     export PATH="$HOME/apps/mathematica/bin:$PATH"
     export PATH="$HOME/apps/scripts:$PATH"
+
+    # ureka
+    ur_setup() {
+        eval `/home/kyle/.ureka/ur_setup -sh $*`
+    }
+    ur_forget() {
+        eval `/home/kyle/.ureka/ur_forget -sh $*`
+    }
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
