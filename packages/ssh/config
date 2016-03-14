@@ -48,3 +48,7 @@ Host git github
     HostName github.com
     ForwardX11 no
     User git
+
+Host troika troika*
+    ForwardAgent yes
+    ForwardX11 yes

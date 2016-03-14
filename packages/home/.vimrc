@@ -42,7 +42,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'ervandew/supertab'
 
 " Appearance
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'kboone/vim-colors-solarized'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'edkolev/tmuxline.vim'
@@ -264,7 +264,7 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 
 " vim-airline
 set laststatus=2
-let g:airline_theme = "solarized"
+let g:airline_theme = "kyle"
 let g:airline_powerline_fonts = 1
 
 " tmuxline
