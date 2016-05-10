@@ -37,7 +37,6 @@ call plug#begin()
 " General syntax and completion
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
-Plug 'ervandew/supertab'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
