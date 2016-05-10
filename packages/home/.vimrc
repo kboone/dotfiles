@@ -31,48 +31,46 @@ set nocompatible
 " Plugins (managed using Vundle)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Load Vundle which manages our plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+" Load vim-plug which manages our plugins
+call plug#begin()
 
 " General syntax and completion
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'ervandew/supertab'
 
 " Appearance
-Plugin 'kboone/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'kboone/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
+Plug 'kboone/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'kboone/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
 
 " Dependencies
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
+Plug 'MarcWeber/vim-addon-mw-utils'       " required by snipmate
+Plug 'tomtom/tlib_vim'                    " required by snipmate
 
 " Text editing
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
-Plugin 'garbas/vim-snipmate'
-Plugin 'honza/vim-snippets'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " Filetype specific plugins
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
-Plugin 'davidhalter/jedi-vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'Valloric/YouCompleteMe'
 
 " Files/buffers
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'airblade/vim-gitgutter'
 
 " End of plugins
-call vundle#end()
+call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

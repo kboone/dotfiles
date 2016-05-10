@@ -119,6 +119,10 @@ export KYLE_INSTALL_DIR=$HOME/.kyle_install
 # Path for custom packages.
 export PACKAGE_DIR=$HOME/packages
 
+# Unset whatever the default PYTHONPATH is since I will be using anaconda
+# instead.
+unset PYTHONPATH
+
 ################################################################################
 # Device specific setup.
 ################################################################################
