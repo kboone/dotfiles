@@ -40,6 +40,4 @@ cd $ORIG_DIR
 rm -rf $TEMP_BUILD_DIR
 
 echo "$INSTALL_DIR/anaconda is now available."
-
-# Reload our bashrc to pick up all the new binaries
-. ~/.bashrc
+echo "Reload your bashrc with '. ~/.bashrc' to update your path."

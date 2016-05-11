@@ -56,6 +56,4 @@ rm -rf $TEMP_BUILD_DIR
 source deactivate
 
 echo "$INSTALL_DIR/bin/vim is now available."
-
-# Reload our bashrc to pick up all the new binaries
-. ~/.bashrc
+echo "Reload your bashrc with '. ~/.bashrc' to update your path."
