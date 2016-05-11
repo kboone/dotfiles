@@ -7,6 +7,9 @@
 # conda create --name vim anaconda python=2
 # It's assumed that wget and a C/C++ compiler are installed.
 
+# only accessible to me
+umask 077
+
 # exit on error
 set -e
 

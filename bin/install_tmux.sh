@@ -5,6 +5,9 @@
 # It's assumed that wget and a C/C++ compiler are installed. We build libevent
 # and ncurses manually to get recent versions.
 
+# only accessible to me
+umask 077
+
 # exit on error
 set -e
 

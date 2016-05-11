@@ -5,6 +5,9 @@
 # We download the binary linux x64 installer which seems to work well. The
 # source for cmake is massive.
 
+# only accessible to me
+umask 077
+
 # exit on error
 set -e
 
