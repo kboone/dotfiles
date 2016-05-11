@@ -1,13 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kyle Boone's vim config
-"
-" Do the following things to get this up and running:
-"
-" Download/update installed modules:
-" :PluginInstall
-"
-" Add pep8 support in syntastic:
-" pip install flake8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
