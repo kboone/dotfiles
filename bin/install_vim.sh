@@ -23,6 +23,7 @@ VIM_PYTHON=$(which python)
 
 # create our directories
 mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR
+ORIG_DIR=$(pwd)
 cd $TEMP_BUILD_DIR
 
 git clone https://github.com/vim/vim.git
@@ -44,6 +45,11 @@ make install
 
 
 # cleanup
+cd $ORIG_DIR
 rm -rf $TEMP_BUILD_DIR
+source deactivate
 
 echo "$INSTALL_DIR/bin/vim is now available."
+
+# Reload our bashrc to pick up all the new binaries
+. ~/.bashrc

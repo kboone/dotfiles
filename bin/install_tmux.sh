@@ -14,10 +14,11 @@ set -e
 INSTALL_DIR=$PACKAGE_DIR/tmux
 TEMP_BUILD_DIR=$INSTALL_DIR/build
 
-TMUX_VERSION=2.2
+TMUX_VERSION=2.1
 
 # create our directories
 mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR
+ORIG_DIR=$(pwd)
 cd $TEMP_BUILD_DIR
 
 # download source files for tmux, libevent, and ncurses
@@ -60,6 +61,10 @@ cp tmux $INSTALL_DIR/bin
 cd ..
 
 # cleanup
+cd $ORIG_DIR
 rm -rf $TEMP_BUILD_DIR
 
 echo "$INSTALL_DIR/bin/tmux is now available."
+
+# Reload our bashrc to pick up all the new binaries
+. ~/.bashrc

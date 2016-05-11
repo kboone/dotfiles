@@ -2,6 +2,9 @@
 # Thanks to @samsonjs for the cleaned up version:
 # https://gist.github.com/samsonjs/4076746
 
+echo "This script is horribly out of date! Needs to be updated!"
+exit 1
+
 INSTALL_DIR=$KYLE_INSTALL_DIR
 VERSION=1.2.4
 

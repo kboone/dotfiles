@@ -14,3 +14,6 @@ PYTHON_LIB=$(ls $(python-config --prefix)/lib/libpython*.so)
 PYTHON_INC=$(python-config --prefix)/include
 EXTRA_CMAKE_ARGS="-DPYTHON_LIBRARY=$PYTHON_LIB \
     -DPYTHON_INCLUDE_DIRS=$PYTHON_INC" ./install.py
+
+# Cleanup
+source deactivate

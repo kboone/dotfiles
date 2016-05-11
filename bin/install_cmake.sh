@@ -16,6 +16,7 @@ TEMP_BUILD_DIR=$INSTALL_DIR/build
 
 # create our directories
 mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR
+ORIG_DIR=$(pwd)
 cd $TEMP_BUILD_DIR
 
 wget https://cmake.org/files/v3.5/cmake-3.5.2-Linux-x86_64.sh \
@@ -23,4 +24,11 @@ wget https://cmake.org/files/v3.5/cmake-3.5.2-Linux-x86_64.sh \
 chmod +x cmake-3.5.2-Linux-x86_64.sh
 ./cmake-3.5.2-Linux-x86_64.sh --prefix=$INSTALL_DIR --skip-license
 
+# cleanup
+cd $ORIG_DIR
+rm -rf $TEMP_BUILD_DIR
+
 echo "$INSTALL_DIR/bin/cmake is now available."
+
+# Reload our bashrc to pick up all the new binaries
+. ~/.bashrc
