@@ -20,7 +20,7 @@ set nocompatible
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins (managed using Vundle)
+" Plugins (managed using vim-plug)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Load vim-plug which manages our plugins
