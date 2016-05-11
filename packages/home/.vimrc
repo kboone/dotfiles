@@ -76,6 +76,9 @@ call plug#end()
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" UTF-8 internal encoding
+set encoding=utf-8
+
 " PEP8 style tabs and line wrapping.
 " 4 spaces per tab, expand tabs as spaces.
 set expandtab
@@ -147,7 +150,7 @@ set ruler
 set title
 
 " Show line breaks
-set showbreak=↪\ \ \ 
+let &showbreak="\u21aa  "
 if v:version > 704 || v:version == 704 && has("patch338")
     " Make the breaks indent properly. Available in builds after ~June 2014.
     set breakindent
