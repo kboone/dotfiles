@@ -29,6 +29,7 @@ call plug#begin()
 " General syntax and completion
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
+Plug 'Valloric/YouCompleteMe'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -50,7 +51,6 @@ Plug 'honza/vim-snippets'
 " Filetype specific plugins
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'Valloric/YouCompleteMe'
 
 " Files/buffers
 Plug 'ctrlpvim/ctrlp.vim'
