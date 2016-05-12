@@ -1,19 +1,25 @@
-!/bin/bash
+#!/bin/bash
 
 # Script for installing tmux on systems where you don't have root access.
-# tmux will be installed in $KYLE_INSTALL_DIR/bin.
-# It's assumed that wget and a C/C++ compiler are installed.
+# tmux will be installed in $PACKAGE_DIR/tmux.
+# It's assumed that wget and a C/C++ compiler are installed. We build libevent
+# and ncurses manually to get recent versions.
+
+# only accessible to me
+umask 077
 
 # exit on error
 set -e
 
-INSTALL_DIR=$KYLE_INSTALL_DIR
+INSTALL_DIR=$PACKAGE_DIR/tmux
+TEMP_BUILD_DIR=$INSTALL_DIR/build
 
-TMUX_VERSION=2.0
+TMUX_VERSION=2.1
 
 # create our directories
-mkdir -p $INSTALL_DIR $INSTALL_DIR/tmux_tmp
-cd $INSTALL_DIR/tmux_tmp
+mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR
+ORIG_DIR=$(pwd)
+cd $TEMP_BUILD_DIR
 
 # download source files for tmux, libevent, and ncurses
 
@@ -55,6 +61,8 @@ cp tmux $INSTALL_DIR/bin
 cd ..
 
 # cleanup
-rm -rf $INSTALL_DIR/tmux_tmp
+cd $ORIG_DIR
+rm -rf $TEMP_BUILD_DIR
 
 echo "$INSTALL_DIR/bin/tmux is now available."
+echo "Reload your bashrc with '. ~/.bashrc' to update your path."

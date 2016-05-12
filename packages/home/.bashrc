@@ -116,6 +116,13 @@ fi
 # same home directory)
 export KYLE_INSTALL_DIR=$HOME/.kyle_install
 
+# Path for custom packages.
+export PACKAGE_DIR=$HOME/packages
+
+# Unset whatever the default PYTHONPATH is since I will be using anaconda
+# instead.
+unset PYTHONPATH
+
 ################################################################################
 # Device specific setup.
 ################################################################################
@@ -226,6 +233,11 @@ fi
 
 # Add the custom install directory to my path.
 export PATH=$KYLE_INSTALL_DIR/bin:$PATH
+
+# Add any custom package directories to my path.
+for i in $(shopt -s nullglob; echo $PACKAGE_DIR/*/bin); do
+    export PATH=$i:$PATH
+done
 
 # Optional external bashrc file for local unversioned things
 if [[ -f "$HOME/.bashrc_local" ]]; then
