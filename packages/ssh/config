@@ -44,6 +44,18 @@ Host top topbot
     ForwardX11 yes
     User topbot
 
+Host hy1 hyades1
+    HostName hyades1.lbl.gov
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
+Host cc ccin2p3
+    HostName ccage.in2p3.fr
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+
 Host git github
     HostName github.com
     ForwardX11 no
