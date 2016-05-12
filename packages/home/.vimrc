@@ -304,6 +304,3 @@ nnoremap <leader>gt :Gcommit -q %:p<CR>
 nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
-
-" supertab compatibility with snipmate
-let g:SuperTabDefaultCompletionType = "context"
