@@ -221,6 +221,9 @@ nnoremap k gk
 nnoremap <silent> <leader>y "+y
 nnoremap <silent> <leader>p "+p
 
+" ,z: close the preview window
+nnoremap <silent> <leader>z :pclose<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
