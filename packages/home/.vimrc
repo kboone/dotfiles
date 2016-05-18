@@ -304,3 +304,12 @@ nnoremap <leader>gt :Gcommit -q %:p<CR>
 nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
+
+" YouCompleteMe
+" ,d -> go to definition
+nnoremap <leader>d :YcmCompleter GoTo<CR>
+" ,i -> get doc
+nnoremap <leader>i :YcmCompleter GetDoc<CR>
+" Use the python on the path for YCM. This lets us use whichever anaconda
+" environment we want.
+let g:ycm_python_binary_path = system('which python | tr -d "\n"')
