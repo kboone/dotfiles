@@ -85,6 +85,21 @@ elif [[ -n $(which gnome-open 2>/dev/null) ]]; then
     alias open='gnome-open'
 fi
 
+# We want to use the en_US.UTF-8 locale. Unfortunately, it is called en_US.utf8
+# on SL6 machines. Detect which one is available and use it.
+if [ -n "$(locale -a | grep '^en_US.UTF-8')" ]; then
+    # On most new systems, this is available so use it.
+    export LANG="en_US.UTF-8"
+elif [ -n "$(locale -a | grep '^en_US.utf8')" ]; then
+    # Resort to this if the newer one isn't available
+    export LANG="en_US.utf8"
+else
+    # No UTF-8 locale found. This will mess up stuff
+    echo "No UTF-8 locale found! Keeping default. No UTF-8 support."
+fi
+
+export LC_ALL=$LANG
+
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
 # environment properly set up when reconnecting.
@@ -194,9 +209,6 @@ elif [[ -n "$NERSC_HOST" ]]; then
     else
         echo "Unknown NERSC host, gcc not loaded!"
     fi
-
-    # Set the locale correctly
-    export LANG="en_US.utf8"
 
     # Custom install directory for the different servers
     export KYLE_INSTALL_DIR=$HOME/.kyle_install/$NERSC_HOST
