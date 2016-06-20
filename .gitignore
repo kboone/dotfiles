@@ -1,1 +1,4 @@
 packages/home/.vim/plugged/*
+packages/home/.vim/autoload/plug.vim.old
+
+packages/home/.tmux/plugins/*
