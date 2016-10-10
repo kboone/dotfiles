@@ -1,13 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Kyle Boone's vim config
-"
-" Do the following things to get this up and running:
-"
-" Download/update installed modules:
-" :PluginInstall
-"
-" Add pep8 support in syntastic:
-" pip install flake8
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -28,48 +20,56 @@ set nocompatible
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Plugins (managed using Vundle)
+" Plugins (managed using vim-plug)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Load Vundle which manages our plugins
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'gmarik/Vundle.vim'
+" Load vim-plug which manages our plugins
+call plug#begin()
 
 " General syntax and completion
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-Plugin 'ervandew/supertab'
+Plug 'majutsushi/tagbar'
+Plug 'scrooloose/syntastic'
+Plug 'Valloric/YouCompleteMe'
 
 " Appearance
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'edkolev/tmuxline.vim'
+Plug 'kboone/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'kboone/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+
+" Dependencies
+Plug 'MarcWeber/vim-addon-mw-utils'       " required by snipmate
+Plug 'tomtom/tlib_vim'                    " required by snipmate
 
 " Text editing
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'godlygeek/tabular'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'godlygeek/tabular'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
 
 " Filetype specific plugins
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Files/buffers
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'fholgado/minibufexpl.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fholgado/minibufexpl.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'airblade/vim-gitgutter'
 
 " End of plugins
-call vundle#end()
+call plug#end()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " General settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" UTF-8 internal encoding
+set encoding=utf-8
 
 " PEP8 style tabs and line wrapping.
 " 4 spaces per tab, expand tabs as spaces.
@@ -116,6 +116,9 @@ set backspace=2
 " Don't redraw in the middle of macros
 set lazyredraw
 
+" Don't show the preview window. It is too jarring for my liking.
+set completeopt-=preview
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
@@ -139,7 +142,7 @@ set ruler
 set title
 
 " Show line breaks
-set showbreak=↪\ \ \ 
+let &showbreak="\u21aa  "
 if v:version > 704 || v:version == 704 && has("patch338")
     " Make the breaks indent properly. Available in builds after ~June 2014.
     set breakindent
@@ -218,6 +221,9 @@ nnoremap k gk
 nnoremap <silent> <leader>y "+y
 nnoremap <silent> <leader>p "+p
 
+" ,z: close the preview window
+nnoremap <silent> <leader>z :pclose<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -259,12 +265,9 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 " ,cc -> comment out line
 " ,c<Space> -> toggle comment
 
-" Markdown.vim
-" let g:vim_markdown_folding_disabled = 1
-
 " vim-airline
 set laststatus=2
-let g:airline_theme = "solarized"
+let g:airline_theme = "kyle"
 let g:airline_powerline_fonts = 1
 
 " tmuxline
@@ -304,3 +307,12 @@ nnoremap <leader>gt :Gcommit -q %:p<CR>
 nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
+
+" YouCompleteMe
+" ,d -> go to definition
+nnoremap <leader>d :YcmCompleter GoTo<CR>
+" ,i -> get doc
+nnoremap <leader>i :YcmCompleter GetDoc<CR>
+" Use the python on the path for YCM. This lets us use whichever anaconda
+" environment we want.
+let g:ycm_python_binary_path = system('which python | tr -d "\n"')

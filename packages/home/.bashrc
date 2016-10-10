@@ -8,16 +8,6 @@ case $- in
       *) return;;
 esac
 
-# Fix terminal colors for gnome-terminal. It sets TERM=xterm, but we need to
-# set TERM=xterm-256color if we want colors in vim, tmux, etc.
-if [ "$TERM" == "xterm" ]; then
-    export TERM="xterm-256color"
-fi
-# Fix terminal colors in tmux/screen.
-if [ "$TERM" == "screen-256color" ]; then
-    export TERM="xterm-256color"
-fi
-
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -48,7 +38,7 @@ fi
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color | xterm-256color | rxvt-unicode ) color_prompt=yes;;
+    xterm-color|*-256color) color_prompt=yes;;
 esac
 
 if [ "$color_prompt" = yes ]; then
@@ -95,6 +85,21 @@ elif [[ -n $(which gnome-open 2>/dev/null) ]]; then
     alias open='gnome-open'
 fi
 
+# We want to use the en_US.UTF-8 locale. Unfortunately, it is called en_US.utf8
+# on SL6 machines. Detect which one is available and use it.
+if [ -n "$(locale -a | grep '^en_US.UTF-8')" ]; then
+    # On most new systems, this is available so use it.
+    export LANG="en_US.UTF-8"
+elif [ -n "$(locale -a | grep '^en_US.utf8')" ]; then
+    # Resort to this if the newer one isn't available
+    export LANG="en_US.utf8"
+else
+    # No UTF-8 locale found. This will mess up stuff
+    echo "No UTF-8 locale found! Keeping default. No UTF-8 support."
+fi
+
+export LC_ALL=$LANG
+
 # tmux breaks things like the display and ssh forwarding when you reconnect. Run
 # fix_tmux in a tmux shell to solve all of these problems and get the
 # environment properly set up when reconnecting.
@@ -109,7 +114,7 @@ vgrep() {
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
-# Use vim as my default editor for svn and things
+# Use vim as my default editor for svn and things.
 export VISUAL=vim
 export EDITOR=$VISUAL
 
@@ -125,6 +130,13 @@ fi
 # change it for some individual systems (eg: NERSC since all machines share the
 # same home directory)
 export KYLE_INSTALL_DIR=$HOME/.kyle_install
+
+# Path for custom packages.
+export PACKAGE_DIR=$HOME/packages
+
+# Unset whatever the default PYTHONPATH is since I will be using anaconda
+# instead.
+unset PYTHONPATH
 
 ################################################################################
 # Device specific setup.
@@ -156,13 +168,22 @@ elif [[ "$HOSTNAME" == "julebrus" ]]; then
     export PATH="$HOME/apps/anaconda/bin:$PATH"
     export PATH="$HOME/apps/mathematica/bin:$PATH"
     export PATH="$HOME/apps/scripts:$PATH"
+
+    # ureka
+    ur_setup() {
+        eval `/home/kyle/.ureka/ur_setup -sh $*`
+    }
+    ur_forget() {
+        eval `/home/kyle/.ureka/ur_forget -sh $*`
+    }
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Everything is currently installed here... change this to .kyle_install at
     # some point
     export KYLE_INSTALL_DIR=$HOME/local
 
     # my anaconda
-    export PATH="/home/users/kboone/anaconda/bin:$PATH"
+    export ANACONDA=/home/users/kboone/anaconda
+    export PATH=$ANACONDA/bin:$PATH
 
     # seechange
     source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
@@ -196,7 +217,12 @@ elif [[ -n "$NERSC_HOST" ]]; then
     export PATH=$PATH:$HOME/scripts
 
     # Use Anaconda's python distribution
-    export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
+    if [[ "$NERSC_HOST" == "cori" ]]; then
+        export ANACONDA=$KYLE_INSTALL_DIR/anaconda
+        export PATH=$ANACONDA/bin:$PATH
+    else
+        export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
+    fi
     unset PYTHONPATH
 
     # SNFactory settings
@@ -214,6 +240,11 @@ fi
 
 # Add the custom install directory to my path.
 export PATH=$KYLE_INSTALL_DIR/bin:$PATH
+
+# Add any custom package directories to my path.
+for i in $(shopt -s nullglob; echo $PACKAGE_DIR/*/bin); do
+    export PATH=$i:$PATH
+done
 
 # Optional external bashrc file for local unversioned things
 if [[ -f "$HOME/.bashrc_local" ]]; then

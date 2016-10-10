@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+echo "This script is horribly out of date! Needs to be updated!"
+exit 1
+
 INSTALL_DIR=$HOME/.kyle_install
 
 mkdir -p $INSTALL_DIR
