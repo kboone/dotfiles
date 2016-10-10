@@ -139,11 +139,6 @@ if [[ "$HOSTNAME" == "troika" ]]; then
     # errors.
     export ROOTSYS=/usr/lib/x86_64-linux-gnu/root5.34
 
-    # Anaconda - use python 3 by default
-    export PATH="/data/apps/anaconda/bin:$PATH"
-    #conda config --set changeps1 no
-    #source activate py3k >/dev/null 2>&1
-
     alias block='sudo /data/apps/bin/block.sh'
     alias unblock='sudo /data/apps/bin/unblock.sh'
 
