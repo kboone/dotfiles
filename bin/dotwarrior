@@ -93,6 +93,22 @@ function install {
             echo "Different .ssh/config in use. Ignoring"
         fi
     fi
+
+    printf '%-20s' 'matplotlibrc'
+    FILE=~/.config/matplotlib/matplotlibrc
+    TARGET=$BASE/packages/matplotlib/matplotlibrc
+    if [[ ! -e $FILE ]]; then
+        # File doesn't exist, our job is easy!
+        echo "Creating symlink."
+        ln -s $TARGET $FILE
+    else
+        # File exists, deal with it
+        if [[ "$(readlink $FILE)" = "$TARGET" ]]; then
+            echo "Symlink already exists, ok."
+        else
+            echo "Different matplotlibrc in use. Ignoring"
+        fi
+    fi
 }
 
 install
