@@ -54,7 +54,6 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Files/buffers
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
@@ -197,16 +196,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
 
-" resizing of the full gvim window
-" ,1 -> 1 buffer
-" ,2 -> 2 buffers
-" ,3 -> 1 buffer + taglist
-" ,4 -> 2 buffers + taglist
-nnoremap <silent> <leader>1 :set columns=80<CR>
-nnoremap <silent> <leader>2 :set columns=160<CR>
-nnoremap <silent> <leader>3 :set columns=110<CR>
-nnoremap <silent> <leader>4 :set columns=190<CR>
-
 " ,ct: Build ctags
 nnoremap <silent> <leader>ct :!ctags -R<CR><CR>
 
@@ -223,6 +212,10 @@ nnoremap <silent> <leader>p "+p
 
 " ,z: close the preview window
 nnoremap <silent> <leader>z :pclose<CR>
+
+" Ctrl + N/P to move along the buffer list.
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,6 +242,7 @@ autocmd FileType tex nnoremap <silent> <leader>t :LatexTOCToggle<CR>
 " ,F to search recent files
 " ,h to search tags
 " ,b to search buffers
+let g:ctrlp_map = ''
 nnoremap <silent> <leader>f :CtrlPCurWD<CR>
 nnoremap <silent> <leader>F :CtrlPMRUFiles<CR>
 nnoremap <silent> <leader>h :CtrlPTag<CR>
@@ -269,6 +263,11 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 set laststatus=2
 let g:airline_theme = "kyle"
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
 
 " tmuxline
 " These settings are saved in ~/.tmuxline.conf. If it gets messed up, it can be
