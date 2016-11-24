@@ -64,3 +64,17 @@ Host git github
 Host troika troika*
     ForwardAgent yes
     ForwardX11 yes
+ 
+Host anoncvs.in2p3.fr
+    User sncode
+    Compression no
+    Port 2222
+    Protocol 2
+    PasswordAuthentication yes
+    PubkeyAuthentication no
+
+Host kcl kylecloud
+    HostName cloud.kyleboone.ca
+    ForwardAgent yes
+    ForwardX11 yes
+    User kyle
