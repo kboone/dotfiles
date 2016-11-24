@@ -11,8 +11,8 @@
 scriptencoding utf-8
 
 " Next, specify that the vim shell should be bash in case the login shell is
-" something different... most plugins assume that they are being run in bash
-" and break of the login shell is e.g. fish.
+" something different... some plugins assume that they are being run in bash
+" and break if the login shell is not compatible.
 set shell=/bin/bash
 
 " Kill vi compatibility, this isn't 1976 and we want nice plugins.
@@ -118,17 +118,18 @@ set lazyredraw
 " Don't show the preview window. It is too jarring for my liking.
 set completeopt-=preview
 
+" Use smart case in searching. This means that all lowercase matches any case,
+" but any uppercase characters for an exact case match. Override with \c or \C
+" if necessary.
+set ignorecase
+set smartcase
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use the solarized colorscheme
-" Note: If I am getting the weird wrong background bug, this is due to TERM
-" being set incorrectly. Doing set t_Co=256 or similar here fixes that, but it
-" still breaks inside of tmux. The fix is to set 'TERM=xterm-256color' in
-" .bashrc or .zshrc. This should only be done if the terminal is known to
-" support colors!
 syntax on
 set background=dark
 colorscheme solarized
@@ -214,8 +215,8 @@ nnoremap <silent> <leader>p "+p
 nnoremap <silent> <leader>z :pclose<CR>
 
 " Ctrl + N/P to move along the buffer list.
-nnoremap <C-N> :bnext<CR>
-nnoremap <C-P> :bprev<CR>
+nnoremap <silent> <C-N> :bnext<CR>
+nnoremap <silent> <C-P> :bprev<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
