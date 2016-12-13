@@ -54,6 +54,7 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 
 " Files/buffers
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'christoomey/vim-tmux-navigator'
@@ -264,11 +265,6 @@ nnoremap <silent> <leader>b :CtrlPBuffer<CR>
 set laststatus=2
 let g:airline_theme = "kyle"
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ''
-let g:airline#extensions#tabline#left_alt_sep = ''
-let g:airline#extensions#tabline#right_sep = ''
-let g:airline#extensions#tabline#right_alt_sep = ''
 
 " tmuxline
 " These settings are saved in ~/.tmuxline.conf. If it gets messed up, it can be
