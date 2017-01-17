@@ -73,6 +73,7 @@ set encoding=utf-8
 
 " PEP8 style tabs and line wrapping.
 " 4 spaces per tab, expand tabs as spaces.
+set smarttab
 set expandtab
 set tabstop=8
 set softtabstop=4
@@ -110,11 +111,17 @@ endif
 set nojoinspaces
 
 " Make backspace work properly (some older vims only have backspace for new
-" text by default)
+" text by default). Note that backspace=2 is equivalent to
+" backspace=indent,eol,start that most people recommend, but is also compatible
+" with very old vims.
 set backspace=2
 
 " Don't redraw in the middle of macros
 set lazyredraw
+
+" Don't autoscan includes for completion. This is slow, and I use ctags which
+" is much better
+set complete-=i
 
 " Don't show the preview window. It is too jarring for my liking.
 set completeopt-=preview
@@ -125,12 +132,28 @@ set completeopt-=preview
 set ignorecase
 set smartcase
 
+" Nobody uses octal anymore. 008 comes after 007 for everything that I do.
+set nrformats-=octal
+
+" Use a timeout of 100 ms on commands.
+set ttimeout
+set ttimeoutlen=100
+
+" Handle joining of lines with comments properly.
+if v:version > 703 || v:version == 703 && has("patch541")
+    set formatoptions+=j
+endif
+
+" Increase default lengths. We have plenty of RAM/memory these days.
+set history=1000
+set tabpagemax=50
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use the solarized colorscheme
+" Use my modified solarized colorscheme
 syntax on
 set background=dark
 colorscheme solarized
@@ -141,6 +164,13 @@ set ruler
 
 " Update the title when running in a terminal
 set title
+
+" Keep the cursor away from the edges of the screen.
+set scrolloff=1
+set sidescrolloff=5
+
+" Actually show long last lines instead of just spewing out @ symbols.
+set display+=lastline
 
 " Show line breaks
 let &showbreak="\u21aa  "
@@ -192,7 +222,7 @@ let maplocalleader = ","
 set winaltkeys=no
 
 " ,s: Show whitespace toggle
-set listchars=tab:>-,trail:·,eol:$
+set listchars=tab:>-,trail:·,eol:$,extends:>,precedes:<
 nmap <silent> <leader>s :set nolist!<CR>
 
 " ,n: Disable highlights
@@ -303,6 +333,13 @@ nnoremap <leader>gt :Gcommit -q %:p<CR>
 nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
+
+" vim-tmux-navigator
+" BUG: vim-tmux-navigator uses ctrl+j to move to the next window down. If
+" syntastic was just run and ctrl+j is pressed while vim is hanging, it is
+" interpreted as a line feed character and the display shifts a line. A hacky
+" fix is to force a full redraw whenever ctrl+j is pressed.
+autocmd VimEnter * nnoremap <silent> <c-j> :TmuxNavigateDown<cr>:redraw!<cr>
 
 " YouCompleteMe
 " ,d -> go to definition
