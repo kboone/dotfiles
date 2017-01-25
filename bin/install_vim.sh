@@ -32,9 +32,8 @@ cd vim
 # pointing it to the right ones with LDFLAGS, we can override that behaviour.
 # We also need to set vi_cv_path_python so that vim picks up the anaconda
 # python.
-# LDFLAGS="-L$(ls -d $(python3-config --prefix)/lib/python*/config/)" \
-# LDFLAGS="$(python3-config --ldflags)" \
-# vi_cv_path_python=$VIM_PYTHON \
+LDFLAGS="-L$(python3-config --prefix)/lib/" \
+vi_cv_path_python3=$VIM_PYTHON \
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-gui=gtk2 \
