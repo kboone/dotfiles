@@ -9,7 +9,7 @@ BASE=$HOME/.dotfiles
 
 
 
-function install {
+function link {
     echo "Installing"
     cd $BASE/packages
     cd home
@@ -111,4 +111,56 @@ function install {
     fi
 }
 
-install
+function update {
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: dotfiles update [package]"
+        exit
+    fi
+
+    $BASE/bin/update_$1.sh
+}
+
+function install {
+    if [ "$#" -eq 0 ]; then
+        echo "Usage: dotfiles update [package]"
+        exit
+    fi
+
+    $BASE/bin/install_$1.sh
+}
+
+function help {
+    echo "Usage: dotfiles [command...]"
+    echo "Available commands:"
+    echo " - help: display this message"
+    echo " - link: link all packages and dotfiles"
+    echo " - install [package]: install the given package"
+    echo " - update [package]: update the given package"
+}
+
+if [ "$#" -eq 0 ]; then
+    help
+    exit
+fi
+
+case "$1" in
+    link)
+        link
+        ;;
+
+    install)
+        install $2
+        ;;
+
+    update)
+        update $2
+        ;;
+
+    help)
+        help
+        ;;
+
+    *)
+        help
+        ;;
+esac

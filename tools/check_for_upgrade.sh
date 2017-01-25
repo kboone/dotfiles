@@ -25,6 +25,8 @@
 #OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 #THE SOFTWARE.
 
+BASEDIR=$HOME/.dotfiles
+
 function _current_epoch() {
     echo $(($(date +%s) / 60 / 60 / 24))
 }
@@ -35,12 +37,16 @@ function _update_dotfiles_update() {
 
 function _upgrade_dotfiles() {
     echo "Upgrading dotfiles"
-    cd ~/.dotfiles
+    ORIGDIR=$PWD
+    cd $BASEDIR
+
     git pull
-    echo "You may need to update symlinks, run ~/.dotfiles/bin/dotwarrior if so"
+    echo "You may need to update symlinks, run 'dotfiles link' if so"
 
     # update the dotfiles file
     _update_dotfiles_update
+
+    cd $ORIGDIR
 }
 
 epoch_target=$UPDATE_DOTFILES_DAYS
@@ -79,3 +85,5 @@ else
   _update_dotfiles_update
 fi
 
+# Add dotfiles as a command
+alias dotfiles="$BASEDIR/bin/dotfiles"
