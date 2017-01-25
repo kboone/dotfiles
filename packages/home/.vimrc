@@ -29,7 +29,17 @@ call plug#begin()
 " General syntax and completion
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe', { 'commit': '0de1c0c' }
+
+" For syntastic, versions later than ~2015 require gcc with C++11 support
+" Use the latest version if we're on a non-ancient computer or a compatible
+" version otherwise.
+let gcc_major_version=system("gcc -dumpversion | sed 's/\\([^.]*\\).*/\\1/'")
+if gcc_major_version > 4
+    Plug 'Valloric/YouCompleteMe'
+else
+    Plug 'Valloric/YouCompleteMe', { 'commit': '0de1c0c' }
+endif
+
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
