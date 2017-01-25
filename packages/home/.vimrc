@@ -249,6 +249,9 @@ nnoremap <silent> <leader>z :pclose<CR>
 nnoremap <silent> <C-N> :bnext<CR>
 nnoremap <silent> <C-P> :bprev<CR>
 
+" ,r: Force a redraw on the screen.
+nnoremap <silent> <leader>r :redraw!<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
