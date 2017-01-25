@@ -29,7 +29,7 @@ call plug#begin()
 " General syntax and completion
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/syntastic'
-Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe', { 'commit': '0de1c0c' }
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -351,4 +351,4 @@ nnoremap <leader>d :YcmCompleter GoTo<CR>
 nnoremap <leader>i :YcmCompleter GetDoc<CR>
 " Use the python on the path for YCM. This lets us use whichever anaconda
 " environment we want.
-let g:ycm_python_binary_path = system('which python | tr -d "\n"')
+" let g:ycm_python_binary_path = system('which python | tr -d "\n"')

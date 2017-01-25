@@ -17,9 +17,7 @@ set -e
 INSTALL_DIR=$PACKAGE_DIR/vim
 TEMP_BUILD_DIR=$INSTALL_DIR/build
 
-# Figure out which python to use. We want to use python from an anaconda
-# environment with the name "vim"
-source activate vim
+# Figure out which python to use.
 VIM_PYTHON=$(which python)
 
 # create our directories
@@ -34,15 +32,17 @@ cd vim
 # pointing it to the right ones with LDFLAGS, we can override that behaviour.
 # We also need to set vi_cv_path_python so that vim picks up the anaconda
 # python.
-LDFLAGS="-L$(ls -d $(python-config --prefix)/lib/python*/config/)" \
-vi_cv_path_python=$VIM_PYTHON \
+# LDFLAGS="-L$(ls -d $(python3-config --prefix)/lib/python*/config/)" \
+# LDFLAGS="$(python3-config --ldflags)" \
+# vi_cv_path_python=$VIM_PYTHON \
 ./configure --with-features=huge \
             --enable-multibyte \
             --enable-gui=gtk2 \
             --enable-luainterp \
             --enable-perlinterp \
             --enable-rubyinterp \
-            --enable-pythoninterp \
+            --enable-python3interp \
+            --with-python3-config-dir=$(python3-config --configdir) \
             --enable-cscope \
             --prefix=$INSTALL_DIR
 
@@ -53,7 +53,6 @@ make install
 # cleanup
 cd $ORIG_DIR
 rm -rf $TEMP_BUILD_DIR
-source deactivate
 
 echo "$INSTALL_DIR/bin/vim is now available."
 echo "Reload your bashrc with '. ~/.bashrc' to update your path."
