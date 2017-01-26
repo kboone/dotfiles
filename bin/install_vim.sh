@@ -31,7 +31,8 @@ cd vim
 # Vim is annoying and puts the system python libs before the detected ones. By
 # pointing it to the right ones with LDFLAGS, we can override that behaviour.
 # We also need to set vi_cv_path_python so that vim picks up the conda python.
-LDFLAGS="-L$(python3-config --prefix)/lib/" \
+CONDA_LIB_PATH=$(python3-config --prefix)/lib/
+LDFLAGS="-L$CONDA_LIB_PATH -Wl,-rpath,$CONDA_LIB_PATH" \
 vi_cv_path_python3=$VIM_PYTHON \
 ./configure --with-features=huge \
             --enable-multibyte \
