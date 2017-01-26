@@ -6,14 +6,19 @@
     git clone --recursive git@github.com:kboone/dotfiles.git ~/.dotfiles
 
 ### Install (rerun if a new file is added)
-    cd ~/.dotfiles
-    bin/dotwarrior
+# First time:
+    ~/.dotfiles/bin/dotfiles link
+    . ~/.bashrc
+
+# Afterwards, dotfiles is added as a bash function.
+
+### Install and update new packages as necessary
+    dotfiles install vim
+    dotfiles install conda
+    dotfiles update vim
 
 ### Update if a submodule changed
     git submodule update --init --recursive
-
-### Download vim plugins using Vundle
-Open vim. Run `:PluginInstall`
 
 ## Other things to do on a new server
 
