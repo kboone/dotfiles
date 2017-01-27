@@ -59,6 +59,7 @@ Host cc ccin2p3
 Host git github
     HostName github.com
     ForwardX11 no
+    ForwardAgent no
     User git
 
 Host troika troika*
