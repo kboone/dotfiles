@@ -31,6 +31,7 @@ PACKAGES=(
     jupyter
     argcomplete
     beautifulsoup4
+    pip
 
     # General coding packages
     flake8
