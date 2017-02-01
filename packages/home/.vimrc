@@ -363,5 +363,11 @@ nnoremap <leader>i :YcmCompleter GetDoc<CR>
 
 " vim-markdown-preview
 " ,lv -> view markdown as HTML
+" Use grip if it is available. That generates nicer output by sending the
+" markdown file off to github for processing. Otherwise, use the built in
+" markdown compiler
 let vim_markdown_preview_hotkey='<leader>lv'
-let vim_markdown_preview_github=1
+if executable("grip") == 1
+    let vim_markdown_preview_github=1
+endif
+let vim_markdown_preview_use_xdg_open=1
