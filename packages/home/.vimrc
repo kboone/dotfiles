@@ -61,6 +61,7 @@ Plug 'honza/vim-snippets'
 " Filetype specific plugins
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " Files/buffers
 Plug 'ctrlpvim/ctrlp.vim'
@@ -359,3 +360,8 @@ autocmd VimEnter * nnoremap <silent> <c-j> :TmuxNavigateDown<cr>:redraw!<cr>
 nnoremap <leader>d :YcmCompleter GoTo<CR>
 " ,i -> get doc
 nnoremap <leader>i :YcmCompleter GetDoc<CR>
+
+" vim-markdown-preview
+" ,lv -> view markdown as HTML
+let vim_markdown_preview_hotkey='<leader>lv'
+let vim_markdown_preview_github=1
