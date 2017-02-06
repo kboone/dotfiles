@@ -24,7 +24,7 @@ cd $TEMP_BUILD_DIR
 # download source files for tmux, libevent, and ncurses
 
 wget -O tmux-${TMUX_VERSION}.tar.gz https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
-wget -O libevent-2.0.19-stable.tar.gz https://github.com/libevent/libevent/archive/release-2.0.19-stable.tar.gz
+wget -O libevent-2.1.8-stable.tar.gz https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
 wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
 
 # extract files, configure, and compile
@@ -32,9 +32,8 @@ wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
 ############
 # libevent #
 ############
-tar xvzf libevent-2.0.19-stable.tar.gz
-cd libevent-release-2.0.19-stable
-./autogen.sh
+tar xvzf libevent-2.1.8-stable.tar.gz
+cd libevent-2.1.8-stable
 ./configure --prefix=$INSTALL_DIR --disable-shared
 make
 make install
