@@ -143,17 +143,6 @@ unset PYTHONPATH
 ################################################################################
 
 if [[ "$HOSTNAME" == "troika" ]]; then
-    # ROOT setup
-    alias root='root -l'
-    export PYTHONPATH=/usr/lib/x86_64-linux-gnu/root5.34:$PYTHONPATH
-    export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/root5.34:$LD_LIBRARY_PATH
-    # ROOTSYS is wrong but we need to specify something or we get a ton of
-    # errors.
-    export ROOTSYS=/usr/lib/x86_64-linux-gnu/root5.34
-
-    alias block='sudo /data/apps/bin/block.sh'
-    alias unblock='sudo /data/apps/bin/unblock.sh'
-
     # Add additional binaries in the data folder to the path
     export PATH=$PATH:/data/apps/bin
     
