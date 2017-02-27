@@ -55,6 +55,9 @@ Host cc ccin2p3
     ForwardAgent yes
     ForwardX11 yes
     User kboone
+    ControlMaster auto
+    ControlPath ~/.ssh/cm-%r@%h:%p
+    ControlPersist 10m
 
 Host git github
     HostName github.com
