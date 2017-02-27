@@ -11,7 +11,7 @@
 # a local conda package. I check for local packages in this script and don't
 # overwrite them.
 # Steps:
-#   conda skeleton pypi iminuit
+#   conda skeleton pypi --noarch-python iminuit
 #   conda build iminuit
 #   conda install --use-local iminuit
 
@@ -26,6 +26,7 @@ set -e
 PACKAGES=(
     # Core packages
     python
+    ipython
     conda
     conda-build
     jupyter
