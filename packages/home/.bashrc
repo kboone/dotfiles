@@ -174,6 +174,7 @@ elif [[ -n "$NERSC_HOST" ]]; then
     # versions of most things, but I don't care about the exact version number.
     module load gsl
     module load autoconf
+    module load cmake
 
     # Custom NERSC scripts. These are mostly for managing jobs.
     export PATH=$PATH:$HOME/scripts
