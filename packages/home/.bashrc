@@ -126,12 +126,9 @@ fi
 # Check for dotfile upgrades
 . $HOME/.dotfiles/tools/check_for_upgrade.sh
 
-# Default custom binaries install path. This gets added to path below, but I
-# change it for some individual systems (eg: NERSC since all machines share the
-# same home directory)
-export KYLE_INSTALL_DIR=$HOME/.kyle_install
-
-# Path for custom packages.
+# Path for custom packages. This gets added to path below, but I change it for
+# some individual systems (eg: NERSC since all machines share the same home
+# directory)
 export PACKAGE_DIR=$HOME/packages
 
 # Unset whatever the default PYTHONPATH is since I will be using anaconda
@@ -145,39 +142,15 @@ unset PYTHONPATH
 if [[ "$HOSTNAME" == "troika" ]]; then
     # Add additional binaries in the data folder to the path
     export PATH=$PATH:/data/apps/bin
-    
-    # iraf
-    ur_setup() {
-        eval `/home/kyle/.ureka/ur_setup -sh $*`
-    }
-    ur_forget() {
-        eval `/home/kyle/.ureka/ur_forget -sh $*`
-    }
 elif [[ "$HOSTNAME" == "julebrus" ]]; then
     export PATH="$HOME/apps/anaconda/bin:$PATH"
     export PATH="$HOME/apps/mathematica/bin:$PATH"
     export PATH="$HOME/apps/scripts:$PATH"
-
-    # ureka
-    ur_setup() {
-        eval `/home/kyle/.ureka/ur_setup -sh $*`
-    }
-    ur_forget() {
-        eval `/home/kyle/.ureka/ur_forget -sh $*`
-    }
 elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
-    # Everything is currently installed here... change this to .kyle_install at
-    # some point
-    export KYLE_INSTALL_DIR=$HOME/local
-
-    # my anaconda
-    export ANACONDA=/home/users/kboone/anaconda
-    export PATH=$ANACONDA/bin:$PATH
-
-    # seechange
+    # Seechange scripts
     source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
 elif [[ "$HOSTNAME" == "rivoli.lbl.gov" ]]; then
-    # seechange
+    # Seechange scripts
     source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
 elif [[ -n "$NERSC_HOST" ]]; then
     # We are on a NERSC machine (hopper, edison, etc.)
@@ -194,37 +167,19 @@ elif [[ -n "$NERSC_HOST" ]]; then
         echo "Unknown NERSC host, gcc not loaded!"
     fi
 
-    # Custom install directory for the different servers
-    export KYLE_INSTALL_DIR=$HOME/.kyle_install/$NERSC_HOST
+    # Use a different package  directory for the different servers
+    export PACKAGE_DIR=$PACKAGE_DIR/$NERSC_HOST
         
     # Other modules to load that are on all of the NERSC machines. I want newer
     # versions of most things, but I don't care about the exact version number.
     module load gsl
     module load autoconf
 
-    # Path
+    # Custom NERSC scripts. These are mostly for managing jobs.
     export PATH=$PATH:$HOME/scripts
-
-    # Use Anaconda's python distribution
-    if [[ "$NERSC_HOST" == "cori" ]]; then
-        export ANACONDA=$KYLE_INSTALL_DIR/anaconda
-        export PATH=$ANACONDA/bin:$PATH
-    else
-        export PATH=/global/homes/k/kboone/software/anaconda/bin:$PATH
-    fi
-    unset PYTHONPATH
 
     # SNFactory settings
     export PATH=/project/projectdirs/snfactry/rthomas/local/$NERSC_HOST/bin:$PATH
-
-    # Get a newer vim running
-    module load vim
-
-    # Load root, and set up things so that PyROOT works properly. This might
-    # need to be updated.
-    module load root
-    export PYTHONPATH=/usr/common/usg/root/5.34/gnu/lib/root:$PYTHONPATH
-    export LD_LIBRARY_PATH=/usr/common/usg/root/5.34/gnu/lib/root:$LD_LIBRARY_PATH
 fi
 
 # Add the custom install directory to my path.
