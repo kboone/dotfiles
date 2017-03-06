@@ -14,7 +14,7 @@ set -e
 INSTALL_DIR=$PACKAGE_DIR/tmux
 TEMP_BUILD_DIR=$INSTALL_DIR/build
 
-TMUX_VERSION=2.1
+TMUX_VERSION=2.3
 
 # create our directories
 mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR
@@ -25,7 +25,7 @@ cd $TEMP_BUILD_DIR
 
 wget -O tmux-${TMUX_VERSION}.tar.gz https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
 wget -O libevent-2.1.8-stable.tar.gz https://github.com/libevent/libevent/releases/download/release-2.1.8-stable/libevent-2.1.8-stable.tar.gz
-wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-5.9.tar.gz
+wget ftp://ftp.gnu.org/gnu/ncurses/ncurses-6.0.tar.gz
 
 # extract files, configure, and compile
 
@@ -42,8 +42,8 @@ cd ..
 ############
 # ncurses  #
 ############
-tar xvzf ncurses-5.9.tar.gz
-cd ncurses-5.9
+tar xvzf ncurses-6.0.tar.gz
+cd ncurses-6.0
 ./configure --prefix=$INSTALL_DIR
 make
 make install
