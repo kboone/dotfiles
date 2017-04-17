@@ -14,6 +14,7 @@
 #   conda skeleton pypi --noarch-python iminuit
 #   conda build iminuit
 #   conda install --use-local iminuit
+# This fails for sep. To fix, add numpy to the requirements in meta.yaml
 
 
 # Make created files only accessible to me
