@@ -53,7 +53,8 @@ PACKAGES=(
     extinction
     sncosmo
     sep
-    pyephem
+    # not updated to python 3.6 yet... ugh. Omit for now until I need it.
+    # pyephem
 )
 
 function ignore_packages {
