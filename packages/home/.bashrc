@@ -163,6 +163,8 @@ elif [[ -n "$NERSC_HOST" ]]; then
         module swap PrgEnv-pgi PrgEnv-gnu 2>/dev/null
     elif [[ "$NERSC_HOST" == "edison" ]]; then
         module swap PrgEnv-intel PrgEnv-gnu 2>/dev/null
+    elif [[ "$NERSC_HOST" == "cori" ]]; then
+        module swap PrgEnv-intel PrgEnv-gnu 2>/dev/null
     else
         echo "Unknown NERSC host, gcc not loaded!"
     fi
@@ -178,9 +180,6 @@ elif [[ -n "$NERSC_HOST" ]]; then
 
     # Custom NERSC scripts. These are mostly for managing jobs.
     export PATH=$PATH:$HOME/scripts
-
-    # SNFactory settings
-    export PATH=/project/projectdirs/snfactry/rthomas/local/$NERSC_HOST/bin:$PATH
 fi
 
 # Add the custom install directory to my path.
