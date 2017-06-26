@@ -1,3 +1,8 @@
+# Default
+Host *
+    ForwardX11 no
+    ForwardAgent no
+
 Host *.lbl.gov *.nersc.gov
     ForwardAgent yes
     ForwardX11 yes
@@ -58,7 +63,7 @@ Host cc ccin2p3
     ControlMaster auto
     ControlPath ~/.ssh/cm-%r@%h:%p
 
-Host git github
+Host git github github.com
     HostName github.com
     ForwardX11 no
     ForwardAgent no
@@ -76,7 +81,7 @@ Host anoncvs.in2p3.fr
     PasswordAuthentication yes
     PubkeyAuthentication no
 
-Host kcl kylecloud
+Host kcl kylecloud cloud.kyleboone.ca
     HostName cloud.kyleboone.ca
     ForwardAgent yes
     ForwardX11 yes
