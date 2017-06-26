@@ -109,6 +109,24 @@ function link {
             echo "Different matplotlibrc in use. Ignoring"
         fi
     fi
+
+    printf '%-20s' 'ipython'
+    FILEDIR=~/.ipython/profile_default/startup
+    FILE=$FILEDIR/50-ipython_startup.ipy
+    TARGET=$BASE/packages/ipython/ipython_startup.ipy
+    if [[ ! -e $FILE ]]; then
+        # File doesn't exist, our job is easy!
+        echo "Creating symlink."
+        mkdir -p $FILEDIR
+        ln -s $TARGET $FILE
+    else
+        # File exists, deal with it
+        if [[ "$(readlink $FILE)" = "$TARGET" ]]; then
+            echo "Symlink already exists, ok."
+        else
+            echo "Different ipython_startup in use. Ignoring"
+        fi
+    fi
 }
 
 function update {

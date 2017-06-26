@@ -57,7 +57,6 @@ Host cc ccin2p3
     User kboone
     ControlMaster auto
     ControlPath ~/.ssh/cm-%r@%h:%p
-    ControlPersist 10m
 
 Host git github
     HostName github.com
