@@ -1,12 +1,3 @@
-# Default
-Host *
-    ForwardX11 no
-    ForwardAgent no
-
-Host *.lbl.gov *.nersc.gov
-    ForwardAgent yes
-    ForwardX11 yes
-
 Host cor cori
     HostName cori.nersc.gov
     ForwardAgent yes
@@ -86,3 +77,13 @@ Host kcl kylecloud cloud.kyleboone.ca
     ForwardAgent yes
     ForwardX11 yes
     User kyle
+
+# Default for LBNL machines
+Host *.lbl.gov *.nersc.gov
+    ForwardAgent yes
+    ForwardX11 yes
+
+# Default for other machines
+Host *
+    ForwardX11 no
+    ForwardAgent no
