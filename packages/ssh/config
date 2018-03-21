@@ -26,6 +26,7 @@ Host riv rivoli
     HostName rivoli.lbl.gov
     ForwardAgent yes
     ForwardX11 yes
+    LocalForward 9034 localhost:9034
     User kboone
 
 Host zac zacharys
