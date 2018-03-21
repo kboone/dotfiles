@@ -146,7 +146,8 @@ elif [[ "$HOSTNAME" == "julebrus" ]]; then
     export PATH="$HOME/apps/anaconda/bin:$PATH"
     export PATH="$HOME/apps/mathematica/bin:$PATH"
     export PATH="$HOME/apps/scripts:$PATH"
-elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] || [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
+elif [[ "$HOSTNAME" == "zacharys.lbl.gov" ]] ||
+    [[ "$HOSTNAME" == "topdog.lbl.gov" ]]; then
     # Seechange scripts
     source /home/scpdata05/clustersn/local/scripts/setup_seechange.sh
 elif [[ "$HOSTNAME" == "rivoli.lbl.gov" ]]; then
