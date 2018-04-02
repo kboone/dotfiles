@@ -46,7 +46,10 @@ PACKAGES=(
     pandas
     scikit-learn
     iminuit
-    pystan
+    # Latest version breaks on rivoli when installed via conda because it
+    # installs a bunch of weird gcc packages that aren't compatible with the
+    # old gcc on rivoli. Install via pip instead.
+    # pystan
 
     # Astronomy packages
     astropy
