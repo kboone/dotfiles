@@ -48,7 +48,7 @@ Host hy1 hyades1
     User kboone
 
 Host cc ccin2p3
-    HostName ccage.in2p3.fr
+    HostName cca6.in2p3.fr
     ForwardAgent yes
     ForwardX11 yes
     User kboone
