@@ -26,20 +26,20 @@ set nocompatible
 " Load vim-plug which manages our plugins
 call plug#begin()
 
-" General syntax and completion
+" General code browsing/linting
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 
-" For YouCompleteMe, versions later than ~2015 require gcc with C++11 support
-" Use the latest version if we're on a non-ancient computer or a compatible
-" version otherwise.
-let gcc_major_version=system("gcc -dumpversion | sed 's/\\([^.]*\\).*/\\1/'")
-if gcc_major_version > 4
-    Plug 'Valloric/YouCompleteMe'
-else
-    " Plug 'Valloric/YouCompleteMe', { 'commit': '0de1c0c' }
-endif
+" Completion with deoplete
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 
+" Deoplete sources
+Plug 'zchee/deoplete-jedi'
+
+" Python jump to definition
+Plug 'davidhalter/jedi-vim'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -64,7 +64,8 @@ Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'JamshedVesuna/vim-markdown-preview'
 
 " Files/buffers
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf.vim'
 Plug 'fholgado/minibufexpl.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
@@ -285,16 +286,13 @@ let g:tagbar_sort = 0
 autocmd FileType tex nnoremap <silent> <leader>t :LatexTOCToggle<CR>
 
 
-" CtrlP
+" FZF
 " ,f to find and open files very quickly
 " ,F to search recent files
 " ,h to search tags
 " ,b to search buffers
-let g:ctrlp_map = ''
-nnoremap <silent> <leader>f :CtrlPCurWD<CR>
-nnoremap <silent> <leader>F :CtrlPMRUFiles<CR>
-nnoremap <silent> <leader>h :CtrlPTag<CR>
-nnoremap <silent> <leader>b :CtrlPBuffer<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 " Vim-LaTeX
 " set grepprg=grep\ -nH\ $*
@@ -350,18 +348,14 @@ nnoremap <leader>gp :Gpush<CR>
 " ,gu -> git pull
 nnoremap <leader>gu :Gpull<CR>
 
-" vim-tmux-navigator
-" BUG: vim-tmux-navigator uses ctrl+j to move to the next window down. If
-" syntastic was just run and ctrl+j is pressed while vim is hanging, it is
-" interpreted as a line feed character and the display shifts a line. A hacky
-" fix is to force a full redraw whenever ctrl+j is pressed.
-autocmd VimEnter * nnoremap <silent> <c-j> :TmuxNavigateDown<cr>:redraw!<cr>
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+let g:deoplete#sources#jedi#server_timeout = 100
 
-" YouCompleteMe
-" ,d -> go to definition
-nnoremap <leader>d :YcmCompleter GoTo<CR>
-" ,i -> get doc
-nnoremap <leader>i :YcmCompleter GetDoc<CR>
+" Vim-jedi
+" Let deoplete handle completion, but use this for jumping to definitions
+let g:jedi#completions_enabled = 0
 
 " vim-markdown-preview
 " ,lv -> view markdown as HTML

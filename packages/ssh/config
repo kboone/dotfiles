@@ -55,6 +55,14 @@ Host cc ccin2p3
     ControlMaster auto
     ControlPath ~/.ssh/cm-%r@%h:%p
 
+Host cc7
+    HostName cca.in2p3.fr
+    ForwardAgent yes
+    ForwardX11 yes
+    User kboone
+    ControlMaster auto
+    ControlPath ~/.ssh/cm-%r@%h:%p
+
 Host git github github.com
     HostName github.com
     ForwardX11 no
