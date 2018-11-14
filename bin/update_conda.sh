@@ -15,6 +15,22 @@
 #   conda build iminuit
 #   conda install --use-local iminuit
 # This fails for sep. To fix, add numpy to the requirements in meta.yaml
+#
+#
+# JupyterLab setup:
+# For now, I haven't coded this up. The steps to follow are at:
+# https://jupyterlab.readthedocs.io/en/stable/user/extensions.html
+# 
+# conda install jupyterlab
+# conda install ipympl
+# conda install nodejs
+# jupyter labextension install @jupyter-widgets/jupyterlab-manager
+# jupyter labextension install jupyter-matplotlib
+# jupyter labextension install @jupyterlab/toc
+# jupyter labextension install jupyterlab_vim
+
+
+
 
 
 # Make created files only accessible to me

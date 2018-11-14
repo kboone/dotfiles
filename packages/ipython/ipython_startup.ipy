@@ -1,12 +1,18 @@
 import numpy as np
-from astropy.io import fits
 from matplotlib import pyplot as plt
 
 ipython_type = get_ipython().__class__.__name__
 
 if ipython_type == 'ZMQInteractiveShell':
-    %matplotlib notebook
+    %matplotlib ipympl
 elif ipython_type == 'TerminalInteractiveShell':
     %matplotlib
 else:
     raise Exception("Unknown IPython type %s!" % ipython_type)
+
+# On environments with astropy, load the fits reader module that I use all the
+# time.
+try:
+    from astropy.io import fits
+except ModuleNotFoundError:
+    pass
