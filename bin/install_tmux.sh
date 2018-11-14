@@ -14,7 +14,7 @@ set -e
 INSTALL_DIR=$PACKAGE_DIR/tmux
 TEMP_BUILD_DIR=$INSTALL_DIR/build
 
-TMUX_VERSION=2.7
+TMUX_VERSION=2.6
 
 # create our directories
 mkdir -p $INSTALL_DIR $TEMP_BUILD_DIR

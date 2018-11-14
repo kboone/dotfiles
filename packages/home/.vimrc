@@ -47,16 +47,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'kboone/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
-" Dependencies
-Plug 'MarcWeber/vim-addon-mw-utils'       " required by snipmate
-Plug 'tomtom/tlib_vim'                    " required by snipmate
-
 " Text editing
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
-Plug 'garbas/vim-snipmate'
-Plug 'honza/vim-snippets'
 
 " Filetype specific plugins
 Plug 'hynek/vim-python-pep8-indent'
@@ -353,9 +347,14 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 let g:deoplete#sources#jedi#server_timeout = 100
 
-" Vim-jedi
+" jedi-vim
 " Let deoplete handle completion, but use this for jumping to definitions
 let g:jedi#completions_enabled = 0
+let g:jedi#usages_command = "<leader>u"
+let g:jedi#rename_command = "<leader>e"
+let g:jedi#smart_auto_mappings = 0
+
+
 
 " vim-markdown-preview
 " ,lv -> view markdown as HTML
