@@ -30,7 +30,9 @@ PACKAGES=(
     ipython
     conda
     conda-build
+    cython
     jupyter
+    jupyterlab
     argcomplete
     beautifulsoup4
     pip
