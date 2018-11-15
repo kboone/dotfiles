@@ -47,8 +47,6 @@ PACKAGES=(
     conda
     conda-build
     cython
-    jupyter
-    jupyterlab
     argcomplete
     beautifulsoup4
     pip
@@ -69,6 +67,12 @@ PACKAGES=(
     # installs a bunch of weird gcc packages that aren't compatible with the
     # old gcc on rivoli. Install via pip instead.
     # pystan
+
+    # Jupyter and dependencies
+    jupyter
+    jupyterlab
+    ipympl
+    nodejs
 
     # Astronomy packages
     astropy
