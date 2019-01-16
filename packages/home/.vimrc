@@ -56,6 +56,7 @@ Plug 'godlygeek/tabular'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'maverickg/stan.vim'
 
 " Files/buffers
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
