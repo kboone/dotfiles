@@ -15,22 +15,6 @@
 #   conda build iminuit
 #   conda install --use-local iminuit
 # This fails for sep. To fix, add numpy to the requirements in meta.yaml
-#
-#
-# JupyterLab setup:
-# For now, I haven't coded this up. The steps to follow are at:
-# https://jupyterlab.readthedocs.io/en/stable/user/extensions.html
-# 
-# conda install jupyterlab
-# conda install ipympl
-# conda install nodejs
-# jupyter labextension install @jupyter-widgets/jupyterlab-manager
-# jupyter labextension install jupyter-matplotlib
-# jupyter labextension install @jupyterlab/toc
-# jupyter labextension install jupyterlab_vim
-
-
-
 
 
 # Make created files only accessible to me
@@ -63,6 +47,9 @@ PACKAGES=(
     pandas
     scikit-learn
     iminuit
+    lightgbm
+    hdf5
+    pytables
     # Latest version breaks on rivoli when installed via conda because it
     # installs a bunch of weird gcc packages that aren't compatible with the
     # old gcc on rivoli. Install via pip instead.
@@ -77,10 +64,22 @@ PACKAGES=(
     # Astronomy packages
     astropy
     extinction
-    sncosmo
+    # not updated to python 3.7 yet... Omit for now until I need it.
+    # sncosmo
     sep
-    # not updated to python 3.6 yet... ugh. Omit for now until I need it.
-    # pyephem
+    george
+
+    # By default, miniconda installs a really old version of libuuid which vim
+    # doesn't like. Force it to get a newer one from conda-forge.
+    "libuuid>=2"
+)
+
+# List of JupyterLab packages to install
+JUPYTERLAB_PACKAGES=(
+    @jupyter-widgets/jupyterlab-manager
+    jupyter-matplotlib
+    @jupyterlab/toc
+    jupyterlab_vim
 )
 
 function ignore_packages {
@@ -122,4 +121,18 @@ ignore_packages 'local' 'local$'
 ignore_packages 'pip' '<pip>$'
 
 # Update/install all packages that I want.
-conda install ${PACKAGES[@]}
+conda install "${PACKAGES[@]}"
+
+# Jupyterlab packages
+
+# Figure out if any new packages need to be installed and install them.
+JUPYTERLAB_INSTALLED=$(jupyter labextension list 2>&1)
+for package in ${JUPYTERLAB_PACKAGES[@]}; do
+    if [[ $JUPYTERLAB_INSTALLED != *"$package"* ]]; then
+        jupyter labextension install "${JUPYTERLAB_PACKAGES[@]}"
+        echo $package;
+    fi
+done
+
+# Update the previously installed jupyterlab packages
+jupyter labextension update --all
