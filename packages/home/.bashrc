@@ -187,8 +187,17 @@ fi
 export PATH=$KYLE_INSTALL_DIR/bin:$PATH
 
 # Add any custom package directories to my path.
-for i in $(shopt -s nullglob; echo $PACKAGE_DIR/*/bin); do
-    export PATH=$i:$PATH
+for package in $(shopt -s nullglob; echo $PACKAGE_DIR/*); do
+    if [[ $package == *"conda"* ]]; then
+        # conda needs special treatment
+        source $package/etc/profile.d/conda.sh
+        CONDA_CHANGEPS1=false conda activate base
+    fi
+
+    # Standard approach: add the bin folder to the path if it exists.
+    if [ -d "$package/bin" ]; then
+        export PATH=$package/bin:$PATH
+    fi
 done
 
 # Optional external bashrc file for local unversioned things
