@@ -18,7 +18,7 @@
 
 
 # Make created files only accessible to me
-umask 077
+umask 027
 
 # Exit on error
 set -e

@@ -6,7 +6,7 @@
 # source for cmake is massive.
 
 # only accessible to me
-umask 077
+umask 027
 
 # exit on error
 set -e

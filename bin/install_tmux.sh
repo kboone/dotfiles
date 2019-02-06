@@ -6,7 +6,7 @@
 # and ncurses manually to get recent versions.
 
 # only accessible to me
-umask 077
+umask 027
 
 # exit on error
 set -e

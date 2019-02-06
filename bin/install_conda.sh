@@ -8,7 +8,7 @@ PYTHON_VERSION=3
 CONDA_VERSION=latest
 
 # only accessible to me
-umask 077
+umask 027
 
 # exit on error
 set -e

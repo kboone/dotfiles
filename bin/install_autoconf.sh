@@ -4,7 +4,7 @@
 # autoconf will be installed in $PACKAGE_DIR/autoconf.
 
 # only accessible to me
-umask 077
+umask 027
 
 # exit on error
 set -e

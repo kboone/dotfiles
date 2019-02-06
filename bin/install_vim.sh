@@ -9,7 +9,7 @@
 # It's assumed that git and a C/C++ compiler are installed.
 
 # only accessible to me
-umask 077
+umask 027
 
 # exit on error
 set -e
