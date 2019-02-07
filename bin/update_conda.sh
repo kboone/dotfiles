@@ -38,7 +38,7 @@ PACKAGES=(
     # General coding packages
     flake8
     tqdm
-    neovim
+    pynvim
 
     # Data science packages
     numpy
