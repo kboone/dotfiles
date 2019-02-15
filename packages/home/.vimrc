@@ -39,7 +39,7 @@ Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'zchee/deoplete-jedi'
 
 " Python jump to definition
-Plug 'davidhalter/jedi-vim'
+" Plug 'davidhalter/jedi-vim'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -350,10 +350,10 @@ let g:deoplete#sources#jedi#server_timeout = 100
 
 " jedi-vim
 " Let deoplete handle completion, but use this for jumping to definitions
-let g:jedi#completions_enabled = 0
-let g:jedi#usages_command = "<leader>u"
-let g:jedi#rename_command = "<leader>e"
-let g:jedi#smart_auto_mappings = 0
+" let g:jedi#completions_enabled = 0
+" let g:jedi#usages_command = "<leader>u"
+" let g:jedi#rename_command = "<leader>e"
+" let g:jedi#smart_auto_mappings = 0
 
 
 
@@ -367,3 +367,9 @@ if executable("grip") == 1
     let vim_markdown_preview_github=1
 endif
 let vim_markdown_preview_use_xdg_open=1
+
+let g:ale_linters = {
+    \'python': ['pyls'],
+\}
+
+" let g:ale_completion_enabled=1
