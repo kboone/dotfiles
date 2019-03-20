@@ -64,8 +64,7 @@ PACKAGES=(
     # Astronomy packages
     astropy
     extinction
-    # not updated to python 3.7 yet... Omit for now until I need it.
-    # sncosmo
+    sncosmo
     sep
     george
 
