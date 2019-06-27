@@ -13,7 +13,7 @@ function link {
     echo "Installing"
     cd $BASE/packages
     cd home
-    for FILE in `ls -a | grep "^\.[^.]"`; do
+    for FILE in `ls -A`; do
         printf '%-20s' $FILE
         TARGET=$BASE/packages/home/$FILE
         if [[ ! -e ~/$FILE ]]; then
@@ -82,6 +82,7 @@ function link {
     FILE=~/.ssh/config
     TARGET=$BASE/packages/ssh/config
     if [[ ! -e $FILE ]]; then
+
         # File doesn't exist, our job is easy!
         echo "Creating symlink."
         ln -s $TARGET $FILE
