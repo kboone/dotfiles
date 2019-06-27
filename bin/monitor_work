@@ -1,0 +1,15 @@
+#!/bin/bash
+xrandr -s 0
+
+xrandr --fb 2560x2880 \
+    --output HDMI-1 \
+        --primary \
+        --mode 1920x1200 \
+        --pos 0x0 \
+        --panning 0x0 \
+        --scale-from 2560x1600 \
+    --output eDP-1 \
+        --mode 1920x1080 \
+        --pos 320x1600 \
+        --panning 0x0 \
+        --scale 1x1 \
