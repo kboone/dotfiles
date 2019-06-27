@@ -96,11 +96,13 @@ function link {
     fi
 
     printf '%-20s' 'matplotlibrc'
-    FILE=~/.config/matplotlib/matplotlibrc
+    FILEDIR=~/.config/matplotlib/
+    FILE=$FILEDIR/matplotlibrc
     TARGET=$BASE/packages/matplotlib/matplotlibrc
     if [[ ! -e $FILE ]]; then
         # File doesn't exist, our job is easy!
         echo "Creating symlink."
+        mkdir -p $FILEDIR
         ln -s $TARGET $FILE
     else
         # File exists, deal with it
