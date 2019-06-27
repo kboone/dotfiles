@@ -50,10 +50,7 @@ PACKAGES=(
     lightgbm
     hdf5
     pytables
-    # Latest version breaks on rivoli when installed via conda because it
-    # installs a bunch of weird gcc packages that aren't compatible with the
-    # old gcc on rivoli. Install via pip instead.
-    # pystan
+    pystan
 
     # Jupyter and dependencies
     jupyter
@@ -64,8 +61,7 @@ PACKAGES=(
     # Astronomy packages
     astropy
     extinction
-    # not updated to python 3.7 yet... Omit for now until I need it.
-    # sncosmo
+    sncosmo
     sep
     george
 
