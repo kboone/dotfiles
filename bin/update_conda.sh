@@ -45,15 +45,21 @@ PACKAGES=(
     scipy
     matplotlib
     pandas
-    scikit-learn
     iminuit
-    lightgbm
-    hdf5
     pytables
     # Latest version breaks on rivoli when installed via conda because it
     # installs a bunch of weird gcc packages that aren't compatible with the
     # old gcc on rivoli. Install via pip instead.
     # pystan
+
+    # Machine learning packages
+    scikit-learn
+    lightgbm
+
+    # Documentation
+    sphinx
+    sphinx_rtd_theme
+    numpydoc
 
     # Jupyter and dependencies
     jupyter
