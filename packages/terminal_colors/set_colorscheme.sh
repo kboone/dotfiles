@@ -9,8 +9,8 @@ if [ "${TERM%%-*}" = 'linux' ]; then
     return 2>/dev/null || exit 0
 fi
 
-base03="22/26/2d"
-base02="2c/31/38"
+base03="18/1c/22"
+base02="22/26/2d"
 base01="64/6b/73"
 base00="71/78/7f"
 base0="8d/91/94"

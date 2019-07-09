@@ -183,8 +183,10 @@ elif [[ -n "$NERSC_HOST" ]]; then
     export PATH=$PATH:$HOME/scripts
 fi
 
-# Add the custom install directory to my path.
-export PATH=$KYLE_INSTALL_DIR/bin:$PATH
+# Add the scripts directory to my path along with the machine-specific scripts
+# folder.
+export PATH=$HOME/scripts/common:$PATH
+export PATH=$HOME/scripts/$HOSTNAME:$PATH
 
 # Add any custom package directories to my path.
 for package in $(shopt -s nullglob; echo $PACKAGE_DIR/*); do

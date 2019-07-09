@@ -13,8 +13,11 @@
 # Afterwards, dotfiles is added as a bash function.
 
 ### Install and update new packages as necessary
-    dotfiles install vim
     dotfiles install conda
+    . ~/.bashrc
+    dotfiles install vim
+    . ~/.bashrc
+    dotfiles update conda
     dotfiles update vim
 
 ### Update if a submodule changed
