@@ -2,8 +2,8 @@ from skimage import color
 import numpy as np
 
 colors = [
-     ("base03",  (15., +00., -05.)),
-     ("base02",  (20., +00., -05.)),
+     ("base03",  (10., +00., -05.)),
+     ("base02",  (15., +00., -05.)),
      ("base01",  (45., -01., -05.)),
      ("base00",  (50., -01., -05.)),
      ("base0",   (60., -01., -02.)),
@@ -49,4 +49,4 @@ for line in template:
     out_str += (next_line)
 
 out_file = open("set_colorscheme.sh", "w")
-print >>out_file, out_str
+print(out_str, file=out_file)
