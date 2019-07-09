@@ -1,3 +1,8 @@
+try:
+    import lightgbm
+except ImportError:
+    pass
+
 import numpy as np
 from matplotlib import pyplot as plt
 
@@ -14,5 +19,5 @@ else:
 # time.
 try:
     from astropy.io import fits
-except ModuleNotFoundError:
+except ImportError:
     pass
