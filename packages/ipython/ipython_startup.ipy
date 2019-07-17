@@ -9,9 +9,9 @@ from matplotlib import pyplot as plt
 ipython_type = get_ipython().__class__.__name__
 
 if ipython_type == 'ZMQInteractiveShell':
-    %matplotlib ipympl
+    %matplotlib widget
 elif ipython_type == 'TerminalInteractiveShell':
-    %matplotlib
+    %matplotlib qt5
 else:
     raise Exception("Unknown IPython type %s!" % ipython_type)
 
