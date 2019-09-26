@@ -1,0 +1,177 @@
+#!/usr/bin/env python
+import argparse
+import subprocess
+
+
+def get_monitor_info():
+    """Return the name and preferred mode for each monitor"""
+    monitors = {}
+
+    xrandr_output = subprocess.check_output(["xrandr"]).decode("utf-8")
+
+    next_monitor = None
+
+    for line in xrandr_output.splitlines():
+        if " connected" in line:
+            next_monitor = line.split()[0]
+        elif "disconnected" in line:
+            next_monitor = None
+        elif "+" in line:
+            if next_monitor is not None:
+                # Have a monitor and resolution match, save it.
+                resolution = [int(i) for i in line.split()[0].split('x')]
+                monitors[next_monitor] = resolution
+
+    return monitors
+
+
+def parse_laptop_external_monitor(monitors, laptop_monitor):
+    """For a laptop plus external monitor setup, figure out which is which.
+
+    Returns the name of the external monitor.
+    """
+    other_monitor = None
+    for monitor in monitors:
+        if monitor == laptop_monitor:
+            continue
+        elif other_monitor is not None:
+            raise Exception("Found 2 monitors (%s), but neither is the "
+                            "laptop monitor?" % (monitors, laptop_monitor))
+        other_monitor = monitor
+
+    return other_monitor
+
+
+def xstr(dimensions):
+    """Convert a tuple of dimensions into a string used for xrandr"""
+    return f"{dimensions[0]}x{dimensions[1]}"
+
+
+def set_mode_scale(monitors, laptop_monitor, scale):
+    """Position the monitors so that the laptop monitor is below an
+    external monitor, and scale the external monitor by a given factor.
+    """
+    if len(monitors) != 2:
+        raise Exception("Mode scale only implemented for 2 monitors!")
+
+    other_monitor = parse_laptop_external_monitor(monitors, laptop_monitor)
+
+    laptop_mode = monitors[laptop_monitor]
+    other_mode = monitors[other_monitor]
+
+    other_scale = [round(i*scale) for i in other_mode]
+    framebuffer = (
+        other_scale[0],
+        laptop_mode[1] + other_scale[1]
+    )
+    laptop_position = (
+        (other_scale[0] - laptop_mode[0]) // 2,
+        other_scale[1],
+    )
+
+    xrandr_command = [
+        "xrandr",
+        "--fb", xstr(framebuffer),
+        "--output", f"{other_monitor}",
+            "--primary",
+            "--mode", xstr(other_mode),
+            "--pos", "0x0",
+            "--panning", "0x0",
+            "--scale-from", xstr(other_scale),
+        "--output", f"{laptop_monitor}",
+            "--mode", xstr(laptop_mode),
+            "--pos", xstr(laptop_position),
+            "--panning", "0x0",
+            "--scale", "1x1",
+    ]
+
+    subprocess.call(xrandr_command)
+
+
+def set_mode_noscale(monitors, laptop_monitor):
+    """Position the monitors so that the laptop monitor is below an
+    external monitor without scaling the external monitor.
+    """
+    if len(monitors) != 2:
+        raise Exception("Mode noscale only implemented for 2 monitors!")
+
+    other_monitor = parse_laptop_external_monitor(monitors, laptop_monitor)
+
+    laptop_mode = monitors[laptop_monitor]
+    other_mode = monitors[other_monitor]
+
+    framebuffer = (
+        other_mode[0],
+        laptop_mode[1] + other_mode[1]
+    )
+    laptop_position = (
+        (other_mode[0] - laptop_mode[0]) // 2,
+        other_mode[1],
+    )
+
+    xrandr_command = [
+        "xrandr",
+        "--fb", xstr(framebuffer),
+        "--output", f"{other_monitor}",
+            "--primary",
+            "--mode", xstr(other_mode),
+            "--pos", "0x0",
+            "--panning", "0x0",
+            "--scale", "1x1",
+        "--output", f"{laptop_monitor}",
+            "--mode", xstr(laptop_mode),
+            "--pos", xstr(laptop_position),
+            "--panning", "0x0",
+            "--scale", "1x1",
+    ]
+
+    subprocess.call(xrandr_command)
+
+
+def set_mode_laptop(monitors, laptop_monitor):
+    """Position the monitors so that the laptop monitor is below an
+    external monitor without scaling the external monitor.
+    """
+    laptop_mode = monitors[laptop_monitor]
+
+    xrandr_command = [
+        "xrandr",
+        "--fb", xstr(laptop_mode),
+        "--output", f"{laptop_monitor}",
+            "--primary",
+            "--mode", xstr(laptop_mode),
+            "--pos", "0x0",
+            "--panning", "0x0",
+            "--scale", "1x1",
+    ]
+
+    subprocess.call(xrandr_command)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("mode")
+
+    parser.add_argument("--laptop_monitor", default="eDP-1",
+                        help="Built-in monitor name")
+
+    parser.add_argument("--scale", default=4/3., type=float,
+                        help="Scale to apply when scaling the monitor.")
+
+    args = parser.parse_args()
+
+    monitors = get_monitor_info()
+
+    if args.mode == "scale":
+        set_mode_scale(monitors, args.laptop_monitor, args.scale)
+    elif args.mode == "noscale":
+        set_mode_noscale(monitors, args.laptop_monitor)
+    elif args.mode == "laptop":
+        set_mode_laptop(monitors, args.laptop_monitor)
+    elif args.mode == "fix":
+        # Choose between laptop and scale mode depending on how many monitors
+        # are attached.
+        if len(monitors) == 1:
+            set_mode_laptop(monitors, args.laptop_monitor)
+        else:
+            set_mode_scale(monitors, args.laptop_monitor, args.scale)

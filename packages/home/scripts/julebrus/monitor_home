@@ -1,4 +1,0 @@
-#!/bin/bash
-xrandr --fb 2560x2520 \
-    --output HDMI-1 --auto --scale 1.33333333333x1.33333333333 --pos 0x0 --mode 1920x1080 --primary \
-    --output eDP-1 --auto --scale 1x1 --pos 320x1440 --mode 1920x1080
