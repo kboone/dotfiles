@@ -31,6 +31,8 @@ cd vim
 # Vim is annoying and puts the system python libs before the detected ones. By
 # pointing it to the right ones with LDFLAGS, we can override that behaviour.
 # We also need to set vi_cv_path_python so that vim picks up the conda python.
+# 2019/09/27: Remove perl support. It is broken on epyc, and I don't think that
+# I ever use it.
 CONDA_LIB_PATH=$(python3-config --prefix)/lib/
 LDFLAGS="-L$CONDA_LIB_PATH -Wl,-rpath,$CONDA_LIB_PATH" \
 vi_cv_path_python3=$VIM_PYTHON \
@@ -38,7 +40,6 @@ vi_cv_path_python3=$VIM_PYTHON \
             --enable-multibyte \
             --enable-gui=gtk2 \
             --enable-luainterp \
-            --enable-perlinterp \
             --enable-rubyinterp \
             --enable-python3interp \
             --with-python3-config-dir=$(python3-config --configdir) \
