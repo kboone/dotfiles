@@ -5,6 +5,9 @@
 # It's assumed that wget and a C/C++ compiler are installed. We build libevent
 # and ncurses manually to get recent versions.
 
+echo "tmux can be installed via conda-forge now. Don't use this!"
+exit 1
+
 # only accessible to me
 umask 027
 
