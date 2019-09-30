@@ -36,6 +36,7 @@ PACKAGES=(
     pip
 
     # General coding packages
+    tmux
     flake8
     tqdm
     pynvim
