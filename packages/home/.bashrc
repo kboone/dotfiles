@@ -194,10 +194,8 @@ for package in $(shopt -s nullglob; echo $PACKAGE_DIR/*); do
         # conda needs special treatment
         source $package/etc/profile.d/conda.sh
         CONDA_CHANGEPS1=false conda activate base
-    fi
-
-    # Standard approach: add the bin folder to the path if it exists.
-    if [ -d "$package/bin" ]; then
+    elif [ -d "$package/bin" ]; then
+        # Standard approach: add the bin folder to the path if it exists.
         export PATH=$package/bin:$PATH
     fi
 done
