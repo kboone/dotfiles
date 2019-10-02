@@ -8,6 +8,9 @@
 # conda create --name vim anaconda python=2
 # It's assumed that git and a C/C++ compiler are installed.
 
+echo "vim can be installed via conda-forge now. Don't use this!"
+exit 1
+
 # only accessible to me
 umask 027
 
