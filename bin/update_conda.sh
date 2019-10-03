@@ -37,6 +37,7 @@ PACKAGES=(
 
     # General coding packages
     tmux
+    vim
     flake8
     tqdm
     pynvim
