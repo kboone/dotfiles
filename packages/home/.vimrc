@@ -387,3 +387,54 @@ nnoremap <leader>i :ALEHover<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
 
 let g:ale_fix_on_save=1
+
+" ALE pyls configuration. I only really want pyflakes and jedi enabled.
+let g:ale_python_pyls_config = {
+\     "pyls": {
+\       "plugins": {
+\           "jedi_completion": {
+\               "enabled": v:true
+\           },
+\           "jedi_hover": {
+\               "enabled": v:true
+\           },
+\           "jedi_references": {
+\               "enabled": v:true
+\           },
+\           "jedi_signature_help": {
+\               "enabled": v:true
+\           },
+\           "jedi_symbols": {
+\               "enabled": v:true,
+\               "all_scopes": v:true
+\           },
+\           "mccabe": {
+\               "enabled": v:false,
+\               "threshold": 15
+\           },
+\           "preload": {
+\               "enabled": v:false
+\           },
+\           "pycodestyle": {
+\               "enabled": v:false
+\           },
+\           "pydocstyle": {
+\               "enabled": v:false,
+\               "match": "(?!test_).*\\.py",
+\               "matchDir": "[^\\.].*"
+\           },
+\           "pyflakes": {
+\               "enabled": v:true
+\           },
+\           "pylint": {
+\               "enabled": v:false
+\           },
+\           "rope_completion": {
+\               "enabled": v:false
+\           },
+\           "yapf": {
+\               "enabled": v:false
+\           },
+\       },
+\   },
+\}
