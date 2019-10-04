@@ -25,7 +25,7 @@ set -e
 
 # List of packages to install
 PACKAGES=(
-    # Core packages
+    # Core python packages
     python
     ipython
     conda
@@ -35,12 +35,13 @@ PACKAGES=(
     beautifulsoup4
     pip
 
-    # General coding packages
+    # Coding packages
+    black
+    flake8
+    pynvim
+    python-language-server
     tmux
     vim
-    flake8
-    tqdm
-    pynvim
 
     # Data science packages
     numpy
@@ -50,6 +51,7 @@ PACKAGES=(
     iminuit
     pytables
     pystan
+    tqdm
 
     # Machine learning packages
     scikit-learn
