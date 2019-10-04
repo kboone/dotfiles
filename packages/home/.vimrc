@@ -242,11 +242,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
 
-" ,ct: Build ctags
-" We omit tex files... some of the ones on my system are breaking the ctags
-" because the names are too long. I never used ctags for tex files anyay.
-nnoremap <silent> <leader>ct :!ctags -R --exclude=*.tex<CR><CR>
-
 " disabled, was ,p: Spell check
 " nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
 
@@ -377,6 +372,8 @@ let g:ale_fixers = {
 
 nnoremap <leader>i :ALEHover<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
+nnoremap <C-]> :ALENextWrap<CR>
+nnoremap <C-[> :ALEPreviousWrap<CR>
 
 " Run ALE fixers whenever files are saved.
 let g:ale_fix_on_save=1
