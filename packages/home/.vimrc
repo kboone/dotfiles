@@ -35,12 +35,6 @@ Plug 'Shougo/deoplete.nvim'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 
-" Deoplete sources
-" Plug 'zchee/deoplete-jedi'
-
-" Python jump to definition
-" Plug 'davidhalter/jedi-vim'
-
 " Appearance
 Plug 'kboone/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
@@ -353,14 +347,6 @@ nnoremap <leader>gu :Gpull<CR>
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" let g:deoplete#sources#jedi#server_timeout = 100
-
-" jedi-vim
-" Let deoplete handle completion, but use this for jumping to definitions
-" let g:jedi#completions_enabled = 0
-" let g:jedi#usages_command = "<leader>u"
-" let g:jedi#rename_command = "<leader>e"
-" let g:jedi#smart_auto_mappings = 0
 
 " vim-markdown-preview
 " ,lv -> view markdown as HTML
@@ -386,6 +372,7 @@ let g:ale_fixers = {
 nnoremap <leader>i :ALEHover<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
 
+" Run ALE fixers whenever files are saved.
 let g:ale_fix_on_save=1
 
 " ALE pyls configuration. I only really want pyflakes and jedi enabled.
