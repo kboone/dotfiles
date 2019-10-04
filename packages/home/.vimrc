@@ -57,7 +57,6 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'maverickg/stan.vim'
-Plug 'psf/black'
 
 " Files/buffers
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -374,8 +373,17 @@ if executable("grip") == 1
 endif
 let vim_markdown_preview_use_xdg_open=1
 
+" ALE
+" Need to install python-language-server for this to work.
 let g:ale_linters = {
     \'python': ['pyls'],
 \}
 
-" let g:ale_completion_enabled=1
+let g:ale_fixers = {
+    \'python': ['black'],
+\}
+
+nnoremap <leader>i :ALEHover<CR>
+nnoremap <leader>d :ALEGoToDefinition<CR>
+
+let g:ale_fix_on_save=1
