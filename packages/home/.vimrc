@@ -85,7 +85,7 @@ set expandtab
 set tabstop=8
 set softtabstop=4
 set shiftwidth=4
-set textwidth=79
+set textwidth=88
 
 " Enable filetype and syntax stuff
 filetype plugin indent on
@@ -193,10 +193,10 @@ if v:version > 704 || v:version == 704 && has("patch338")
     set breakindent
 endif
 
-" Highlight 80th column so that we keep everything within 79. Note, only in 7.3
+" Highlight 89th column so that we keep everything within 88. Note, only in 7.3
 " or higher
 if version > 703
-    set colorcolumn=80
+    set colorcolumn=89
 endif
 
 " Host dependent stuff
@@ -241,11 +241,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
-
-" ,ct: Build ctags
-" We omit tex files... some of the ones on my system are breaking the ctags
-" because the names are too long. I never used ctags for tex files anyay.
-nnoremap <silent> <leader>ct :!ctags -R --exclude=*.tex<CR><CR>
 
 " disabled, was ,p: Spell check
 " nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
@@ -377,6 +372,8 @@ let g:ale_fixers = {
 
 nnoremap <leader>i :ALEHover<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
+nnoremap <C-]> :ALENextWrap<CR>
+nnoremap <C-[> :ALEPreviousWrap<CR>
 
 " Run ALE fixers whenever files are saved.
 let g:ale_fix_on_save=1
