@@ -365,15 +365,15 @@ let vim_markdown_preview_use_xdg_open=1
 let g:ale_linters = {
     \'python': ['pyls'],
 \}
-
+;
 let g:ale_fixers = {
     \'python': ['black'],
 \}
 
 nnoremap <leader>i :ALEHover<CR>
 nnoremap <leader>d :ALEGoToDefinition<CR>
-nnoremap <C-]> :ALENextWrap<CR>
-nnoremap <C-[> :ALEPreviousWrap<CR>
+nnoremap <leader>q :ALENextWrap<CR>
+nnoremap <leader>w :ALEPreviousWrap<CR>
 
 " Run ALE fixers whenever files are saved.
 let g:ale_fix_on_save=1
