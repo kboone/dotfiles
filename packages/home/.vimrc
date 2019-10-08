@@ -365,7 +365,7 @@ let vim_markdown_preview_use_xdg_open=1
 let g:ale_linters = {
     \'python': ['pyls'],
 \}
-;
+
 let g:ale_fixers = {
     \'python': ['black'],
 \}
