@@ -381,6 +381,10 @@ nnoremap <leader>w :ALEPreviousWrap<CR>
 " Run ALE fixers whenever files are saved.
 let g:ale_fix_on_save=1
 
+" Don't search for ALE virtualenvs. I don't use these, and it is very slow on networked
+" filesystems.
+let g:ale_virtualenv_dir_names = []
+
 " ALE pyls configuration. I only really want pyflakes and jedi enabled.
 let g:ale_python_pyls_config = {
 \     "pyls": {
