@@ -40,9 +40,11 @@ endif
 " Load vim-plug which manages our plugins
 call plug#begin()
 
-" General code browsing/linting
-Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale'
+" Language client support
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 
 " Completion with deoplete
 if has('nvim')
@@ -52,6 +54,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+
+" General code browsing
+Plug 'majutsushi/tagbar'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -274,6 +279,30 @@ nnoremap <silent> <C-P> :bprev<CR>
 " ,r: Force a redraw on the screen.
 nnoremap <silent> <leader>r :redraw!<CR>
 
+" wrap :cnext/:cprevious and :lnext/:lprevious
+function! WrapCommand(direction, prefix)
+    if a:direction == "up"
+        try
+            execute a:prefix . "previous"
+        catch /^Vim\%((\a\+)\)\=:E553/
+            execute a:prefix . "last"
+        catch /^Vim\%((\a\+)\)\=:E\%(776\|42\):/
+        endtry
+    elseif a:direction == "down"
+        try
+            execute a:prefix . "next"
+        catch /^Vim\%((\a\+)\)\=:E553/
+            execute a:prefix . "first"
+        catch /^Vim\%((\a\+)\)\=:E\%(776\|42\):/
+        endtry
+    endif
+endfunction
+
+" ,q and ,w: previous and next location list items (with wrapping).
+" LanguageClient-neovim fills the quickfix list with linting warnings/errors
+" Switching c to l in WrapCommand will wrap the location list.
+nnoremap <silent> <leader>q :call WrapCommand('up', 'c')<CR>
+nnoremap <silent> <leader>w :call WrapCommand('down', 'c')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
@@ -371,75 +400,52 @@ if executable("grip") == 1
 endif
 let vim_markdown_preview_use_xdg_open=1
 
-" ALE
-" Need to install python-language-server for this to work.
-let g:ale_linters = {
-    \'python': ['pyls'],
-\}
+" LanguageClient settings
+let g:LanguageClient_settingsPath = "~/.dotfiles/packages/languageclient/settings.json"
+let g:LanguageClient_useVirtualText = 0
 
-let g:ale_fixers = {
-    \'python': ['black'],
-\}
+let g:LanguageClient_serverCommands = {
+    \ 'python': ['pyls'],
+    \ }
 
-nnoremap <leader>i :ALEHover<CR>
-nnoremap <leader>d :ALEGoToDefinition<CR>
-nnoremap <leader>q :ALENextWrap<CR>
-nnoremap <leader>w :ALEPreviousWrap<CR>
+let g:LanguageClient_diagnosticsDisplay = {
+  \       '1': {
+  \           'name': 'Error',
+  \           'texthl': 'ALEError',
+  \           'signText': '>>',
+  \           'signTexthl': 'ALEErrorSign',
+  \           'virtualTexthl': 'Error',
+  \       },
+  \       '2': {
+  \           'name': 'Warning',
+  \           'texthl': 'ALEWarning',
+  \           'signText': '--',
+  \           'signTexthl': 'ALEWarningSign',
+  \           'virtualTexthl': 'Todo',
+  \       },
+  \       '3': {
+  \           'name': 'Information',
+  \           'texthl': 'ALEInfo',
+  \           'signText': '..',
+  \           'signTexthl': 'ALEInfoSign',
+  \           'virtualTexthl': 'Todo',
+  \       },
+  \       '4': {
+  \           'name': 'Hint',
+  \           'texthl': 'ALEInfo',
+  \           'signText': '..',
+  \           'signTexthl': 'ALEInfoSign',
+  \           'virtualTexthl': 'Todo',
+  \       },
+  \  }
 
-" Run ALE fixers whenever files are saved.
-let g:ale_fix_on_save=1
+" LanguageClient doesn't have great colors by default. Copy what ALE does.
+highlight link ALEErrorSign error
+highlight link ALEWarningSign todo
+highlight link ALEInfoSign ALEWarningSign
+highlight link ALEError SpellBad
+highlight link ALEWarning SpellCap
+highlight link ALEInfo ALEWarning
 
-" Don't search for ALE virtualenvs. I don't use these, and it is very slow on networked
-" filesystems.
-let g:ale_virtualenv_dir_names = []
-
-" ALE pyls configuration. I only really want pyflakes and jedi enabled.
-let g:ale_python_pyls_config = {
-\     "pyls": {
-\       "plugins": {
-\           "jedi_completion": {
-\               "enabled": v:true
-\           },
-\           "jedi_hover": {
-\               "enabled": v:true
-\           },
-\           "jedi_references": {
-\               "enabled": v:true
-\           },
-\           "jedi_signature_help": {
-\               "enabled": v:true
-\           },
-\           "jedi_symbols": {
-\               "enabled": v:true,
-\               "all_scopes": v:true
-\           },
-\           "mccabe": {
-\               "enabled": v:false,
-\               "threshold": 15
-\           },
-\           "preload": {
-\               "enabled": v:false
-\           },
-\           "pycodestyle": {
-\               "enabled": v:false
-\           },
-\           "pydocstyle": {
-\               "enabled": v:false,
-\               "match": "(?!test_).*\\.py",
-\               "matchDir": "[^\\.].*"
-\           },
-\           "pyflakes": {
-\               "enabled": v:true
-\           },
-\           "pylint": {
-\               "enabled": v:false
-\           },
-\           "rope_completion": {
-\               "enabled": v:false
-\           },
-\           "yapf": {
-\               "enabled": v:false
-\           },
-\       },
-\   },
-\}
+nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
+nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
