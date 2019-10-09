@@ -130,6 +130,24 @@ function link {
             echo "Different ipython_startup in use. Ignoring"
         fi
     fi
+
+    printf '%-20s' 'neovim'
+    FILEDIR=~/.config/nvim/
+    FILE=$FILEDIR/init.vim
+    TARGET=$BASE/packages/neovim/init.vim
+    if [[ ! -e $FILE ]]; then
+        # File doesn't exist, our job is easy!
+        echo "Creating symlink."
+        mkdir -p $FILEDIR
+        ln -s $TARGET $FILE
+    else
+        # File exists, deal with it
+        if [[ "$(readlink $FILE)" = "$TARGET" ]]; then
+            echo "Symlink already exists, ok."
+        else
+            echo "Different neovim init.vim in use. Ignoring"
+        fi
+    fi
 }
 
 function update {
