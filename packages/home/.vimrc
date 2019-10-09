@@ -37,9 +37,13 @@ Plug 'majutsushi/tagbar'
 Plug 'dense-analysis/ale'
 
 " Completion with deoplete
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -249,9 +253,8 @@ nnoremap <silent> <leader>n :nohl<CR>
 nnoremap j gj
 nnoremap k gk
 
-" ,y and ,p: yank and paste from x clipboard
-nnoremap <silent> <leader>y "+y
-nnoremap <silent> <leader>p "+p
+" Yank and paste to the X-windows primary selection
+set clipboard=unnamed
 
 " ,z: close the preview window
 nnoremap <silent> <leader>z :pclose<CR>
