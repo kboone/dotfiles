@@ -70,10 +70,11 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 
 " Filetype specific plugins
-Plug 'hynek/vim-python-pep8-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'maverickg/stan.vim'
+Plug 'psf/black'
 
 " Files/buffers
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -439,13 +440,8 @@ let g:LanguageClient_diagnosticsDisplay = {
   \       },
   \  }
 
-" LanguageClient doesn't have great colors by default. Copy what ALE does.
-highlight link ALEErrorSign error
-highlight link ALEWarningSign todo
-highlight link ALEInfoSign ALEWarningSign
-highlight link ALEError SpellBad
-highlight link ALEWarning SpellCap
-highlight link ALEInfo ALEWarning
-
 nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+
+" Automatically run black on save
+autocmd BufWritePre *.py execute ':Black'
