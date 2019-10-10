@@ -79,6 +79,11 @@ PACKAGES=(
     "libuuid>=2"
 )
 
+# Pip packages to install. Only do this if the package isn't on conda!
+PIP_PACKAGES=(
+    pyls-black
+)
+
 # List of JupyterLab packages to install
 JUPYTERLAB_PACKAGES=(
     @jupyter-widgets/jupyterlab-manager
@@ -125,8 +130,11 @@ function ignore_packages {
 ignore_packages 'local' 'local$'
 ignore_packages 'pip' '<pip>$'
 
-# Update/install all packages that I want.
+# Update/install all conda packages that I want.
 conda install "${PACKAGES[@]}"
+
+# Pip packages
+pip install --no-deps "${PIP_PACKAGES[@]}"
 
 # Jupyterlab packages
 

@@ -74,7 +74,6 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'maverickg/stan.vim'
-Plug 'psf/black'
 
 " Files/buffers
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -443,5 +442,5 @@ let g:LanguageClient_diagnosticsDisplay = {
 nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
 
-" Automatically run black on save
-autocmd BufWritePre *.py execute ':Black'
+" Autoformat for supported languages
+autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
