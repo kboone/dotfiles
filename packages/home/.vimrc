@@ -443,4 +443,4 @@ nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
 nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
 
 " Autoformat for supported languages
-autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
+" autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
