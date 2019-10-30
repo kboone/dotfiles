@@ -129,6 +129,7 @@ function ignore_packages {
 
 ignore_packages 'local' 'local$'
 ignore_packages 'pip' '<pip>$'
+ignore_packages 'develop' '<develop>$'
 
 # Update/install all conda packages that I want.
 conda install "${PACKAGES[@]}"
