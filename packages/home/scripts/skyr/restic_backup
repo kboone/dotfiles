@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Script to backup all of the folders that I care about in my home directory.
+
+restic -r rclone:restic_bconnected: backup \
+    $HOME/data \
+    $HOME/Documents \
+    $HOME/Music \
+    $HOME/Pictures \
+    $HOME/Public \
+    $HOME/supernova \
+    $HOME/projects \
+    $HOME/Templates \
+    $HOME/Videos \
+    $HOME/.dotfiles \
+    $HOME/.ssh
