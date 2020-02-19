@@ -8,5 +8,5 @@
 # channel_alias key; see below). The default is just 'defaults'.
 channels:
   - defaults
-  - astropy
   - conda-forge
+  - astropy
