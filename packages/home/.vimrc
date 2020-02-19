@@ -41,19 +41,19 @@ endif
 call plug#begin()
 
 " Language client support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+     " \ 'branch': 'next',
+     " \ 'do': 'bash install.sh',
+     " \ }
 
 " Completion with deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+ if has('nvim')
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+ else
+   Plug 'Shougo/deoplete.nvim'
+   Plug 'roxma/nvim-yarp'
+   Plug 'roxma/vim-hug-neovim-rpc'
+ endif
 
 " General code browsing
 Plug 'majutsushi/tagbar'
@@ -61,7 +61,7 @@ Plug 'majutsushi/tagbar'
 " Appearance
 Plug 'kboone/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
-Plug 'kboone/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
 " Text editing
@@ -344,7 +344,7 @@ nnoremap <silent> <leader>b :Buffers<CR>
 
 " vim-airline
 set laststatus=2
-let g:airline_theme = "kyle"
+let g:airline_theme = "solarized"
 let g:airline_powerline_fonts = 1
 
 " tmuxline
@@ -401,46 +401,46 @@ endif
 let vim_markdown_preview_use_xdg_open=1
 
 " LanguageClient settings
-let g:LanguageClient_settingsPath = "~/.dotfiles/packages/languageclient/settings.json"
-let g:LanguageClient_useVirtualText = 0
+" let g:LanguageClient_settingsPath = "~/.dotfiles/packages/languageclient/settings.json"
+" let g:LanguageClient_useVirtualText = 0
 
-let g:LanguageClient_serverCommands = {
-    \ 'python': ['pyls'],
-    \ }
+" let g:LanguageClient_serverCommands = {
+    " \ 'python': ['pyls'],
+    " \ }
 
-let g:LanguageClient_diagnosticsDisplay = {
-  \       '1': {
-  \           'name': 'Error',
-  \           'texthl': 'ALEError',
-  \           'signText': '>>',
-  \           'signTexthl': 'ALEErrorSign',
-  \           'virtualTexthl': 'Error',
-  \       },
-  \       '2': {
-  \           'name': 'Warning',
-  \           'texthl': 'ALEWarning',
-  \           'signText': '--',
-  \           'signTexthl': 'ALEWarningSign',
-  \           'virtualTexthl': 'Todo',
-  \       },
-  \       '3': {
-  \           'name': 'Information',
-  \           'texthl': 'ALEInfo',
-  \           'signText': '..',
-  \           'signTexthl': 'ALEInfoSign',
-  \           'virtualTexthl': 'Todo',
-  \       },
-  \       '4': {
-  \           'name': 'Hint',
-  \           'texthl': 'ALEInfo',
-  \           'signText': '..',
-  \           'signTexthl': 'ALEInfoSign',
-  \           'virtualTexthl': 'Todo',
-  \       },
-  \  }
+" let g:LanguageClient_diagnosticsDisplay = {
+  " \       '1': {
+  " \           'name': 'Error',
+  " \           'texthl': 'ALEError',
+  " \           'signText': '>>',
+  " \           'signTexthl': 'ALEErrorSign',
+  " \           'virtualTexthl': 'Error',
+  " \       },
+  " \       '2': {
+  " \           'name': 'Warning',
+  " \           'texthl': 'ALEWarning',
+  " \           'signText': '--',
+  " \           'signTexthl': 'ALEWarningSign',
+  " \           'virtualTexthl': 'Todo',
+  " \       },
+  " \       '3': {
+  " \           'name': 'Information',
+  " \           'texthl': 'ALEInfo',
+  " \           'signText': '..',
+  " \           'signTexthl': 'ALEInfoSign',
+  " \           'virtualTexthl': 'Todo',
+  " \       },
+  " \       '4': {
+  " \           'name': 'Hint',
+  " \           'texthl': 'ALEInfo',
+  " \           'signText': '..',
+  " \           'signTexthl': 'ALEInfoSign',
+  " \           'virtualTexthl': 'Todo',
+  " \       },
+  " \  }
 
-nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
-nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
 
 " Autoformat for supported languages
 " autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
