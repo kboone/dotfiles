@@ -10,6 +10,7 @@
 " First, set the encoding. We have some utf-8 characters in this file.
 scriptencoding utf-8
 
+
 " Next, specify that the vim shell should be bash in case the login shell is
 " something different... some plugins assume that they are being run in bash
 " and break if the login shell is not compatible.
@@ -48,9 +49,9 @@ call plug#begin()
 
 " Completion with deoplete
  if has('nvim')
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '*' }
  else
-   Plug 'Shougo/deoplete.nvim'
+   Plug 'Shougo/deoplete.nvim', { 'tag': '*' }
    Plug 'roxma/nvim-yarp'
    Plug 'roxma/vim-hug-neovim-rpc'
  endif
