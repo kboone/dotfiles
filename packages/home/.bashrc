@@ -119,8 +119,8 @@ export VISUAL=vim
 export EDITOR=$VISUAL
 
 # Set colorscheme
-if [[ -f "$HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh" ]]; then
-    . $HOME/.dotfiles/packages/terminal_colors/set_colorscheme.sh
+if [[ -f "$HOME/.dotfiles/packages/colorscheme/bash/set_colorscheme.sh" ]]; then
+    . $HOME/.dotfiles/packages/colorscheme/bash/set_colorscheme.sh
 fi
 
 # Check for dotfile upgrades
