@@ -27,13 +27,13 @@
 color00="@base02" # Black
 color01="@red" # Red
 color02="@yellow" # Green
-color03="@orange" # Yellow
+color03="@amber" # Yellow
 color04="@blue" # Blue
 color05="@magenta" # Magenta
 color06="@green" # Cyan
 color07="@base2" # White
 color08="@base03" # Bright Black
-color09="@amber" # Bright Red
+color09="@orange" # Bright Red
 color10="@base01" # Bright Green
 color11="@base00" # Bright Yellow
 color12="@base0" # Bright Blue

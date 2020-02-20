@@ -26,13 +26,13 @@
 color00="21/25/2c" # Black
 color01="b6/5c/4e" # Red
 color02="9a/93/26" # Green
-color03="c2/6d/3f" # Yellow
+color03="b0/78/28" # Yellow
 color04="3c/8b/b7" # Blue
 color05="9d/64/90" # Magenta
 color06="61/8e/60" # Cyan
 color07="ec/e7/de" # White
 color08="17/1b/22" # Bright Black
-color09="b0/78/28" # Bright Red
+color09="c2/6d/3f" # Bright Red
 color10="64/6b/72" # Bright Green
 color11="70/77/7f" # Bright Yellow
 color12="8c/91/94" # Bright Blue
