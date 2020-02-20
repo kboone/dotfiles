@@ -2,14 +2,12 @@
 " Kyle Boone's vim config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Necessary settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " First, set the encoding. We have some utf-8 characters in this file.
 scriptencoding utf-8
-
 
 " Next, specify that the vim shell should be bash in case the login shell is
 " something different... some plugins assume that they are being run in bash
@@ -18,7 +16,6 @@ set shell=/bin/bash
 
 " Kill vi compatibility, this isn't 1976 and we want nice plugins.
 set nocompatible
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins (managed using vim-plug)
@@ -40,12 +37,6 @@ endif
 
 " Load vim-plug which manages our plugins
 call plug#begin()
-
-" Language client support
-" Plug 'autozimu/LanguageClient-neovim', {
-     " \ 'branch': 'next',
-     " \ 'do': 'bash install.sh',
-     " \ }
 
 " Completion with deoplete
  if has('nvim')
@@ -299,12 +290,6 @@ function! WrapCommand(direction, prefix)
     endif
 endfunction
 
-" ,q and ,w: previous and next location list items (with wrapping).
-" LanguageClient-neovim fills the quickfix list with linting warnings/errors
-" Switching c to l in WrapCommand will wrap the location list.
-nnoremap <silent> <leader>q :call WrapCommand('up', 'c')<CR>
-nnoremap <silent> <leader>w :call WrapCommand('down', 'c')<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugin settings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -400,48 +385,3 @@ if executable("grip") == 1
     let vim_markdown_preview_github=1
 endif
 let vim_markdown_preview_use_xdg_open=1
-
-" LanguageClient settings
-" let g:LanguageClient_settingsPath = "~/.dotfiles/packages/languageclient/settings.json"
-" let g:LanguageClient_useVirtualText = 0
-
-" let g:LanguageClient_serverCommands = {
-    " \ 'python': ['pyls'],
-    " \ }
-
-" let g:LanguageClient_diagnosticsDisplay = {
-  " \       '1': {
-  " \           'name': 'Error',
-  " \           'texthl': 'ALEError',
-  " \           'signText': '>>',
-  " \           'signTexthl': 'ALEErrorSign',
-  " \           'virtualTexthl': 'Error',
-  " \       },
-  " \       '2': {
-  " \           'name': 'Warning',
-  " \           'texthl': 'ALEWarning',
-  " \           'signText': '--',
-  " \           'signTexthl': 'ALEWarningSign',
-  " \           'virtualTexthl': 'Todo',
-  " \       },
-  " \       '3': {
-  " \           'name': 'Information',
-  " \           'texthl': 'ALEInfo',
-  " \           'signText': '..',
-  " \           'signTexthl': 'ALEInfoSign',
-  " \           'virtualTexthl': 'Todo',
-  " \       },
-  " \       '4': {
-  " \           'name': 'Hint',
-  " \           'texthl': 'ALEInfo',
-  " \           'signText': '..',
-  " \           'signTexthl': 'ALEInfoSign',
-  " \           'virtualTexthl': 'Todo',
-  " \       },
-  " \  }
-
-" nnoremap <leader>i :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <leader>d :call LanguageClient#textDocument_definition()<CR>
-
-" Autoformat for supported languages
-" autocmd BufWritePre *.py :call LanguageClient#textDocument_formatting()
