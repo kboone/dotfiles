@@ -13,14 +13,14 @@ colors = [
      ("base1",   (65., -01., -02.)),
      ("base2",   (92., -00., +05.)),
      ("base3",   (97., +00., +05.)),
-     ("yellow",  (60., -10., +75.)),
-     ("orange",  (55., +10., +65.)),
-     ("red",     (50., +30., +35.)),
-     ("pink",    (50., +45., +10.)),
+     ("yellow",  (60., -10., +55.)),
+     ("amber",   (55., +15., +50.)),
+     ("orange",  (55., +30., +40.)),
+     ("red",     (50., +35., +25.)),
      ("magenta", (50., +30., -15.)),
      ("violet",  (50., +15., -35.)),
-     ("blue",    (55., -10., -25.)),
-     ("green",   (55., -20., +15.)),
+     ("blue",    (55., -10., -30.)),
+     ("green",   (55., -25., +20.)),
 ]
 
 lab_colors = [i[1] for i in colors]
@@ -29,8 +29,8 @@ color_labels = [i[0] for i in colors]
 rgb_colors = (color.lab2rgb([lab_colors])[0] * 255).astype(int)
 
 for label, (r, g, b) in zip(color_labels, rgb_colors):
-    test_str = '███ abcdefghijklmnopqrstuvwxyz'
-    print(f"\033[38;2;{int(r)};{int(g)};{int(b)}m{test_str} {label}\033[0m")
+    test_str = f'███ abcdefghijklmnopqrstuvwxyz {r:3d} {g:3d} {b:3d} {label}'
+    print(f"\033[38;2;{int(r)};{int(g)};{int(b)}m{test_str}\033[0m")
 
 for template_path in glob.glob('**/*.template'):
     path, ext = os.path.splitext(template_path)
