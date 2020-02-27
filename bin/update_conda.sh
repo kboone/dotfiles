@@ -14,7 +14,6 @@
 #   conda skeleton pypi --noarch-python iminuit
 #   conda build iminuit
 #   conda install --use-local iminuit
-# This fails for sep. To fix, add numpy to the requirements in meta.yaml
 
 
 # Make created files only accessible to me
@@ -55,6 +54,7 @@ PACKAGES=(
     # Machine learning packages
     scikit-learn
     lightgbm
+    george
 
     # Documentation
     sphinx
@@ -72,17 +72,12 @@ PACKAGES=(
     extinction
     sncosmo
     sep
-    george
-
-    # By default, miniconda installs a really old version of libuuid which vim
-    # doesn't like. Force it to get a newer one from conda-forge.
-    "libuuid>=2"
 )
 
 # Pip packages to install. Only do this if the package isn't on conda!
-PIP_PACKAGES=(
-    pyls-black
-)
+# PIP_PACKAGES=(
+    # pyls-black
+# )
 
 # List of JupyterLab packages to install
 JUPYTERLAB_PACKAGES=(
@@ -135,7 +130,7 @@ ignore_packages 'develop' '<develop>$'
 conda install "${PACKAGES[@]}"
 
 # Pip packages
-pip install --no-deps "${PIP_PACKAGES[@]}"
+# pip install --no-deps "${PIP_PACKAGES[@]}"
 
 # Jupyterlab packages
 

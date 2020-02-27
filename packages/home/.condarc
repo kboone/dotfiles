@@ -7,6 +7,8 @@
 # interpreted as Anaconda.org usernames (this can be changed by modifying the
 # channel_alias key; see below). The default is just 'defaults'.
 channels:
-  - defaults
   - conda-forge
+  - defaults
   - astropy
+
+channel_priority: strict
