@@ -63,7 +63,7 @@ PACKAGES=(
 
     # Jupyter and dependencies
     jupyter
-    jupyterlab
+    "jupyterlab<2"
     ipympl
     nodejs
 
