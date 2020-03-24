@@ -39,13 +39,13 @@ endif
 call plug#begin()
 
 " Completion with deoplete
- if has('nvim')
-   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins', 'tag': '*' }
- else
-   Plug 'Shougo/deoplete.nvim', { 'tag': '*' }
-   Plug 'roxma/nvim-yarp'
-   Plug 'roxma/vim-hug-neovim-rpc'
- endif
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 " General code browsing
 Plug 'majutsushi/tagbar'
