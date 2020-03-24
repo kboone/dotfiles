@@ -4,61 +4,61 @@
 	"colors": {
 		"foreground": "#909090",
 
-		"dropdown.background": "#666a72",
-		"dropdown.border": "#72777f",
+		"dropdown.background": "#5a5e66",
+		"dropdown.border": "#666a72",
 		"dropdown.foreground": "#9d9d9d",
-		"dropdown.listBackground": "#666a72",
+		"dropdown.listBackground": "#5a5e66",
 
-		"input.background": "#666a72",
-		"input.border": "#72777f",
+		"input.background": "#5a5e66",
+		"input.border": "#666a72",
 		"input.foreground": "#9d9d9d",
-		"input.placeholderForeground": "#72777f",
+		"input.placeholderForeground": "#666a72",
 
-		"list.activeSelectionBackground": "#666a72",
+		"list.activeSelectionBackground": "#5a5e66",
 
 		"activityBarBadge.background": "#7f838c",
-		"activityBar.background": "#666a72",
+		"activityBar.background": "#5a5e66",
 		"activityBar.foreground": "#ece7de",
 
-		"sideBar.background": "#2c3037",
+		"sideBar.background": "#21252c",
 		"sideBar.foreground": "#9d9d9d",
 		"sideBarTitle.foreground": "#9d9d9d",
 		
-		"editorGroupHeader.tabsBackground": "#2c3037",
+		"editorGroupHeader.tabsBackground": "#21252c",
 
-		"editor.background": "#21252c",
+		"editor.background": "#171b22",
 		"editor.foreground": "#909090",
 		"editor.selectionBackground": "#5897bb44",
 
-		"editorOverviewRuler.errorForeground": "#c06d51",
+		"editorOverviewRuler.errorForeground": "#c5695a",
 		"editorOverviewRuler.warningForeground": "#a8a033",
 
-		"editorError.foreground": "#c06d51",
+		"editorError.foreground": "#c5695a",
 		"editorWarning.foreground": "#a8a033",
 
 		"editorGutter.foreground": "#9d9d9d",
-		"editorGutter.background": "#2c3037",
+		"editorGutter.background": "#21252c",
 		"editorGutter.modifiedBackground": "#5897bb",
 		"editorGutter.addedBackground": "#679d63",
-		"editorGutter.deletedBackground": "#c06d51",
+		"editorGutter.deletedBackground": "#c5695a",
 
-		"panel.background": "#21252c",
+		"panel.background": "#171b22",
 
-		"statusBar.background": "#2c3037",
+		"statusBar.background": "#21252c",
 		"statusBar.foreground": "#9d9d9d",
 
 		"terminal.foreground": "#909090",
-		"terminal.ansiBlack": "#2c3037",
-		"terminal.ansiRed": "#c06d51",
+		"terminal.ansiBlack": "#21252c",
+		"terminal.ansiRed": "#c5695a",
 		"terminal.ansiGreen": "#a8a033",
 		"terminal.ansiYellow": "#b88834",
 		"terminal.ansiBlue": "#5897bb",
 		"terminal.ansiMagenta": "#ba689e",
 		"terminal.ansiCyan": "#679d63",
 		"terminal.ansiWhite": "#ece7de",
-		"terminal.ansiBrightBlack": "#21252c",
-		"terminal.ansiBrightRed": "#c06d51",
-		"terminal.ansiBrightGreen": "#72777f",
+		"terminal.ansiBrightBlack": "#171b22",
+		"terminal.ansiBrightRed": "#c5695a",
+		"terminal.ansiBrightGreen": "#666a72",
 		"terminal.ansiBrightYellow": "#7f838c",
 		"terminal.ansiBrightBlue": "#909090",
 		"terminal.ansiBrightMagenta": "#8178d1",
@@ -84,7 +84,7 @@
 				"keyword.control.import"
 			],
 			"settings": {
-				"foreground": "#c06d51"
+				"foreground": "#c5695a"
 			}
 		},
 		{
@@ -122,7 +122,7 @@
 				"comment"
 			],
 			"settings": {
-				"foreground": "#72777f"
+				"foreground": "#666a72"
 			}
 		},
 		{
