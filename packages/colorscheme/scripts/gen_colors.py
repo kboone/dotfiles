@@ -5,22 +5,22 @@ import os
 import glob
 
 colors = [
-     ("base03",  (10., +00., -05.)),
-     ("base02",  (15., +00., -05.)),
-     ("base01",  (45., -01., -05.)),
-     ("base00",  (50., -01., -05.)),
-     ("base0",   (60., -01., -02.)),
-     ("base1",   (65., -01., -02.)),
+     ("base03",  (15., -00., -5.)),
+     ("base02",  (20., -00., -5.)),
+     ("base22",  (45., -00., -5.)),
+     ("base01",  (50., -00., -5.)),
+     ("base00",  (55., -00., -5.)),
+     ("base0",   (60., -00., +00.)),
+     ("base1",   (65., +00., +00.)),
      ("base2",   (92., -00., +05.)),
      ("base3",   (97., +00., +05.)),
-     ("yellow",  (60., -10., +55.)),
-     ("amber",   (55., +15., +50.)),
-     ("orange",  (50., +30., +40.)),
-     ("red",     (50., +35., +25.)),
-     ("magenta", (50., +30., -15.)),
-     ("violet",  (50., +15., -35.)),
-     ("blue",    (55., -10., -30.)),
-     ("green",   (55., -25., +20.)),
+     ("red",     (55., +30., +30.)),
+     ("orange",  (60., +10., +50.)),
+     ("yellow",  (65., -10., +55.)),
+     ("green",   (60., -30., +25.)),
+     ("blue",    (60., -10., -25.)),
+     ("violet",  (55., +25., -45.)),
+     ("magenta", (55., +40., -15.)),
 ]
 
 lab_colors = [i[1] for i in colors]
@@ -32,7 +32,7 @@ for label, (r, g, b) in zip(color_labels, rgb_colors):
     test_str = f'███ abcdefghijklmnopqrstuvwxyz {r:3d} {g:3d} {b:3d} {label}'
     print(f"\033[38;2;{int(r)};{int(g)};{int(b)}m{test_str}\033[0m")
 
-for template_path in glob.glob('**/*.template'):
+for template_path in glob.glob('**/*.template', recursive=True):
     path, ext = os.path.splitext(template_path)
     print(f"Parsing {path} ...")
 

@@ -1,0 +1,152 @@
+// rgb format: "#{r:02x}{g:02x}{b:02x}"
+{
+	"name": "kyle-vscode",
+	"type": "dark",
+	"colors": {
+		"foreground": "@base0",
+
+		"dropdown.background": "@base22",
+		"dropdown.border": "@base01",
+		"dropdown.foreground": "@base1",
+		"dropdown.listBackground": "@base22",
+
+		"input.background": "@base22",
+		"input.border": "@base01",
+		"input.foreground": "@base1",
+		"input.placeholderForeground": "@base01",
+
+		"list.activeSelectionBackground": "@base22",
+
+		"activityBarBadge.background": "@base00",
+		"activityBar.background": "@base22",
+		"activityBar.foreground": "@base2",
+
+		"sideBar.background": "@base02",
+		"sideBar.foreground": "@base1",
+		"sideBarTitle.foreground": "@base1",
+		
+		"editorGroupHeader.tabsBackground": "@base02",
+
+		"editor.background": "@base03",
+		"editor.foreground": "@base0",
+		"editor.selectionBackground": "@blue44",
+
+		"editorOverviewRuler.errorForeground": "@red",
+		"editorOverviewRuler.warningForeground": "@yellow",
+
+		"editorError.foreground": "@red",
+		"editorWarning.foreground": "@yellow",
+
+		"editorGutter.foreground": "@base1",
+		"editorGutter.background": "@base02",
+		"editorGutter.modifiedBackground": "@blue",
+		"editorGutter.addedBackground": "@green",
+		"editorGutter.deletedBackground": "@red",
+
+		"panel.background": "@base03",
+
+		"statusBar.background": "@base02",
+		"statusBar.foreground": "@base1",
+
+		"terminal.foreground": "@base0",
+		"terminal.ansiBlack": "@base02",
+		"terminal.ansiRed": "@red",
+		"terminal.ansiGreen": "@yellow",
+		"terminal.ansiYellow": "@orange",
+		"terminal.ansiBlue": "@blue",
+		"terminal.ansiMagenta": "@magenta",
+		"terminal.ansiCyan": "@green",
+		"terminal.ansiWhite": "@base2",
+		"terminal.ansiBrightBlack": "@base03",
+		"terminal.ansiBrightRed": "@red",
+		"terminal.ansiBrightGreen": "@base01",
+		"terminal.ansiBrightYellow": "@base00",
+		"terminal.ansiBrightBlue": "@base0",
+		"terminal.ansiBrightMagenta": "@violet",
+		"terminal.ansiBrightCyan": "@base1",
+		"terminal.ansiBrightWhite": "@base3",
+	},
+	"tokenColors": [
+		{
+			"name": "Control and flow",
+			"scope": [
+				"storage",
+				"keyword.control",
+				"keyword.operator.logical",
+				"punctuation.definition.logical-expression"
+			],
+			"settings": {
+				"foreground": "@yellow"
+			}
+		},
+		{
+			"name": "Import statements",
+			"scope": [
+				"keyword.control.import"
+			],
+			"settings": {
+				"foreground": "@red"
+			}
+		},
+		{
+			"name": "Entity names (classes, functions, sections, etc.)",
+			"scope": [
+				"entity.name",
+				"support.function.magic"
+			],
+			"settings": {
+				"foreground": "@blue"
+			}
+		},
+		{
+			"name": "Exception keywords",
+			"scope": [
+				"support.type.exception"
+			],
+			"settings": {
+				"foreground": "@orange"
+			}
+		},
+		{
+			"name": "Strings and constants",
+			"scope": [
+				"string",
+				"constant"
+			],
+			"settings": {
+				"foreground": "@green"
+			}
+		},
+		{
+			"name": "Comments",
+			"scope": [
+				"comment"
+			],
+			"settings": {
+				"foreground": "@base01"
+			}
+		},
+		{
+			"name": "Built-ins",
+			"scope": [
+				"constant.language",
+				"support"
+			],
+			"settings": {
+				"foreground": "@blue"
+			}
+		},
+		{
+			"name": "Special string characters",
+			"scope": [
+				"constant.character.escape",
+				"constant.character.format",
+				"storage.type.format",
+				"storage.type.string"
+			],
+			"settings": {
+				"foreground": "@violet"
+			}
+		}
+	]
+}

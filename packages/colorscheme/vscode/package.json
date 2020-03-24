@@ -1,0 +1,21 @@
+{
+    "name": "kyle-vscode",
+    "displayName": "kyle-vscode",
+    "description": "Kyle Boone's VS Code Color Theme",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.42.0"
+    },
+    "categories": [
+        "Themes"
+    ],
+    "contributes": {
+        "themes": [
+            {
+                "label": "kyle-vscode",
+                "uiTheme": "vs-dark",
+                "path": "./kyle-vscode-theme.json"
+            }
+        ]
+    }
+}

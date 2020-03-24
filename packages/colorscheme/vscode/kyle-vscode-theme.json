@@ -1,0 +1,152 @@
+{
+	"name": "kyle-vscode",
+	"type": "dark",
+	"colors": {
+		"foreground": "#909090",
+
+		"dropdown.background": "#666a72",
+		"dropdown.border": "#72777f",
+		"dropdown.foreground": "#9d9d9d",
+		"dropdown.listBackground": "#666a72",
+
+		"input.background": "#666a72",
+		"input.border": "#72777f",
+		"input.foreground": "#9d9d9d",
+		"input.placeholderForeground": "#72777f",
+
+		"list.activeSelectionBackground": "#666a72",
+
+		"activityBarBadge.background": "#7f838c",
+		"activityBar.background": "#666a72",
+		"activityBar.foreground": "#ece7de",
+
+		"sideBar.background": "#2c3037",
+		"sideBar.foreground": "#9d9d9d",
+		"sideBarTitle.foreground": "#9d9d9d",
+		
+		"editorGroupHeader.tabsBackground": "#2c3037",
+
+		"editor.background": "#21252c",
+		"editor.foreground": "#909090",
+		"editor.selectionBackground": "#5897bb44",
+
+		"editorOverviewRuler.errorForeground": "#c06d51",
+		"editorOverviewRuler.warningForeground": "#a8a033",
+
+		"editorError.foreground": "#c06d51",
+		"editorWarning.foreground": "#a8a033",
+
+		"editorGutter.foreground": "#9d9d9d",
+		"editorGutter.background": "#2c3037",
+		"editorGutter.modifiedBackground": "#5897bb",
+		"editorGutter.addedBackground": "#679d63",
+		"editorGutter.deletedBackground": "#c06d51",
+
+		"panel.background": "#21252c",
+
+		"statusBar.background": "#2c3037",
+		"statusBar.foreground": "#9d9d9d",
+
+		"terminal.foreground": "#909090",
+		"terminal.ansiBlack": "#2c3037",
+		"terminal.ansiRed": "#c06d51",
+		"terminal.ansiGreen": "#a8a033",
+		"terminal.ansiYellow": "#b88834",
+		"terminal.ansiBlue": "#5897bb",
+		"terminal.ansiMagenta": "#ba689e",
+		"terminal.ansiCyan": "#679d63",
+		"terminal.ansiWhite": "#ece7de",
+		"terminal.ansiBrightBlack": "#21252c",
+		"terminal.ansiBrightRed": "#c06d51",
+		"terminal.ansiBrightGreen": "#72777f",
+		"terminal.ansiBrightYellow": "#7f838c",
+		"terminal.ansiBrightBlue": "#909090",
+		"terminal.ansiBrightMagenta": "#8178d1",
+		"terminal.ansiBrightCyan": "#9d9d9d",
+		"terminal.ansiBrightWhite": "#faf5ec",
+	},
+	"tokenColors": [
+		{
+			"name": "Control and flow",
+			"scope": [
+				"storage",
+				"keyword.control",
+				"keyword.operator.logical",
+				"punctuation.definition.logical-expression"
+			],
+			"settings": {
+				"foreground": "#a8a033"
+			}
+		},
+		{
+			"name": "Import statements",
+			"scope": [
+				"keyword.control.import"
+			],
+			"settings": {
+				"foreground": "#c06d51"
+			}
+		},
+		{
+			"name": "Entity names (classes, functions, sections, etc.)",
+			"scope": [
+				"entity.name",
+				"support.function.magic"
+			],
+			"settings": {
+				"foreground": "#5897bb"
+			}
+		},
+		{
+			"name": "Exception keywords",
+			"scope": [
+				"support.type.exception"
+			],
+			"settings": {
+				"foreground": "#b88834"
+			}
+		},
+		{
+			"name": "Strings and constants",
+			"scope": [
+				"string",
+				"constant"
+			],
+			"settings": {
+				"foreground": "#679d63"
+			}
+		},
+		{
+			"name": "Comments",
+			"scope": [
+				"comment"
+			],
+			"settings": {
+				"foreground": "#72777f"
+			}
+		},
+		{
+			"name": "Built-ins",
+			"scope": [
+				"constant.language",
+				"support"
+			],
+			"settings": {
+				"foreground": "#5897bb"
+			}
+		},
+		{
+			"name": "Special string characters",
+			"scope": [
+				"constant.character.escape",
+				"constant.character.format",
+				"storage.type.format",
+				"storage.type.string"
+			],
+			"settings": {
+				"foreground": "#8178d1"
+			}
+		}
+	]
+}
+

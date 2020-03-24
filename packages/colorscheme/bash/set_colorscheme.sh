@@ -23,24 +23,24 @@
 # CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE
 # OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-color00="21/25/2c" # Black
-color01="b6/5c/4e" # Red
-color02="9a/93/26" # Green
-color03="b0/78/28" # Yellow
-color04="3c/8b/b7" # Blue
-color05="9d/64/90" # Magenta
-color06="61/8e/60" # Cyan
+color00="2c/30/37" # Black
+color01="c0/6d/51" # Red
+color02="a8/a0/33" # Green
+color03="b8/88/34" # Yellow
+color04="58/97/bb" # Blue
+color05="ba/68/9e" # Magenta
+color06="67/9d/63" # Cyan
 color07="ec/e7/de" # White
-color08="17/1b/22" # Bright Black
-color09="b3/60/33" # Bright Red
-color10="64/6b/72" # Bright Green
-color11="70/77/7f" # Bright Yellow
-color12="8c/91/94" # Bright Blue
-color13="6d/71/b2" # Bright Magenta
-color14="9a/9e/a1" # Bright Cyan
+color08="21/25/2c" # Bright Black
+color09="c0/6d/51" # Bright Red
+color10="72/77/7f" # Bright Green
+color11="7f/83/8c" # Bright Yellow
+color12="90/90/90" # Bright Blue
+color13="81/78/d1" # Bright Magenta
+color14="9d/9d/9d" # Bright Cyan
 color15="fa/f5/ec" # Bright White
-color_foreground="8c/91/94"
-color_background="17/1b/22"
+color_foreground="90/90/90"
+color_background="21/25/2c"
 
 if [ -n "$TMUX" ]; then
   # Tell tmux to pass the escape sequences through
