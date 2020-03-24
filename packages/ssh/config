@@ -69,6 +69,12 @@ Host epyc
     ForwardX11 yes
     User kyboone
 
+Host baldur
+    HostName baldur.astro.washington.edu
+    ForwardAgent yes
+    ForwardX11 yes
+    User kyboone
+
 Host git github github.com
     HostName github.com
     ForwardX11 no
