@@ -62,6 +62,7 @@ PACKAGES=(
     numpydoc
 
     # Jupyter and dependencies
+    h5py
     jupyter
     "jupyterlab<2"
     ipympl
