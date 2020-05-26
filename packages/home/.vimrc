@@ -171,6 +171,9 @@ endif
 set history=1000
 set tabpagemax=50
 
+" Use 24-bit RGB colors
+" set termguicolors
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
