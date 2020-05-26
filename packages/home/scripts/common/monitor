@@ -155,7 +155,7 @@ if __name__ == "__main__":
     parser.add_argument("--laptop_monitor", default="eDP-1",
                         help="Built-in monitor name")
 
-    parser.add_argument("--scale", default=4/3., type=float,
+    parser.add_argument("--scale", default=4./3., type=float,
                         help="Scale to apply when scaling the monitor.")
 
     args = parser.parse_args()
