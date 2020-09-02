@@ -35,9 +35,7 @@ PACKAGES=(
     pip
 
     # Coding packages
-    black
     pynvim
-    python-language-server
     tmux
     vim
 
@@ -64,8 +62,7 @@ PACKAGES=(
     # Jupyter and dependencies
     h5py
     jupyter
-    "jupyterlab<2"
-    ipympl
+    jupyterlab
     nodejs
 
     # Astronomy packages
@@ -82,10 +79,9 @@ PACKAGES=(
 
 # List of JupyterLab packages to install
 JUPYTERLAB_PACKAGES=(
-    @jupyter-widgets/jupyterlab-manager
     jupyter-matplotlib
     @jupyterlab/toc
-    jupyterlab_vim
+    @axlair/jupyterlab_vim
 )
 
 function ignore_packages {
