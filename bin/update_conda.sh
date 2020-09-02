@@ -34,6 +34,9 @@ PACKAGES=(
     beautifulsoup4
     pip
 
+    # Utilities
+    glances
+
     # Coding packages
     pynvim
     tmux
