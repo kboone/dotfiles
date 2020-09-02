@@ -8,7 +8,8 @@
 # channel_alias key; see below). The default is just 'defaults'.
 channels:
   - conda-forge
-  - defaults
+  - pytorch
   - astropy
+  - defaults
 
 channel_priority: strict
