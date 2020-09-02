@@ -39,31 +39,32 @@ PACKAGES=(
     tmux
     vim
 
-    # Data science packages
+    # Base data science packages
     numpy
     scipy
     matplotlib
     pandas
     iminuit
     pytables
-    pystan
     tqdm
-
-    # Machine learning packages
-    scikit-learn
-    lightgbm
-    george
-
-    # Documentation
-    sphinx
-    sphinx_rtd_theme
-    numpydoc
 
     # Jupyter and dependencies
     h5py
     jupyter
     jupyterlab
     nodejs
+
+    # Machine learning/statistics packages
+    scikit-learn
+    lightgbm
+    george
+    pystan
+    pytorch
+
+    # Documentation
+    sphinx
+    sphinx_rtd_theme
+    numpydoc
 
     # Astronomy packages
     astropy
