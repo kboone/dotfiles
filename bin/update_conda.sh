@@ -49,10 +49,11 @@ PACKAGES=(
     tqdm
 
     # Jupyter and dependencies
-    h5py
     jupyter
     jupyterlab
     nodejs
+    h5py
+    ipympl
 
     # Machine learning/statistics packages
     scikit-learn
@@ -80,7 +81,7 @@ PACKAGES=(
 
 # List of JupyterLab packages to install
 JUPYTERLAB_PACKAGES=(
-    jupyter-matplotlib
+    @jupyter-widgets/jupyterlab-manager
     @jupyterlab/toc
     @axlair/jupyterlab_vim
 )
