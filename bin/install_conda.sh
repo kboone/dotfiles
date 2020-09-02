@@ -25,7 +25,7 @@ cd $TEMP_BUILD_DIR
 CONDA_SCRIPT=Miniconda${PYTHON_VERSION}-${CONDA_VERSION}-Linux-x86_64.sh
 
 # Install conda and set up a default environment.
-wget http://repo.continuum.io/miniconda/$CONDA_SCRIPT
+wget https://repo.continuum.io/miniconda/$CONDA_SCRIPT
 bash $CONDA_SCRIPT -b -p $INSTALL_DIR
 
 # Add the new conda to our path.
