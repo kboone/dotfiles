@@ -41,6 +41,7 @@ PACKAGES=(
     pynvim
     tmux
     vim
+    flake8
 
     # Base data science packages
     numpy
