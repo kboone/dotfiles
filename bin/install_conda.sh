@@ -5,7 +5,6 @@
 # I assume that wget and a C/C++ compiler are installed.
 
 PYTHON_VERSION=3
-CONDA_VERSION=latest
 
 # only accessible to me
 umask 027
@@ -22,10 +21,10 @@ mkdir -p $PACKAGE_DIR $TEMP_BUILD_DIR
 ORIG_DIR=$(pwd)
 cd $TEMP_BUILD_DIR
 
-CONDA_SCRIPT=Miniconda${PYTHON_VERSION}-${CONDA_VERSION}-Linux-x86_64.sh
+CONDA_SCRIPT=Miniforge${PYTHON_VERSION}-Linux-x86_64.sh
 
 # Install conda and set up a default environment.
-wget https://repo.continuum.io/miniconda/$CONDA_SCRIPT
+wget https://github.com/conda-forge/miniforge/releases/latest/download/$CONDA_SCRIPT
 bash $CONDA_SCRIPT -b -p $INSTALL_DIR
 
 # Add the new conda to our path.
