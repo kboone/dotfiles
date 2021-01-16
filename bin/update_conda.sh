@@ -42,6 +42,7 @@ PACKAGES=(
     tmux
     vim
     flake8
+    git
 
     # Base data science packages
     numpy
