@@ -58,6 +58,7 @@ PACKAGES=(
     jupyterlab
     nodejs
     h5py
+    ipywidgets
     ipympl
 
     # Machine learning/statistics packages
@@ -80,9 +81,9 @@ PACKAGES=(
 )
 
 # Pip packages to install. Only do this if the package isn't on conda!
-# PIP_PACKAGES=(
-    # pyls-black
-# )
+PIP_PACKAGES=(
+    jupyterlab_vim
+)
 
 # List of JupyterLab packages to install
 JUPYTERLAB_PACKAGES=(
@@ -131,21 +132,7 @@ ignore_packages 'pip' '<pip>$'
 ignore_packages 'develop' '<develop>$'
 
 # Update/install all conda packages that I want.
-conda install "${PACKAGES[@]}"
+conda install --update-all "${PACKAGES[@]}"
 
 # Pip packages
-# pip install --no-deps "${PIP_PACKAGES[@]}"
-
-# Jupyterlab packages
-
-# Figure out if any new packages need to be installed and install them.
-JUPYTERLAB_INSTALLED=$(jupyter labextension list 2>&1)
-for package in ${JUPYTERLAB_PACKAGES[@]}; do
-    if [[ $JUPYTERLAB_INSTALLED != *"$package"* ]]; then
-        jupyter labextension install "${JUPYTERLAB_PACKAGES[@]}"
-        echo $package;
-    fi
-done
-
-# Update the previously installed jupyterlab packages
-jupyter labextension update --all
+pip install --no-deps "${PIP_PACKAGES[@]}"
