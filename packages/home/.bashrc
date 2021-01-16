@@ -111,7 +111,7 @@ fix_tmux() {
 
 # Grep in a versioned directory
 vgrep() {
-    grep --color=always -rn "$1" . | grep -v tags | grep -v \.svn \
+    grep --color=always -rni "$1" . | grep -v tags | grep -v \.svn \
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
