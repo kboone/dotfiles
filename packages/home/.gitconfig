@@ -12,7 +12,12 @@
 
 [push]
     default = current
+
 [core]
     editor = nvim
+
 [credential]
     helper = cache
+
+[pull]
+	ff = only
