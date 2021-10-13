@@ -42,9 +42,8 @@ call plug#begin()
 Plug 'preservim/tagbar'
 
 " Appearance
-Plug 'kboone/vim-colors-solarized'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'joshdick/onedark.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'edkolev/tmuxline.vim'
 
 " Text editing
@@ -154,18 +153,22 @@ endif
 set history=1000
 set tabpagemax=50
 
-" Use 24-bit RGB colors
-" set termguicolors
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Appearance
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Use my modified solarized colorscheme
+" Use 24-bit RGB colors
+if (has("termguicolors"))
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+    set termguicolors
+endif
+
+
+" Use the onedark colorscheme
 syntax on
-set background=dark
-colorscheme solarized
+colorscheme onedark
 
 " Show line numbers, and where we are in the file
 set number
@@ -305,8 +308,9 @@ nnoremap <silent> <leader>b :Buffers<CR>
 
 " vim-airline
 set laststatus=2
-let g:airline_theme = "solarized"
-let g:airline_powerline_fonts = 1
+let g:lightline = {
+  \ 'colorscheme': 'onedark',
+\ }
 
 " tmuxline
 " These settings are saved in ~/.tmuxline.conf. If it gets messed up, it can be
@@ -322,8 +326,8 @@ let g:tmuxline_preset = {
 let g:tmuxline_separators = {
     \ 'left' : '',
     \ 'left_alt': '',
-    \ 'right' : '',
-    \ 'right_alt' : '',
+    \ 'right' : '',
+    \ 'right_alt' : '',
     \ 'space' : ' '}
 
 " tabular
