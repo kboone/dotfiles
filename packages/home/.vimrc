@@ -38,17 +38,8 @@ endif
 " Load vim-plug which manages our plugins
 call plug#begin()
 
-" Completion with deoplete
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
 " General code browsing
-Plug 'majutsushi/tagbar'
+Plug 'preservim/tagbar'
 
 " Appearance
 Plug 'kboone/vim-colors-solarized'
@@ -57,24 +48,19 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 
 " Text editing
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 
 " Filetype specific plugins
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'LaTeX-Box-Team/LaTeX-Box'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'maverickg/stan.vim'
 
 " Files/buffers
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'fholgado/minibufexpl.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-fugitive'
+Plug 'preservim/nerdtree'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
 
 " End of plugins
 call plug#end()
@@ -156,9 +142,6 @@ set nrformats-=octal
 set ttimeout
 set ttimeoutlen=100
 
-" always show signcolumns
-set signcolumn=yes
-
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
@@ -211,14 +194,6 @@ if version > 703
     set colorcolumn=89
 endif
 
-" Host dependent stuff
-if hostname() == "troika"
-    " troika settings -> make it look reasonable on a 1366x768 screen
-    if has("gui_running")
-        set guifont=Ubuntu\ Mono\ 9
-    endif
-endif
-
 if has("gui_running")
     " GUI options
 
@@ -229,11 +204,17 @@ if has("gui_running")
     set visualbell
 endif
 
-" Log format from cluster search
-au BufNewFile,BufRead seechange*.log syn match Error "ERROR.*"
-au BufNewFile,BufRead seechange*.log syn match Type "WARNING.*"
-au BufNewFile,BufRead seechange*.log syn match Statement "INFO.*"
-au BufNewFile,BufRead seechange*.log syn match Constant "DEBUG.*"
+" Use a vertical line for the cursor in insert mode
+if has("autocmd")
+  au VimEnter,InsertLeave * silent execute '!echo -ne "\e[2 q"'
+  au InsertEnter,InsertChange *
+    \ if v:insertmode == 'i' |
+    \   silent execute '!echo -ne "\e[6 q"' |
+    \ elseif v:insertmode == 'r' |
+    \   silent execute '!echo -ne "\e[4 q"' |
+    \ endif
+  au VimLeave * silent execute '!echo -ne "\e[ q"'
+endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -253,9 +234,6 @@ nmap <silent> <leader>s :set nolist!<CR>
 
 " ,n: Disable highlights
 nnoremap <silent> <leader>n :nohl<CR>
-
-" disabled, was ,p: Spell check
-" nnoremap <silent> <leader>p :setlocal spell spelllang=en_us<CR>
 
 " move vertically by visual line instead of physical line
 nnoremap j gj
@@ -320,12 +298,6 @@ autocmd FileType tex nnoremap <silent> <leader>t :LatexTOCToggle<CR>
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 
-" Vim-LaTeX
-" set grepprg=grep\ -nH\ $*
-" let g:tex_flavor = "latex"
-" let g:Tex_DefaultTargetFormat = "pdf"
-" let g:Tex_MultipleCompileFormats = "pdf"
-
 " The NERD commenter
 " Implicit functions:
 " ,cc -> comment out line
@@ -362,29 +334,3 @@ let g:tmuxline_separators = {
 " cs'" -> change surrounding ' to "
 " ds' -> delete surrounding '
 
-" fugitive
-" ,ga -> git add [current file]
-nnoremap <leader>ga :Git add %:p<CR><CR>
-" ,gc -> git commit
-nnoremap <leader>gc :Gcommit -q<CR>
-" ,gt -> git commit current file
-nnoremap <leader>gt :Gcommit -q %:p<CR>
-" ,gp -> git push
-nnoremap <leader>gp :Gpush<CR>
-" ,gu -> git pull
-nnoremap <leader>gu :Gpull<CR>
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-" vim-markdown-preview
-" ,lv -> view markdown as HTML
-" Use grip if it is available. That generates nicer output by sending the
-" markdown file off to github for processing. Otherwise, use the built in
-" markdown compiler
-let vim_markdown_preview_hotkey='<leader>lv'
-if executable("grip") == 1
-    let vim_markdown_preview_github=1
-endif
-let vim_markdown_preview_use_xdg_open=1
