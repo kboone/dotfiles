@@ -23,6 +23,11 @@
 ### Update if a submodule changed
     git submodule update --init --recursive
 
+## Other things to do on a new development machine.
+
+Setup the terminal colorscheme. I'm currently using onedark. For Gnome terminal, [this
+script](https://github.com/denysdovhan/one-gnome-terminal) sets up a good profile.
+
 ## Other things to do on a new server
 
 ### Set up ssh keys.

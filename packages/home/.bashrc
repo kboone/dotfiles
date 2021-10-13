@@ -119,11 +119,6 @@ vgrep() {
 export VISUAL=vim
 export EDITOR=$VISUAL
 
-# Set colorscheme
-if [[ -f "$HOME/.dotfiles/packages/colorscheme/bash/set_colorscheme.sh" ]]; then
-    . $HOME/.dotfiles/packages/colorscheme/bash/set_colorscheme.sh
-fi
-
 # Check for dotfile upgrades
 . $HOME/.dotfiles/tools/check_for_upgrade.sh
 
