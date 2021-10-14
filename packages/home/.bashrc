@@ -115,6 +115,9 @@ vgrep() {
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
+# Don't use backgrounds in glances since they don't work with our colorscheme.
+alias glances='glances --disable-bg'
+
 # Use vim as my default editor for git and things.
 export VISUAL=vim
 export EDITOR=$VISUAL
