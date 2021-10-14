@@ -26,7 +26,8 @@
 ## Other things to do on a new development machine.
 
 Setup the terminal colorscheme. I'm currently using onedark. For Gnome terminal, [this
-script](https://github.com/denysdovhan/one-gnome-terminal) sets up a good profile.
+script](https://github.com/denysdovhan/one-gnome-terminal) sets up a mostly good
+profile, but it gets the orange (ANSI yellow) wrong. Change that manually to #e5c07b.
 
 ## Other things to do on a new server
 
