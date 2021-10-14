@@ -1,5 +1,5 @@
 [user]
-    email = kboone@berkeley.edu
+    email = kyboone@gmail.com
     name = Kyle Boone
 
 [alias]
@@ -14,10 +14,10 @@
     default = current
 
 [core]
-    editor = nvim
+    editor = vim
 
 [credential]
     helper = cache
 
 [pull]
-	ff = only
+    ff = only

@@ -115,7 +115,7 @@ vgrep() {
         | grep -v \.git | grep -v pyc | grep -v \.egg-info
 }
 
-# Use vim as my default editor for svn and things.
+# Use vim as my default editor for git and things.
 export VISUAL=vim
 export EDITOR=$VISUAL
 
